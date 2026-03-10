@@ -72,7 +72,7 @@ return `
     <!-- HERO -->
     <section class="hero">
     <div class="hero-photo">
-        <img src="homepage.JPG" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="assets/homepage.JPG" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
     </div>
     <div class="hero-text">
