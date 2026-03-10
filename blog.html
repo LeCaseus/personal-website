@@ -6,77 +6,18 @@
   <title>Blog — Chezter Vargas</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── BLOG-SPECIFIC VARIABLES ── */
     :root {
-      --bg:       #f5f0e8;
-      --warm:     #ede5d8;
-      --paper:    #faf7f2;
-      --ink:      #2a2118;
-      --ink2:     #6b5d4f;
-      --faint:    #b8a898;
-      --rule:     #ddd5c5;
-      --accent:   #c17f4a;
-      --accent-d: #a0632e;
-      --personal: #b8605a;
-      --gaming:   #5a6e8a;
-      --career:   #4a7a5c;
+      --personal:   #b8605a;
+      --gaming:     #5a6e8a;
+      --career:     #4a7a5c;
       --personal-l: rgba(184,96,90,0.08);
       --gaming-l:   rgba(90,110,138,0.08);
       --career-l:   rgba(74,122,92,0.08);
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      height: 60px;
-      background: rgba(245,240,232,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .nav-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .nav-logo em { font-style: italic; color: var(--accent); }
-
-    .nav-links { display: flex; align-items: center; gap: 2rem; }
-    .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
-
-    .nav-write {
-      background: var(--ink);
-      color: var(--bg) !important;
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      transition: background 0.15s !important;
-    }
-    .nav-write:hover { background: var(--accent) !important; }
 
     /* ── PAGE WRAP ── */
     .wrap {
@@ -125,25 +66,7 @@
       font-style: italic;
     }
 
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      display: flex; gap: 0.4rem; flex-wrap: wrap;
-    }
-
-    .fpill {
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      padding: 0.3rem 0.9rem;
-      border-radius: 20px;
-      border: 1px solid var(--rule);
-      cursor: pointer;
-      color: var(--ink2);
-      background: transparent;
-      transition: all 0.15s;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .fpill:hover { background: var(--warm); color: var(--ink); }
-    .fpill.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    /* ── BLOG CATEGORY PILLS ── */
     .fpill-personal.active { background: var(--personal); border-color: var(--personal); }
     .fpill-gaming.active   { background: var(--gaming);   border-color: var(--gaming); }
     .fpill-career.active   { background: var(--career);   border-color: var(--career); }
@@ -172,7 +95,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .featured-image img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
@@ -219,7 +141,6 @@
       font-size: 0.72rem; color: var(--faint);
       flex-wrap: wrap;
     }
-
     .post-meta-dot { width: 3px; height: 3px; background: var(--faint); border-radius: 50%; }
 
     .cat-tag {
@@ -304,14 +225,6 @@
       animation: rise 0.35s ease both;
     }
 
-    .post-back {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.78rem; color: var(--faint);
-      cursor: pointer; margin-bottom: 2.5rem;
-      transition: color 0.15s; text-decoration: none;
-    }
-    .post-back:hover { color: var(--ink); }
-
     .single-cover {
       width: 100%;
       aspect-ratio: 16/7;
@@ -341,10 +254,6 @@
     .single-body p { margin-bottom: 1.4rem; }
     .single-body h2 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 300; margin: 2rem 0 0.75rem; color: var(--ink); }
 
-    .post-rule { width: 40px; height: 2px; background: var(--rule); margin: 2.5rem 0; }
-
-    .post-foot { display: flex; align-items: center; justify-content: space-between; }
-
     /* ── COMPOSE ── */
     .compose-wrap {
       max-width: 720px;
@@ -352,7 +261,6 @@
       padding: 6rem clamp(1.5rem, 5vw, 2rem) 5rem;
       animation: rise 0.3s ease both;
     }
-
     .compose-wrap h2 {
       font-family: 'Fraunces', serif;
       font-size: 1.9rem; font-weight: 300;
@@ -360,12 +268,7 @@
     }
     .compose-wrap .sub { font-size: 0.9rem; color: var(--faint); font-style: italic; margin-bottom: 2rem; }
 
-    .cfield { margin-bottom: 1.25rem; }
-    .cfield label {
-      display: block; font-size: 0.68rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--faint);
-      font-weight: 400; margin-bottom: 0.45rem;
-    }
+    .cfield-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .cfield input, .cfield textarea, .cfield select {
       width: 100%; background: var(--paper);
       border: 1px solid var(--rule); border-radius: 6px;
@@ -378,62 +281,13 @@
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(193,127,74,0.1);
     }
-    #f-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 300; }
     .cfield textarea { min-height: 300px; resize: vertical; line-height: 1.75; }
-    .cfield-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .cactions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-
-    /* ── BUTTONS ── */
-    .btn {
-      border: none; cursor: pointer; border-radius: 5px;
-      font-family: 'DM Sans', sans-serif; font-size: 0.83rem;
-      font-weight: 400; padding: 0.55rem 1.3rem; transition: all 0.15s;
-    }
-    .btn-primary { background: var(--ink); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent); }
-    .btn-outline { background: transparent; color: var(--ink2); border: 1px solid var(--rule); }
-    .btn-outline:hover { color: var(--ink); border-color: var(--ink2); }
-    .btn-del { background: transparent; color: var(--faint); border: 1px solid var(--rule); font-size: 0.78rem; }
-    .btn-del:hover { color: #b83232; border-color: #b83232; }
-
-    /* ── EMPTY ── */
-    .empty { text-align: center; padding: 5rem 1rem; }
-    .empty-glyph { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.3; }
-    .empty h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 300; margin-bottom: 0.4rem; }
-    .empty p { color: var(--faint); font-size: 0.88rem; font-style: italic; margin-bottom: 1.5rem; }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      border-top: 1px solid var(--rule);
-      padding: 2rem clamp(1.5rem, 5vw, 4rem);
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.72rem; color: var(--faint);
-    }
-    .social-links-footer { display: flex; gap: 0.75rem; }
-    .social-footer-btn { color: var(--faint); text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
-    .social-footer-btn:hover { color: var(--ink); }
-
-    /* ── TOAST ── */
-    .toast {
-      position: fixed; bottom: 1.75rem; left: 50%;
-      transform: translateX(-50%) translateY(60px);
-      background: var(--ink); color: var(--bg);
-      padding: 0.6rem 1.3rem; border-radius: 5px;
-      font-size: 0.8rem; opacity: 0;
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      z-index: 999; white-space: nowrap;
-    }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .featured { grid-template-columns: 1fr; }
       .featured-image { min-height: 220px; }
       .cfield-row { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 520px) {
-      .nav-links a:not(.nav-write) { display: none; }
     }
   </style>
 </head>
@@ -481,180 +335,6 @@
 
   <div class="toast" id="toast"></div>
 
-<script>
-  const KEY  = 'blog_posts_v1';
-  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch { return []; } };
-  const save = d => localStorage.setItem(KEY, JSON.stringify(d));
-
-  // seed posts
-  let posts = load();
-
-  let activeFilter = null;
-
-  function setFilter(filter, el) {
-    activeFilter = filter;
-    document.querySelectorAll('.fpill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    renderFeed();
-  }
-
-  function renderFeed() {
-    const list = activeFilter ? posts.filter(p => p.category === activeFilter) : posts;
-
-    if (!list.length) {
-      setPage(`<div class="empty">
-        <div class="empty-glyph">✦</div>
-        <h3>No posts yet</h3>
-        <p>No ${activeFilter||''} posts written yet.</p>
-        <button class="btn btn-primary" onclick="showCompose()">write one</button>
-      </div>`);
-      return;
-    }
-
-    const [featured, ...rest] = list;
-    let html = `
-      <div class="featured" onclick="openPost(${featured.id})">
-        <div class="featured-image">${featured.emoji||'✦'}</div>
-        <div class="featured-body">
-          <div class="featured-label">featured</div>
-          <h2 class="featured-title">${featured.title}</h2>
-          <p class="featured-excerpt">${featured.excerpt}</p>
-          <div class="post-meta">
-            <span class="cat-tag cat-${featured.category}">${featured.category}</span>
-            <span class="post-meta-dot"></span>
-            <span>${featured.date}</span>
-            <span class="post-meta-dot"></span>
-            <span>${featured.readTime}</span>
-          </div>
-        </div>
-      </div>`;
-
-    if (rest.length) {
-      html += `<div class="section-label">more posts</div>
-        <div class="posts-grid">`;
-      rest.forEach((p, i) => {
-        html += `<div class="post-card" onclick="openPost(${p.id})" style="animation-delay:${i*0.06}s">
-          <div class="post-card-image">${p.emoji||'✦'}</div>
-          <div class="post-card-body">
-            <div class="post-meta" style="margin-bottom:0.6rem">
-              <span class="cat-tag cat-${p.category}">${p.category}</span>
-              <span class="post-meta-dot"></span>
-              <span>${p.readTime}</span>
-            </div>
-            <h3 class="post-card-title">${p.title}</h3>
-            <p class="post-card-excerpt">${p.excerpt}</p>
-            <div class="post-meta">
-              <span>${p.date}</span>
-            </div>
-          </div>
-        </div>`;
-      });
-      html += `</div>`;
-    }
-
-    setPage(html);
-  }
-
-  function openPost(id) {
-    posts = load();
-    const p = posts.find(x => x.id === id);
-    if (!p) return;
-    const bodyHtml = p.body.split('\n\n').map(para => `<p>${para}</p>`).join('');
-    setPage(`<div class="single-wrap">
-      <span class="post-back" onclick="renderFeed()">← back to blog</span>
-      <div class="single-cover">${p.emoji||'✦'}</div>
-      <div class="post-meta" style="margin-bottom:1rem">
-        <span class="cat-tag cat-${p.category}">${p.category}</span>
-        <span class="post-meta-dot"></span>
-        <span>${p.date}</span>
-        <span class="post-meta-dot"></span>
-        <span>${p.readTime}</span>
-      </div>
-      <h1 class="single-title">${p.title}</h1>
-      <div class="single-body">${bodyHtml}</div>
-      <div class="post-rule"></div>
-      <div class="post-foot">
-        <span class="post-back" onclick="renderFeed()">← back</span>
-        <button class="btn btn-del" onclick="confirmDelete(${p.id})">delete</button>
-      </div>
-    </div>`);
-    window.scrollTo(0,0);
-  }
-
-  function confirmDelete(id) {
-    if (!confirm('Delete this post?')) return;
-    posts = load();
-    save(posts.filter(p => p.id !== id));
-    posts = load();
-    toast('Deleted.');
-    renderFeed();
-  }
-
-  function showCompose() {
-    setPage(`<div class="compose-wrap">
-      <h2>New post</h2>
-      <p class="sub">Write something worth reading.</p>
-      <div class="cfield-row">
-        <div class="cfield">
-          <label>category</label>
-          <select id="f-cat">
-            <option value="personal">Personal</option>
-            <option value="gaming">Gaming</option>
-            <option value="career">Career</option>
-          </select>
-        </div>
-        <div class="cfield">
-          <label>emoji cover</label>
-          <input id="f-emoji" type="text" placeholder="e.g. 🎮" style="max-width:100%"/>
-        </div>
-      </div>
-      <div class="cfield">
-        <label>title</label>
-        <input id="f-title" type="text" placeholder="Give it a great title…" autocomplete="off"/>
-      </div>
-      <div class="cfield">
-        <label>excerpt</label>
-        <input id="f-excerpt" type="text" placeholder="One sentence summary…" autocomplete="off"/>
-      </div>
-      <div class="cfield">
-        <label>body</label>
-        <textarea id="f-body" placeholder="Write your post… (separate paragraphs with a blank line)"></textarea>
-      </div>
-      <div class="cactions">
-        <button class="btn btn-primary" onclick="publish()">publish</button>
-        <button class="btn btn-outline" onclick="renderFeed()">cancel</button>
-      </div>
-    </div>`);
-    window.scrollTo(0,0);
-  }
-
-  function publish() {
-    const title   = document.getElementById('f-title')?.value?.trim();
-    const body    = document.getElementById('f-body')?.value?.trim();
-    const excerpt = document.getElementById('f-excerpt')?.value?.trim();
-    const cat     = document.getElementById('f-cat')?.value;
-    const emoji   = document.getElementById('f-emoji')?.value?.trim() || '✦';
-    if (!title || !body) { toast('title and body are required ✏️'); return; }
-    posts = load();
-    const words    = body.split(/\s+/).length;
-    const readTime = `${Math.max(1, Math.ceil(words/200))} min read`;
-    const date     = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    posts.unshift({ id:Date.now(), category:cat, emoji, title, excerpt:excerpt||body.slice(0,120)+'…', body, date, readTime });
-    save(posts);
-    toast('published ✓');
-    renderFeed();
-  }
-
-  const setPage = html => { document.getElementById('page').innerHTML = html; };
-
-  function toast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
-
-  document.getElementById('copyright').textContent = `Chezter Vargas © ${new Date().getFullYear()}`;
-  renderFeed();
-</script>
+<script src="blog.js"></script>
 </body>
 </html>
