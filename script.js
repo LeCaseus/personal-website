@@ -117,7 +117,7 @@ return `
     <div class="hero-text">
         <p class="hero-eyebrow reveal">welcome to my personal space</p>
         <h1 class="hero-heading reveal reveal-delay-1">Hi, I'm <em>Chezter Vargas</em></h1>
-        <p class="hero-body reveal reveal-delay-2">This is the hub of my digital footprint on the internet and a place where I can showcase my skills, achievements, and the projects that I am working on.<br>I also have a blog and some notes to share from time to time so stay tuned!</p>
+        <p class="hero-body reveal reveal-delay-2">This is my digital footprint on the internet and a place where I can showcase my skills, achievements, and the projects that I am working on.<br>I also have a blog and some notes to share from time to time so stay tuned!</p>
         <div class="social-links reveal reveal-delay-3">
         <a href="https://www.youtube.com/@LeCaseus" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
         <a href="https://github.com/LeCaseus" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
