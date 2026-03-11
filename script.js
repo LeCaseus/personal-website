@@ -1,17 +1,20 @@
 let activeFilter = null;
-let composeType  = 'note';
+let composeType = "note";
 
 /* ── SCROLL REVEAL ── */
 function initReveal() {
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-    if (e.isIntersecting) {
-        e.target.classList.add('visible');
-    }
-    });
-}, { threshold: 0.15 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
 
 /* ── VIEWS ── */
@@ -21,7 +24,7 @@ async function showHome() {
   activeFilter = null;
 
   if (!heroRendered) {
-    const res  = await fetch('/api/entries');
+    const res = await fetch("/api/entries");
     const list = await res.json();
     setRoot(homeTpl(list));
     updateFooter(list.length);
@@ -30,31 +33,35 @@ async function showHome() {
     setTimeout(initReveal, 50);
   }
 
-  document.querySelectorAll('.fpill').forEach((p,i) => p.classList.toggle('active', i===0));
+  document
+    .querySelectorAll(".fpill")
+    .forEach((p, i) => p.classList.toggle("active", i === 0));
   await refreshNotes();
 }
 
 function scrollToNotes() {
-showHome();
-setTimeout(() => {
-    const el = document.getElementById('notes-anchor');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-}, 80);
+  showHome();
+  setTimeout(() => {
+    const el = document.getElementById("notes-anchor");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }, 80);
 }
 
 async function refreshNotes() {
-  const url  = activeFilter ? `/api/entries?type=${activeFilter}` : '/api/entries';
-  const res  = await fetch(url);
+  const url = activeFilter
+    ? `/api/entries?type=${activeFilter}`
+    : "/api/entries";
+  const res = await fetch(url);
   const list = await res.json();
-  const label = activeFilter ? activeFilter + 's' : 'everything';
+  const label = activeFilter ? activeFilter + "s" : "everything";
 
-  const section = document.getElementById('notes-anchor');
+  const section = document.getElementById("notes-anchor");
   if (!section) return;
 
-  section.querySelector('.section-sub').textContent =
-    `${list.length} entr${list.length===1?'y':'ies'} · ${label}`;
+  section.querySelector(".section-sub").textContent =
+    `${list.length} entr${list.length === 1 ? "y" : "ies"} · ${label}`;
 
-  let cards = '';
+  let cards = "";
   if (!list.length) {
     cards = `<div class="empty">
       <div class="empty-glyph">✦</div>
@@ -64,50 +71,50 @@ async function refreshNotes() {
     </div>`;
   } else {
     list.forEach((e, i) => {
-      const isL = e.type === 'letter';
-      cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i*0.05}s">
+      const isL = e.type === "letter";
+      cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i * 0.05}s">
         <div class="sticky-tag">
           <span>${e.type}</span>
           <span class="sticky-date">${e.date}</span>
         </div>
-        ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ''}
+        ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ""}
         <div class="sticky-body">${isL ? clip(e.body, 220) : e.body}</div>
-        ${isL ? `<span class="sticky-more">read more →</span>` : ''}
+        ${isL ? `<span class="sticky-more">read more →</span>` : ""}
       </div>`;
     });
   }
-  section.querySelector('.masonry').innerHTML = cards;
+  section.querySelector(".masonry").innerHTML = cards;
   updateFooter(list.length);
 }
 
 /* ── HOME TEMPLATE ── */
 function homeTpl(list) {
-const label  = activeFilter ? activeFilter + 's' : 'everything';
+  const label = activeFilter ? activeFilter + "s" : "everything";
 
-let cards = '';
-if (!list.length) {
+  let cards = "";
+  if (!list.length) {
     cards = `<div class="empty">
     <div class="empty-glyph">✦</div>
     <h3>Nothing here yet</h3>
     <p>Your first entry is waiting to be written.</p>
     <button class="btn btn-primary" onclick="showCompose()">write something</button>
     </div>`;
-} else {
+  } else {
     list.forEach((e, i) => {
-    const isL = e.type === 'letter';
-    cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i*0.05}s">
+      const isL = e.type === "letter";
+      cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i * 0.05}s">
         <div class="sticky-tag">
         <span>${e.type}</span>
         <span class="sticky-date">${e.date}</span>
         </div>
-        ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ''}
+        ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ""}
         <div class="sticky-body">${isL ? clip(e.body, 220) : e.body}</div>
-        ${isL ? `<span class="sticky-more">read more →</span>` : ''}
+        ${isL ? `<span class="sticky-more">read more →</span>` : ""}
     </div>`;
     });
-}
+  }
 
-return `
+  return `
     <!-- HERO -->
     <section class="hero">
     <div class="hero-photo">
@@ -181,14 +188,14 @@ return `
     <div class="section-header">
         <div>
         <h2 class="section-heading">My <em>notes</em></h2>
-        <p class="section-sub">${list.length} entr${list.length===1?'y':'ies'} · ${label}</p>
+        <p class="section-sub">${list.length} entr${list.length === 1 ? "y" : "ies"} · ${label}</p>
         </div>
         <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
         <div class="filter-bar">
-            <div class="fpill ${!activeFilter?'active':''}" onclick="setFilter(null,this)">all</div>
-            <div class="fpill ${activeFilter==='note'?'active':''}" onclick="setFilter('note',this)">notes</div>
-            <div class="fpill ${activeFilter==='letter'?'active':''}" onclick="setFilter('letter',this)">letters</div>
-            <div class="fpill ${activeFilter==='thought'?'active':''}" onclick="setFilter('thought',this)">thoughts</div>
+            <div class="fpill ${!activeFilter ? "active" : ""}" onclick="setFilter(null,this)">all</div>
+            <div class="fpill ${activeFilter === "note" ? "active" : ""}" onclick="setFilter('note',this)">notes</div>
+            <div class="fpill ${activeFilter === "letter" ? "active" : ""}" onclick="setFilter('letter',this)">letters</div>
+            <div class="fpill ${activeFilter === "thought" ? "active" : ""}" onclick="setFilter('thought',this)">thoughts</div>
         </div>
         <button class="write-fab" onclick="showCompose()">+ write</button>
         </div>
@@ -198,9 +205,9 @@ return `
 }
 
 async function loadBlogTeaser() {
-  const res  = await fetch('/api/posts');
+  const res = await fetch("/api/posts");
   const list = await res.json();
-  const el   = document.getElementById('blog-teaser-grid');
+  const el = document.getElementById("blog-teaser-grid");
   if (!el) return;
 
   if (!list.length) {
@@ -208,9 +215,12 @@ async function loadBlogTeaser() {
     return;
   }
 
-  el.innerHTML = list.slice(0, 3).map(p => `
+  el.innerHTML = list
+    .slice(0, 3)
+    .map(
+      (p) => `
     <a href="blog.html" class="teaser-card teaser-card-link">
-      <div class="teaser-cover">${p.emoji || '✦'}</div>
+      <div class="teaser-cover">${p.emoji || "✦"}</div>
       <div class="teaser-body">
         <div class="teaser-cat teaser-cat-${p.category}">${p.category}</div>
         <div class="teaser-name">${p.title}</div>
@@ -218,107 +228,117 @@ async function loadBlogTeaser() {
         <span class="teaser-meta">${p.date} · ${p.read_time}</span>
       </div>
     </a>
-  `).join('');
+  `,
+    )
+    .join("");
 }
 
 async function setFilter(filter, el) {
-    activeFilter = filter;
-    document.querySelectorAll('.fpill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    await refreshNotes();
-    // re-render just the masonry
-    const section = document.getElementById('notes-anchor');
-    if (!section) { await showHome(); return; }
-    const url  = filter ? `/api/entries?type=${filter}` : '/api/entries';
-    const res  = await fetch(url);
-    const list = await res.json();
-    const label = filter ? filter+'s' : 'everything';
+  activeFilter = filter;
+  document
+    .querySelectorAll(".fpill")
+    .forEach((p) => p.classList.remove("active"));
+  el.classList.add("active");
+  await refreshNotes();
+  // re-render just the masonry
+  const section = document.getElementById("notes-anchor");
+  if (!section) {
+    await showHome();
+    return;
+  }
+  const url = filter ? `/api/entries?type=${filter}` : "/api/entries";
+  const res = await fetch(url);
+  const list = await res.json();
+  const label = filter ? filter + "s" : "everything";
 
-    section.querySelector('.section-sub').textContent =
-        `${list.length} entr${list.length===1?'y':'ies'} · ${label}`;
+  section.querySelector(".section-sub").textContent =
+    `${list.length} entr${list.length === 1 ? "y" : "ies"} · ${label}`;
 
-    let cards = '';
-    if (!list.length) {
-        cards = `<div class="empty">
+  let cards = "";
+  if (!list.length) {
+    cards = `<div class="empty">
         <div class="empty-glyph">✦</div>
         <h3>Nothing here yet</h3>
-        <p>No ${filter||''}s written yet.</p>
+        <p>No ${filter || ""}s written yet.</p>
         <button class="btn btn-primary" onclick="showCompose()">write one</button>
         </div>`;
-    } else {
-        list.forEach((e,i) => {
-        const isL = e.type==='letter';
-        cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i*0.05}s">
+  } else {
+    list.forEach((e, i) => {
+      const isL = e.type === "letter";
+      cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i * 0.05}s">
             <div class="sticky-tag">
             <span>${e.type}</span>
             <span class="sticky-date">${e.date}</span>
             </div>
-            ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ''}
-            <div class="sticky-body">${isL ? clip(e.body,220) : e.body}</div>
-            ${isL ? `<span class="sticky-more">read more →</span>` : ''}
+            ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ""}
+            <div class="sticky-body">${isL ? clip(e.body, 220) : e.body}</div>
+            ${isL ? `<span class="sticky-more">read more →</span>` : ""}
         </div>`;
-        });
-    }
-    section.querySelector('.masonry').innerHTML = cards;
+    });
+  }
+  section.querySelector(".masonry").innerHTML = cards;
 }
 
 /* ── SINGLE ENTRY ── */
 async function openEntry(id) {
-    const res = await fetch(`/api/entries/${id}`);
-    const e   = await res.json();
+  const res = await fetch(`/api/entries/${id}`);
+  const e = await res.json();
 
-    if (!e) return;
-    const isL = e.type === 'letter';
-    const bodyHtml = e.body.split('\n\n').map(p=>`<p>${p}</p>`).join('');
-    setRoot(`<div class="post-page">
+  if (!e) return;
+  const isL = e.type === "letter";
+  const bodyHtml = e.body
+    .split("\n\n")
+    .map((p) => `<p>${p}</p>`)
+    .join("");
+  setRoot(`<div class="post-page">
         <span class="post-back" onclick="showHome()">← back to notes</span>
         <div class="post-tag-row">
         <span class="post-tag post-tag-${e.type}">${e.type}</span>
         <span class="post-date">${e.date}</span>
         </div>
-        ${isL && e.title ? `<h1 class="post-title">${e.title}</h1>` : ''}
-        <div class="${isL?'post-body-letter':'post-body-note'}">${bodyHtml}</div>
+        ${isL && e.title ? `<h1 class="post-title">${e.title}</h1>` : ""}
+        <div class="${isL ? "post-body-letter" : "post-body-note"}">${bodyHtml}</div>
         <div class="post-rule"></div>
         <div class="post-foot">
         <span class="post-back" onclick="showHome()">← back</span>
         <button class="btn btn-del" onclick="confirmDelete(${e.id})">delete</button>
         </div>
     </div>`);
-    window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 async function confirmDelete(id) {
-    if (!confirm('Delete this entry?')) return;
-    await fetch(`/api/entries/${id}`, { method: 'DELETE' });
-    toast('Deleted.');
-    heroRendered = false; // to re-render hero with new entry
-    showHome();
+  if (!confirm("Delete this entry?")) return;
+  await fetch(`/api/entries/${id}`, { method: "DELETE" });
+  toast("Deleted.");
+  heroRendered = false; // to re-render hero with new entry
+  showHome();
 }
 
 /* ── COMPOSE ── */
 function showCompose() {
-    composeType = 'note';
-    renderCompose();
-    window.scrollTo(0,0);
+  composeType = "note";
+  renderCompose();
+  window.scrollTo(0, 0);
 }
 
 function renderCompose() {
-const isL = composeType === 'letter';
-setRoot(`<div class="compose-page">
+  const isL = composeType === "letter";
+  setRoot(`<div class="compose-page">
     <h2>New entry</h2>
     <p class="sub">What's on your mind?</p>
     <div class="type-row">
-    <div class="tchip ${composeType==='note'   ?'on-note':''}"    onclick="setType('note')">📌 note</div>
-    <div class="tchip ${composeType==='letter' ?'on-letter':''}"  onclick="setType('letter')">✉️ letter</div>
-    <div class="tchip ${composeType==='thought'?'on-thought':''}" onclick="setType('thought')">💭 thought</div>
+    <div class="tchip ${composeType === "note" ? "on-note" : ""}"    onclick="setType('note')">📌 note</div>
+    <div class="tchip ${composeType === "letter" ? "on-letter" : ""}"  onclick="setType('letter')">✉️ letter</div>
+    <div class="tchip ${composeType === "thought" ? "on-thought" : ""}" onclick="setType('thought')">💭 thought</div>
     </div>
-    ${isL ? `<div class="cfield"><label>title</label><input id="f-title" type="text" placeholder="Give it a title…" autocomplete="off"/></div>` : ''}
+    ${isL ? `<div class="cfield"><label>title</label><input id="f-title" type="text" placeholder="Give it a title…" autocomplete="off"/></div>` : ""}
     <div class="cfield">
-    <label>${isL?'body':composeType==='note'?"what's on your mind?":'the thought'}</label>
-    <textarea id="f-body" class="${composeType!=='letter'?'short-ta':''}"
-        placeholder="${isL?'Write something longer…':composeType==='note'?'Just start writing…':'One sharp observation…'}"
+    <label>${isL ? "body" : composeType === "note" ? "what's on your mind?" : "the thought"}</label>
+    <textarea id="f-body" class="${composeType !== "letter" ? "short-ta" : ""}"
+        placeholder="${isL ? "Write something longer…" : composeType === "note" ? "Just start writing…" : "One sharp observation…"}"
         oninput="updateChar()"></textarea>
-    ${composeType!=='letter'?`<div class="char-hint" id="char-hint">0 chars</div>`:''}
+    ${composeType !== "letter" ? `<div class="char-hint" id="char-hint">0 chars</div>` : ""}
     </div>
     <div class="cactions">
     <button class="btn btn-primary" onclick="publish()">publish</button>
@@ -327,67 +347,82 @@ setRoot(`<div class="compose-page">
 </div>`);
 }
 
-function setType(t) { composeType=t; renderCompose(); }
+function setType(t) {
+  composeType = t;
+  renderCompose();
+}
 
 function updateChar() {
-const el=document.getElementById('char-hint'), b=document.getElementById('f-body');
-if (!el||!b) return;
-const n=b.value.length;
-el.textContent=n+' chars';
-el.className='char-hint'+(n>300?' over':'');
+  const el = document.getElementById("char-hint"),
+    b = document.getElementById("f-body");
+  if (!el || !b) return;
+  const n = b.value.length;
+  el.textContent = n + " chars";
+  el.className = "char-hint" + (n > 300 ? " over" : "");
 }
 
 async function publish() {
-    const body  = document.getElementById('f-body')?.value?.trim();
-    const title = document.getElementById('f-title')?.value?.trim()||'';
-    if (!body) { toast('write something first ✏️'); return; }
-    const date  = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    await fetch('/api/entries', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: composeType, title, body, date })
-    });
-    toast('published ✓');
-    heroRendered = false; // to re-render hero with new entry
-    showHome();
+  const body = document.getElementById("f-body")?.value?.trim();
+  const title = document.getElementById("f-title")?.value?.trim() || "";
+  if (!body) {
+    toast("write something first ✏️");
+    return;
+  }
+  const date = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  await fetch("/api/entries", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ type: composeType, title, body, date }),
+  });
+  toast("published ✓");
+  heroRendered = false; // to re-render hero with new entry
+  showHome();
 }
 
+function toggleMenu() {
+  const btn = document.getElementById("nav-hamburger");
+  const menu = document.getElementById("nav-mobile");
+  const open = menu.classList.toggle("open");
+  btn.classList.toggle("open", open);
+}
 
-  function toggleMenu() {
-    const btn  = document.getElementById('nav-hamburger');
-    const menu = document.getElementById('nav-mobile');
-    const open = menu.classList.toggle('open');
-    btn.classList.toggle('open', open);
+document.querySelectorAll(".nav-mobile a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.getElementById("nav-mobile").classList.remove("open");
+    document.getElementById("nav-hamburger").classList.remove("open");
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
+    document.getElementById("nav-mobile").classList.remove("open");
+    document.getElementById("nav-hamburger").classList.remove("open");
   }
-
-  document.querySelectorAll('.nav-mobile a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-mobile').classList.remove('open');
-      document.getElementById('nav-hamburger').classList.remove('open');
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav') && !e.target.closest('.nav-mobile')) {
-      document.getElementById('nav-mobile').classList.remove('open');
-      document.getElementById('nav-hamburger').classList.remove('open');
-    }
-  });
+});
 
 /* ── UTILS ── */
-const clip    = (s,n) => s.length>n ? s.slice(0,n)+'…' : s;
-const setRoot = html  => { document.getElementById('root').innerHTML = html; };
+const clip = (s, n) => (s.length > n ? s.slice(0, n) + "…" : s);
+const setRoot = (html) => {
+  document.getElementById("root").innerHTML = html;
+};
 
 function updateFooter(n) {
-document.getElementById('footer-count').textContent = `${n} entr${n===1?'y':'ies'}`;
+  document.getElementById("footer-count").textContent =
+    `${n} entr${n === 1 ? "y" : "ies"}`;
 }
 
 function toast(msg) {
-const t=document.getElementById('toast');
-t.textContent=msg; t.classList.add('show');
-setTimeout(()=>t.classList.remove('show'),2500);
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
 }
 
 /* ── INIT ── */
 showHome();
-document.getElementById('copyright').textContent = `Chezter Vargas © ${new Date().getFullYear()}`;
+document.getElementById("copyright").textContent =
+  `Chezter Vargas © ${new Date().getFullYear()}`;

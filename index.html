@@ -1,18 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home — Chezter Vargas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Caveat:wght@400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html">chezter<em>vargas</em></a>
-    <div class="nav-links">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home — Chezter Vargas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Caveat:wght@400;500&family=DM+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a class="nav-logo" href="index.html">chezter<em>vargas</em></a>
+      <div class="nav-links">
+        <a href="index.html" class="active">home</a>
+        <a href="about.html">about</a>
+        <a href="blog.html">blog</a>
+        <a href="portfolio.html">portfolio</a>
+        <a href="resume.html">resume</a>
+        <a href="contact.html">contact</a>
+      </div>
+      <button
+        class="nav-hamburger"
+        id="nav-hamburger"
+        onclick="toggleMenu()"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile">
       <a href="index.html" class="active">home</a>
       <a href="about.html">about</a>
       <a href="blog.html">blog</a>
@@ -20,38 +46,43 @@
       <a href="resume.html">resume</a>
       <a href="contact.html">contact</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
 
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="index.html" class="active">home</a>
-    <a href="about.html">about</a>
-    <a href="blog.html">blog</a>
-    <a href="portfolio.html">portfolio</a>
-    <a href="resume.html">resume</a>
-    <a href="contact.html">contact</a>
-  </div>
+    <!-- MAIN WRAPPER -->
+    <div id="root"></div>
 
-  <!-- MAIN WRAPPER -->
-  <div id="root"></div>
+    <footer class="site-footer">
+      <span id="copyright"></span>
+      <div class="social-links-footer">
+        <a
+          href="https://www.youtube.com/@LeCaseus"
+          target="_blank"
+          class="social-footer-btn"
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
+        <a
+          href="https://github.com/LeCaseus"
+          target="_blank"
+          class="social-footer-btn"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/lecaseus"
+          target="_blank"
+          class="social-footer-btn"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/cheeshire_/"
+          target="_blank"
+          class="social-footer-btn"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+      </div>
+      <span id="footer-count"></span>
+    </footer>
 
-  <footer class="site-footer">
-    <span id="copyright"></span>
-    <div class="social-links-footer">
-      <a href="https://www.youtube.com/@LeCaseus" target="_blank" class="social-footer-btn"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://github.com/LeCaseus" target="_blank" class="social-footer-btn"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/lecaseus" target="_blank" class="social-footer-btn"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/cheeshire_/" target="_blank" class="social-footer-btn"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-    <span id="footer-count"></span>
-  </footer>
+    <div class="toast" id="toast"></div>
 
-  <div class="toast" id="toast"></div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

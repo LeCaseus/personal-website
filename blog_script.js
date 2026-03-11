@@ -2,21 +2,25 @@ let activeFilter = null;
 
 async function setFilter(filter, el) {
   activeFilter = filter;
-  document.querySelectorAll('.fpill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
+  document
+    .querySelectorAll(".fpill")
+    .forEach((p) => p.classList.remove("active"));
+  el.classList.add("active");
   await renderFeed();
 }
 
 async function renderFeed() {
-  const url  = activeFilter ? `/api/posts?category=${activeFilter}` : '/api/posts';
-  const res  = await fetch(url);
+  const url = activeFilter
+    ? `/api/posts?category=${activeFilter}`
+    : "/api/posts";
+  const res = await fetch(url);
   const list = await res.json();
 
   if (!list.length) {
     setPage(`<div class="empty">
       <div class="empty-glyph">✦</div>
       <h3>No posts yet</h3>
-      <p>No ${activeFilter||''} posts written yet.</p>
+      <p>No ${activeFilter || ""} posts written yet.</p>
       <button class="btn btn-primary" onclick="showCompose()">write one</button>
     </div>`);
     return;
@@ -28,7 +32,7 @@ async function renderFeed() {
       <button class="write-fab" onclick="showCompose()">+ write</button>
     </div>
     <div class="featured" onclick="openPost(${featured.id})">
-      <div class="featured-image">${featured.emoji||'✦'}</div>
+      <div class="featured-image">${featured.emoji || "✦"}</div>
       <div class="featured-body">
         <div class="featured-label">featured</div>
         <h2 class="featured-title">${featured.title}</h2>
@@ -49,8 +53,8 @@ async function renderFeed() {
       <button class="write-fab" onclick="showCompose()">+ write</button>
     </div><div class="posts-grid">`;
     rest.forEach((p, i) => {
-      html += `<div class="post-card" onclick="openPost(${p.id})" style="animation-delay:${i*0.06}s">
-        <div class="post-card-image">${p.emoji||'✦'}</div>
+      html += `<div class="post-card" onclick="openPost(${p.id})" style="animation-delay:${i * 0.06}s">
+        <div class="post-card-image">${p.emoji || "✦"}</div>
         <div class="post-card-body">
           <div class="post-meta" style="margin-bottom:0.6rem">
             <span class="cat-tag cat-${p.category}">${p.category}</span>
@@ -70,12 +74,15 @@ async function renderFeed() {
 
 async function openPost(id) {
   const res = await fetch(`/api/posts/${id}`);
-  const p   = await res.json();
+  const p = await res.json();
   if (!p) return;
-  const bodyHtml = p.body.split('\n\n').map(para => `<p>${para}</p>`).join('');
+  const bodyHtml = p.body
+    .split("\n\n")
+    .map((para) => `<p>${para}</p>`)
+    .join("");
   setPage(`<div class="single-wrap">
     <span class="post-back" onclick="renderFeed()">← back to blog</span>
-    <div class="single-cover">${p.emoji||'✦'}</div>
+    <div class="single-cover">${p.emoji || "✦"}</div>
     <div class="post-meta" style="margin-bottom:1rem">
       <span class="cat-tag cat-${p.category}">${p.category}</span>
       <span class="post-meta-dot"></span>
@@ -91,13 +98,13 @@ async function openPost(id) {
       <button class="btn btn-del" onclick="confirmDelete(${p.id})">delete</button>
     </div>
   </div>`);
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 async function confirmDelete(id) {
-  if (!confirm('Delete this post?')) return;
-  await fetch(`/api/posts/${id}`, { method: 'DELETE' });
-  toast('Deleted.');
+  if (!confirm("Delete this post?")) return;
+  await fetch(`/api/posts/${id}`, { method: "DELETE" });
+  toast("Deleted.");
   renderFeed();
 }
 
@@ -137,56 +144,75 @@ function showCompose() {
       <button class="btn btn-outline" onclick="renderFeed()">cancel</button>
     </div>
   </div>`);
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 async function publish() {
-  const title   = document.getElementById('f-title')?.value?.trim();
-  const body    = document.getElementById('f-body')?.value?.trim();
-  const excerpt = document.getElementById('f-excerpt')?.value?.trim();
-  const cat     = document.getElementById('f-cat')?.value;
-  const emoji   = document.getElementById('f-emoji')?.value?.trim() || '✦';
-  if (!title || !body) { toast('title and body are required ✏️'); return; }
-  const words     = body.split(/\s+/).length;
-  const read_time = `${Math.max(1, Math.ceil(words/200))} min read`;
-  const date      = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-  await fetch('/api/posts', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ category:cat, emoji, title, excerpt:excerpt||body.slice(0,120)+'…', body, date, read_time })
+  const title = document.getElementById("f-title")?.value?.trim();
+  const body = document.getElementById("f-body")?.value?.trim();
+  const excerpt = document.getElementById("f-excerpt")?.value?.trim();
+  const cat = document.getElementById("f-cat")?.value;
+  const emoji = document.getElementById("f-emoji")?.value?.trim() || "✦";
+  if (!title || !body) {
+    toast("title and body are required ✏️");
+    return;
+  }
+  const words = body.split(/\s+/).length;
+  const read_time = `${Math.max(1, Math.ceil(words / 200))} min read`;
+  const date = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
   });
-  toast('published ✓');
+  await fetch("/api/posts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      category: cat,
+      emoji,
+      title,
+      excerpt: excerpt || body.slice(0, 120) + "…",
+      body,
+      date,
+      read_time,
+    }),
+  });
+  toast("published ✓");
   renderFeed();
 }
 
-const setPage = html => { document.getElementById('page').innerHTML = html; };
+const setPage = (html) => {
+  document.getElementById("page").innerHTML = html;
+};
 
 function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
 }
 
 function toggleMenu() {
-  const btn  = document.getElementById('nav-hamburger');
-  const menu = document.getElementById('nav-mobile');
-  const open = menu.classList.toggle('open');
-  btn.classList.toggle('open', open);
+  const btn = document.getElementById("nav-hamburger");
+  const menu = document.getElementById("nav-mobile");
+  const open = menu.classList.toggle("open");
+  btn.classList.toggle("open", open);
 }
 
-document.querySelectorAll('.nav-mobile a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('nav-mobile').classList.remove('open');
-    document.getElementById('nav-hamburger').classList.remove('open');
+document.querySelectorAll(".nav-mobile a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.getElementById("nav-mobile").classList.remove("open");
+    document.getElementById("nav-hamburger").classList.remove("open");
   });
 });
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('nav') && !e.target.closest('.nav-mobile')) {
-    document.getElementById('nav-mobile').classList.remove('open');
-    document.getElementById('nav-hamburger').classList.remove('open');
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
+    document.getElementById("nav-mobile").classList.remove("open");
+    document.getElementById("nav-hamburger").classList.remove("open");
   }
 });
 
-document.getElementById('copyright').textContent = `Chezter Vargas © ${new Date().getFullYear()}`;
+document.getElementById("copyright").textContent =
+  `Chezter Vargas © ${new Date().getFullYear()}`;
 renderFeed();
