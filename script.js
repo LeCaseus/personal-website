@@ -15,14 +15,22 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
 /* ── VIEWS ── */
+let heroRendered = false;
+
 async function showHome() {
   activeFilter = null;
-  const res  = await fetch('/api/entries');
-  const list = await res.json();
-  setRoot(homeTpl(list));
-  updateFooter(list.length);
+
+  if (!heroRendered) {
+    const res  = await fetch('/api/entries');
+    const list = await res.json();
+    setRoot(homeTpl(list));
+    updateFooter(list.length);
+    heroRendered = true;
+    setTimeout(initReveal, 50);
+  }
+
   document.querySelectorAll('.fpill').forEach((p,i) => p.classList.toggle('active', i===0));
-  setTimeout(initReveal, 50);
+  await refreshNotes();
 }
 
 function scrollToNotes() {
@@ -31,6 +39,44 @@ setTimeout(() => {
     const el = document.getElementById('notes-anchor');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
 }, 80);
+}
+
+async function refreshNotes() {
+  const url  = activeFilter ? `/api/entries?type=${activeFilter}` : '/api/entries';
+  const res  = await fetch(url);
+  const list = await res.json();
+  const label = activeFilter ? activeFilter + 's' : 'everything';
+
+  const section = document.getElementById('notes-anchor');
+  if (!section) return;
+
+  section.querySelector('.section-sub').textContent =
+    `${list.length} entr${list.length===1?'y':'ies'} · ${label}`;
+
+  let cards = '';
+  if (!list.length) {
+    cards = `<div class="empty">
+      <div class="empty-glyph">✦</div>
+      <h3>Nothing here yet</h3>
+      <p>Your first entry is waiting to be written.</p>
+      <button class="btn btn-primary" onclick="showCompose()">write something</button>
+    </div>`;
+  } else {
+    list.forEach((e, i) => {
+      const isL = e.type === 'letter';
+      cards += `<div class="sticky is-${e.type} sticky-${e.type}" onclick="openEntry(${e.id})" style="animation-delay:${i*0.05}s">
+        <div class="sticky-tag">
+          <span>${e.type}</span>
+          <span class="sticky-date">${e.date}</span>
+        </div>
+        ${isL && e.title ? `<div class="sticky-title">${e.title}</div>` : ''}
+        <div class="sticky-body">${isL ? clip(e.body, 220) : e.body}</div>
+        ${isL ? `<span class="sticky-more">read more →</span>` : ''}
+      </div>`;
+    });
+  }
+  section.querySelector('.masonry').innerHTML = cards;
+  updateFooter(list.length);
 }
 
 /* ── HOME TEMPLATE ── */
@@ -113,6 +159,7 @@ async function setFilter(filter, el) {
     activeFilter = filter;
     document.querySelectorAll('.fpill').forEach(p => p.classList.remove('active'));
     el.classList.add('active');
+    await refreshNotes();
     // re-render just the masonry
     const section = document.getElementById('notes-anchor');
     if (!section) { await showHome(); return; }
@@ -178,6 +225,7 @@ async function confirmDelete(id) {
     if (!confirm('Delete this entry?')) return;
     await fetch(`/api/entries/${id}`, { method: 'DELETE' });
     toast('Deleted.');
+    heroRendered = false; // to re-render hero with new entry
     showHome();
 }
 
@@ -234,6 +282,7 @@ async function publish() {
     body: JSON.stringify({ type: composeType, title, body, date })
     });
     toast('published ✓');
+    heroRendered = false; // to re-render hero with new entry
     showHome();
 }
 

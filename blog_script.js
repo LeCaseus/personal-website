@@ -24,6 +24,9 @@ async function renderFeed() {
 
   const [featured, ...rest] = list;
   let html = `
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem;">
+      <button class="write-fab" onclick="showCompose()">+ write</button>
+    </div>
     <div class="featured" onclick="openPost(${featured.id})">
       <div class="featured-image">${featured.emoji||'✦'}</div>
       <div class="featured-body">
@@ -41,7 +44,10 @@ async function renderFeed() {
     </div>`;
 
   if (rest.length) {
-    html += `<div class="section-label">more posts</div><div class="posts-grid">`;
+    html += `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <div class="section-label" style="margin-bottom:0;flex:1">more posts</div>
+      <button class="write-fab" onclick="showCompose()">+ write</button>
+    </div><div class="posts-grid">`;
     rest.forEach((p, i) => {
       html += `<div class="post-card" onclick="openPost(${p.id})" style="animation-delay:${i*0.06}s">
         <div class="post-card-image">${p.emoji||'✦'}</div>
