@@ -6,6 +6,16 @@ const PORT = 3000;
 
 const sql = neon(process.env.DATABASE_URL);
 
+const cloudinary = require("cloudinary").v2;
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 app.use(express.static("."));
 app.use(express.json());
 
@@ -33,6 +43,10 @@ async function initDb() {
       read_time  TEXT DEFAULT '',
       created_at TIMESTAMPTZ DEFAULT NOW()
     )
+  `;
+  await sql`
+    ALTER TABLE posts 
+    ADD COLUMN IF NOT EXISTS cover_url TEXT DEFAULT ''
   `;
   console.log("Database ready");
 }
@@ -85,12 +99,13 @@ app.get("/api/posts/:id", async (req, res) => {
 });
 
 app.post("/api/posts", async (req, res) => {
-  const { category, emoji, title, excerpt, body, date, read_time } = req.body;
+  const { category, emoji, title, excerpt, body, date, read_time, cover_url } =
+    req.body;
   if (!category || !title || !body)
     return res.status(400).json({ error: "category, title and body required" });
   const rows = await sql`
-    INSERT INTO posts (category, emoji, title, excerpt, body, date, read_time)
-    VALUES (${category}, ${emoji || "✦"}, ${title}, ${excerpt || ""}, ${body}, ${date}, ${read_time || ""})
+    INSERT INTO posts (category, emoji, title, excerpt, body, date, read_time, cover_url)
+    VALUES (${category}, ${emoji || "✦"}, ${title}, ${excerpt || ""}, ${body}, ${date}, ${read_time || ""}, ${cover_url || ""})
     RETURNING id
   `;
   res.json({ id: rows[0].id });
@@ -99,6 +114,24 @@ app.post("/api/posts", async (req, res) => {
 app.delete("/api/posts/:id", async (req, res) => {
   await sql`DELETE FROM posts WHERE id = ${req.params.id}`;
   res.json({ success: true });
+});
+
+// ── IMAGE UPLOAD ──
+app.post("/api/upload", upload.single("image"), async (req, res) => {
+  try {
+    const b64 = req.file.buffer.toString("base64");
+    const dataUri = `data:${req.file.mimetype};base64,${b64}`;
+    const result = await cloudinary.uploader.upload(dataUri, {
+      folder: "blog_covers",
+      transformation: [
+        { width: 1200, height: 600, crop: "fill", quality: "auto" },
+      ],
+    });
+    res.json({ url: result.secure_url });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Upload failed" });
+  }
 });
 
 initDb().then(() => {

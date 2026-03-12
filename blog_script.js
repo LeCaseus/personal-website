@@ -33,7 +33,13 @@ async function renderFeed() {
       ${isAdmin ? `<button class="write-fab" onclick="showCompose()">+ write</button>` : ""}
     </div>
     <div class="featured" onclick="openPost(${featured.id})">
-      <div class="featured-image">${featured.emoji || "✦"}</div>
+      <div class="featured-image">
+        ${
+          featured.cover_url
+            ? `<img src="${featured.cover_url}" alt="${featured.title}"/>`
+            : featured.emoji || "✦"
+        }
+      </div>
       <div class="featured-body">
         <div class="featured-label">featured</div>
         <h2 class="featured-title">${featured.title}</h2>
@@ -55,7 +61,13 @@ async function renderFeed() {
     </div><div class="posts-grid">`;
     rest.forEach((p, i) => {
       html += `<div class="post-card" onclick="openPost(${p.id})" style="animation-delay:${i * 0.06}s">
-        <div class="post-card-image">${p.emoji || "✦"}</div>
+        <div class="post-card-image">
+          ${
+            p.cover_url
+              ? `<img src="${p.cover_url}" alt="${p.title}"/>`
+              : p.emoji || "✦"
+          }
+        </div>
         <div class="post-card-body">
           <div class="post-meta" style="margin-bottom:0.6rem">
             <span class="cat-tag cat-${p.category}">${p.category}</span>
@@ -83,7 +95,13 @@ async function openPost(id) {
     .join("");
   setPage(`<div class="single-wrap">
     <span class="post-back" id="back-top">← back to blog</span>
-    <div class="single-cover">${p.emoji || "✦"}</div>
+    <div class="single-cover">
+      ${
+        p.cover_url
+          ? `<img src="${p.cover_url}" alt="${p.title}"/>`
+          : p.emoji || "✦"
+      }
+    </div>
     <div class="post-meta" style="margin-bottom:1rem">
       <span class="cat-tag cat-${p.category}">${p.category}</span>
       <span class="post-meta-dot"></span>
@@ -131,8 +149,11 @@ function showCompose() {
         </select>
       </div>
       <div class="cfield">
-        <label>emoji cover</label>
-        <input id="f-emoji" type="text" placeholder="e.g. 🎮"/>
+        <label>cover image</label>
+        <input id="f-image" type="file" accept="image/*" onchange="previewImage(this)"/>
+        <div id="image-preview" style="margin-top:0.75rem;border-radius:8px;overflow:hidden;display:none;">
+          <img id="preview-img" style="width:100%;height:180px;object-fit:cover;display:block;"/>
+        </div>
       </div>
     </div>
     <div class="cfield">
@@ -160,11 +181,30 @@ async function publish() {
   const body = document.getElementById("f-body")?.value?.trim();
   const excerpt = document.getElementById("f-excerpt")?.value?.trim();
   const cat = document.getElementById("f-cat")?.value;
-  const emoji = document.getElementById("f-emoji")?.value?.trim() || "✦";
+  const imageFile = document.getElementById("f-image")?.files[0];
+
   if (!title || !body) {
     toast("title and body are required ✏️");
     return;
   }
+
+  let cover_url = "";
+  if (imageFile) {
+    toast("uploading image...");
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      cover_url = data.url || "";
+    } catch (err) {
+      toast("image upload failed, publishing without image");
+    }
+  }
+
   const words = body.split(/\s+/).length;
   const read_time = `${Math.max(1, Math.ceil(words / 200))} min read`;
   const date = new Date().toLocaleDateString("en-US", {
@@ -172,17 +212,19 @@ async function publish() {
     day: "numeric",
     year: "numeric",
   });
+
   await fetch("/api/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       category: cat,
-      emoji,
+      emoji: "✦",
       title,
       excerpt: excerpt || body.slice(0, 120) + "…",
       body,
       date,
       read_time,
+      cover_url,
     }),
   });
   toast("published ✓");
@@ -224,3 +266,16 @@ document.addEventListener("click", (e) => {
 document.getElementById("copyright").textContent =
   `Chezter Vargas © ${new Date().getFullYear()}`;
 renderFeed();
+
+function previewImage(input) {
+  const preview = document.getElementById("image-preview");
+  const img = document.getElementById("preview-img");
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
