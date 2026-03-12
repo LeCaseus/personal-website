@@ -291,7 +291,7 @@ async function openEntry(id) {
     .map((p) => `<p>${p}</p>`)
     .join("");
   setRoot(`<div class="post-page">
-        <span class="post-back" onclick="showHome()">← back to notes</span>
+        <span class="post-back" id="back-top">← back to notes</span>
         <div class="post-tag-row">
         <span class="post-tag post-tag-${e.type}">${e.type}</span>
         <span class="post-date">${e.date}</span>
@@ -300,10 +300,23 @@ async function openEntry(id) {
         <div class="${isL ? "post-body-letter" : "post-body-note"}">${bodyHtml}</div>
         <div class="post-rule"></div>
         <div class="post-foot">
-        <span class="post-back" onclick="showHome()">← back</span>
-        <button class="btn btn-del" onclick="confirmDelete(${e.id})">delete</button>
+        <span class="post-back" id="back-bottom">← back</span>
+        <button class="btn btn-del" id="btn-del">delete</button>
         </div>
     </div>`);
+
+  document.getElementById("back-top").addEventListener("click", () => {
+    heroRendered = false;
+    showHome();
+  });
+  document.getElementById("back-bottom").addEventListener("click", () => {
+    heroRendered = false;
+    showHome();
+  });
+  document
+    .getElementById("btn-del")
+    .addEventListener("click", () => confirmDelete(e.id));
+
   window.scrollTo(0, 0);
 }
 

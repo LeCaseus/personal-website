@@ -509,7 +509,7 @@ nav {
 }
 
 .sticky-body {
-  font-family: "Caveat", cursive;
+  font-family: "Kalam", cursive;
   font-size: 1.05rem;
   line-height: 1.55;
   color: rgba(42, 33, 24, 0.8);
@@ -748,7 +748,7 @@ nav {
 }
 
 .post-body-note {
-  font-family: "Caveat", cursive;
+  font-family: "Kalam", cursive;
   font-size: 1.35rem;
   line-height: 1.7;
   color: var(--ink);

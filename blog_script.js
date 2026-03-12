@@ -82,7 +82,7 @@ async function openPost(id) {
     .map((para) => `<p>${para}</p>`)
     .join("");
   setPage(`<div class="single-wrap">
-    <span class="post-back" onclick="renderFeed()">← back to blog</span>
+    <span class="post-back" id="back-top">← back to blog</span>
     <div class="single-cover">${p.emoji || "✦"}</div>
     <div class="post-meta" style="margin-bottom:1rem">
       <span class="cat-tag cat-${p.category}">${p.category}</span>
@@ -95,10 +95,17 @@ async function openPost(id) {
     <div class="single-body">${bodyHtml}</div>
     <div class="post-rule"></div>
     <div class="post-foot">
-      <span class="post-back" onclick="renderFeed()">← back</span>
-      <button class="btn btn-del" onclick="confirmDelete(${p.id})">delete</button>
+      <span class="post-back" id="back-bottom">← back</span>
+      <button class="btn btn-del" id="btn-del">delete</button>
     </div>
   </div>`);
+
+  document.getElementById("back-top").addEventListener("click", renderFeed);
+  document.getElementById("back-bottom").addEventListener("click", renderFeed);
+  document
+    .getElementById("btn-del")
+    .addEventListener("click", () => confirmDelete(p.id));
+
   window.scrollTo(0, 0);
 }
 
