@@ -307,7 +307,7 @@ async function openEntry(id) {
         <div class="post-rule"></div>
         <div class="post-foot">
         <span class="post-back" id="back-bottom">← back</span>
-        <button class="btn btn-del" id="btn-del">delete</button>
+        ${isAdmin ? `<button class="btn btn-del" id="btn-del">delete</button>` : ""}
         </div>
     </div>`);
 
@@ -319,10 +319,8 @@ async function openEntry(id) {
     heroRendered = false;
     showHome();
   });
-  document
-    .getElementById("btn-del")
-    .addEventListener("click", () => confirmDelete(e.id));
-
+  const delBtn = document.getElementById("btn-del");
+  if (delBtn) delBtn.addEventListener("click", () => confirmDelete(e.id));
   window.scrollTo(0, 0);
 }
 

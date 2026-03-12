@@ -114,16 +114,14 @@ async function openPost(id) {
     <div class="post-rule"></div>
     <div class="post-foot">
       <span class="post-back" id="back-bottom">← back</span>
-      <button class="btn btn-del" id="btn-del">delete</button>
+      ${isAdmin ? `<button class="btn btn-del" id="btn-del">delete</button>` : ""}
     </div>
   </div>`);
 
   document.getElementById("back-top").addEventListener("click", renderFeed);
   document.getElementById("back-bottom").addEventListener("click", renderFeed);
-  document
-    .getElementById("btn-del")
-    .addEventListener("click", () => confirmDelete(p.id));
-
+  const delBtn = document.getElementById("btn-del");
+  if (delBtn) delBtn.addEventListener("click", () => confirmDelete(p.id));
   window.scrollTo(0, 0);
 }
 
