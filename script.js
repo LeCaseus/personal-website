@@ -154,7 +154,7 @@ function homeTpl(list) {
         </div>
         <div class="teaser-grid">
           <div class="teaser-card">
-              <div class="teaser-cover"><img src="assets/portfolio-covers/em-brace.png" alt="eM-Brace project cover" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
+              <div class="teaser-cover"><img src="assets/portfolio-covers/em-brace-snapshot.png" alt="eM-Brace project cover" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
               <div class="teaser-body">
               <div class="teaser-cat teaser-cat-biomed">biomedical</div>
               <div class="teaser-name">eM-Brace</div>
