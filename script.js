@@ -126,9 +126,7 @@ function homeTpl() {
           <div class="fpill" onclick="setBlogFilter('gaming',this)">gaming</div>
           <div class="fpill" onclick="setBlogFilter('career',this)">career</div>
           <div class="fpill" onclick="setBlogFilter('fitness',this)">fitness</div>
-          <div class="fpill" onclick="setBlogFilter('note',this)">notes</div>
-          <div class="fpill" onclick="setBlogFilter('letter',this)">letters</div>
-          <div class="fpill" onclick="setBlogFilter('thought',this)">thoughts</div>
+          <div class="fpill" onclick="setBlogFilter('notes',this)">notes</div>
         </div>
       </div>
       <div id="blog-feed"></div>
@@ -165,11 +163,16 @@ function setBlogFilter(filter, el) {
     .forEach((p) => p.classList.remove("active"));
   el.classList.add("active");
 
-  const filtered = filter
-    ? window._blogItems.filter(
-        (i) => i.category === filter || i.type === filter,
-      )
-    : window._blogItems;
+  const filtered =
+    filter === "notes"
+      ? window._blogItems.filter((i) =>
+          ["note", "letter", "thought"].includes(i.category || i.type),
+        )
+      : filter
+        ? window._blogItems.filter(
+            (i) => i.category === filter || i.type === filter,
+          )
+        : window._blogItems;
 
   renderBlogFeed(filtered);
 }
