@@ -677,16 +677,6 @@
       >
     </nav>
 
-    <div class="nav-mobile" id="nav-mobile">
-      <a href="/">home</a>
-      <a href="/about" class="active">about</a>
-      <a href="/#portfolio">portfolio</a>
-      <a href="/#blog">blog</a>
-      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
-        >get in touch</a
-      >
-    </div>
-
     <div class="wrap">
       <!-- HERO -->
       <div class="about-hero">
@@ -989,9 +979,10 @@
       });
       document.addEventListener("click", (e) => {
         if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
-          document.getElementById("nav-mobile").classList.remove("open");
-          document.getElementById("nav-hamburger").classList.remove("open");
+          document.getElementById("nav-mobile").classList.remove;
         }
+        ("open");
+        document.getElementById("nav-hamburger").classList.remove("open");
       });
     </script>
   </body>
