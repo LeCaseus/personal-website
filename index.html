@@ -21,27 +21,17 @@
   </head>
   <body>
     <!-- NAV -->
-    <nav>
-      <a class="nav-logo" href="/">chezter<em>vargas</em></a>
-      <div class="nav-links">
-        <a href="/" class="active">home</a>
-        <a href="/about">about</a>
-        <a href="/#portfolio">portfolio</a>
-        <a href="/#blog">blog</a>
-        <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
-          >get in touch</a
-        >
+    <nav class="site-nav">
+      <a href="#" class="nav-logo">chezter<em>vargas</em></a>
+      <div class="nav-dock">
+        <a href="#" class="nav-dock-link active">home</a>
+        <a href="/#portfolio" class="nav-dock-link">portfolio</a>
+        <a href="/#blog" class="nav-dock-link">blog</a>
+        <a href="/about" class="nav-dock-link">about</a>
       </div>
-      <button
-        class="nav-hamburger"
-        id="nav-hamburger"
-        onclick="toggleMenu()"
-        aria-label="Toggle menu"
+      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
+        >get in touch ↗</a
       >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </nav>
 
     <div class="nav-mobile" id="nav-mobile">
@@ -85,7 +75,6 @@
           ><i class="fa-brands fa-instagram"></i
         ></a>
       </div>
-      <span id="footer-count"></span>
     </footer>
 
     <div class="toast" id="toast"></div>

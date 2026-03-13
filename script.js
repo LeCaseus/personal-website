@@ -18,6 +18,32 @@ function initReveal() {
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
 
+/* ── SCROLL LISTENER ── */
+function updateDockActive() {
+  const sections = ["portfolio", "blog"];
+  const scrollY = window.scrollY + 120;
+  let active = "home";
+
+  for (const id of sections) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) active = id;
+  }
+
+  document.querySelectorAll(".nav-dock-link").forEach((link) => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href");
+    if (
+      (active === "home" && href === "#") ||
+      (active === "portfolio" && href === "/#portfolio") ||
+      (active === "blog" && href === "/#blog")
+    ) {
+      link.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", updateDockActive);
+
 /* ── VIEWS ── */
 let heroRendered = false;
 
@@ -27,6 +53,7 @@ async function showHome() {
     heroRendered = true;
     loadBlogFeed();
     setTimeout(initReveal, 50);
+    setTimeout(initProjectsLoop, 100);
   }
 }
 
@@ -65,52 +92,51 @@ function homeTpl() {
       <div class="section-header">
         <div>
           <h2 class="section-heading">My <em>Projects</em></h2>
-        </div>
-        <div class="filter-bar">
-          <div class="fpill active" onclick="filterProjects(null,this)">all</div>
-          <div class="fpill" onclick="filterProjects('biomed',this)">biomedical</div>
-          <div class="fpill" onclick="filterProjects('cad',this)">CAD</div>
-          <div class="fpill" onclick="filterProjects('ai',this)">AI</div>
-          <div class="fpill" onclick="filterProjects('web',this)">web</div>
+          <p class="section-sub">A few things I've built</p>
         </div>
       </div>
-      <div class="projects-grid" id="projects-grid">
-        <a href="/portfolio/em-brace" class="project-card" data-cat="biomed" style="text-decoration:none;color:inherit;display:block">
-          <div class="project-cover"><img src="assets/portfolio-covers/em-brace-snapshot.png" alt="eM-Brace"/><div class="project-cover-overlay"></div></div>
-          <div class="project-body">
-            <div class="project-cat project-cat-biomed">biomedical</div>
-            <div class="project-name">eM-Brace</div>
-            <p class="project-desc">Autonomous wrist splint with an integrated massage system for alleviating muscle weakness related to Carpal Tunnel Syndrome. Final year thesis project.</p>
+      <div class="proj-bento">
+
+        <a href="/portfolio/em-brace" class="pb-card pb-wide" style="text-decoration:none">
+          <div class="pb-bg"><img src="assets/portfolio-covers/em-brace-snapshot.png" alt="eM-Brace"/></div>
+          <div class="pb-overlay">
+            <span class="project-cat project-cat-biomed">biomedical</span>
+            <h3 class="pb-title">eM-Brace</h3>
+            <p class="pb-desc">Autonomous wrist splint with massage system for Carpal Tunnel Syndrome. Final year thesis.</p>
             <div class="project-tags"><span class="project-tag">Arduino</span><span class="project-tag">Sensors</span><span class="project-tag">3D Printing</span><span class="project-tag">C++</span></div>
           </div>
         </a>
-        <a href="/portfolio/ch3sh1re" class="project-card" data-cat="ai" style="text-decoration:none;color:inherit;display:block">
-          <div class="project-cover">🐱<div class="project-cover-overlay"></div></div>
-          <div class="project-body">
-            <div class="project-cat project-cat-ai">AI / Python</div>
-            <div class="project-name">CH3SH1RE</div>
-            <p class="project-desc">A local AI assistant I'm building for fun. This is a personal project, but you can check out the repo for some early experiments and notes.</p>
+
+        <a href="/portfolio/ch3sh1re" class="pb-card pb-tall" style="text-decoration:none">
+          <div class="pb-bg pb-bg-emoji">🐱</div>
+          <div class="pb-overlay">
+            <span class="project-cat project-cat-ai">AI / Python</span>
+            <h3 class="pb-title">CH3SH1RE</h3>
+            <p class="pb-desc">A local AI assistant I'm building for fun — early experiments and notes on the repo.</p>
             <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">SQLite</span><span class="project-tag">LLM</span></div>
           </div>
         </a>
-        <a href="/portfolio/personal-website" class="project-card" data-cat="web" style="text-decoration:none;color:inherit;display:block">
-          <div class="project-cover"><img src="assets/portfolio-covers/website-snapshot.png" alt="Personal Website"/><div class="project-cover-overlay"></div></div>
-          <div class="project-body">
-            <div class="project-cat project-cat-web">web</div>
-            <div class="project-name">Personal Website</div>
-            <p class="project-desc">You're looking at it! Built from scratch using vanilla HTML, CSS, and JavaScript. Hosted on Vercel, open-source on GitHub.</p>
-            <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span><span class="project-tag">Node.js</span></div>
+
+        <a href="/portfolio/personal-website" class="pb-card pb-small" style="text-decoration:none">
+          <div class="pb-bg"><img src="assets/portfolio-covers/website-snapshot.png" alt="Personal Website"/></div>
+          <div class="pb-overlay">
+            <span class="project-cat project-cat-web">web</span>
+            <h3 class="pb-title">Personal Website</h3>
+            <p class="pb-desc">You're looking at it. Vanilla stack, hosted on Vercel.</p>
+            <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JS</span></div>
           </div>
         </a>
-        <a href="#" class="project-card" data-cat="cad" style="text-decoration:none;color:inherit;display:block">
-          <div class="project-cover">🖨️<div class="project-cover-overlay"></div></div>
-          <div class="project-body">
-            <div class="project-cat project-cat-cad">CAD / 3D design</div>
-            <div class="project-name">3D Models</div>
-            <p class="project-desc">Designed and 3D-printed prototype components for personal and thesis use at Zamboanga City Medical Center during internship.</p>
-            <div class="project-tags"><span class="project-tag">CAD</span><span class="project-tag">3D Printing</span><span class="project-tag">Prototyping</span></div>
+
+        <a href="#" class="pb-card pb-small" style="text-decoration:none">
+          <div class="pb-bg pb-bg-emoji">🖨️</div>
+          <div class="pb-overlay">
+            <span class="project-cat project-cat-cad">CAD / 3D design</span>
+            <h3 class="pb-title">3D Models</h3>
+            <p class="pb-desc">Prototype components designed and printed for personal and thesis use.</p>
+            <div class="project-tags"><span class="project-tag">CAD</span><span class="project-tag">3D Printing</span></div>
           </div>
         </a>
+
       </div>
     </section>
 
@@ -119,17 +145,22 @@ function homeTpl() {
       <div class="section-header">
         <div>
           <h2 class="section-heading">The <em>Blog</em></h2>
-        </div>
-        <div class="filter-bar">
-          <div class="fpill active" onclick="setBlogFilter(null,this)">all</div>
-          <div class="fpill" onclick="setBlogFilter('personal',this)">personal</div>
-          <div class="fpill" onclick="setBlogFilter('gaming',this)">gaming</div>
-          <div class="fpill" onclick="setBlogFilter('career',this)">career</div>
-          <div class="fpill" onclick="setBlogFilter('fitness',this)">fitness</div>
-          <div class="fpill" onclick="setBlogFilter('notes',this)">notes</div>
+          <p class="section-sub">Pick a tag and explore</p>
         </div>
       </div>
-      <div id="blog-feed"></div>
+      <div class="tag-cloud" id="tag-cloud">
+        <div class="tag-bubble active" onclick="setBlogFilter(null,this)">✦ all</div>
+        <div class="tag-bubble" onclick="setBlogFilter('personal',this)">personal</div>
+        <div class="tag-bubble" onclick="setBlogFilter('gaming',this)">gaming</div>
+        <div class="tag-bubble" onclick="setBlogFilter('career',this)">career</div>
+        <div class="tag-bubble" onclick="setBlogFilter('fitness',this)">fitness</div>
+        <div class="tag-bubble" onclick="setBlogFilter('letter',this)">letters</div>
+      </div>
+      <div class="blog-scroll-wrap">
+        <div id="blog-feed" class="blog-scroll"></div>
+        <button class="blog-scroll-btn blog-scroll-prev" onclick="scrollBlog(-1)">←</button>
+        <button class="blog-scroll-btn blog-scroll-next" onclick="scrollBlog(1)">→</button>
+      </div>
     </section>`;
 }
 
@@ -159,70 +190,55 @@ async function loadBlogFeed() {
 function setBlogFilter(filter, el) {
   activeBlogFilter = filter;
   document
-    .querySelectorAll("#blog .fpill")
+    .querySelectorAll("#blog .tag-bubble")
     .forEach((p) => p.classList.remove("active"));
   el.classList.add("active");
 
-  const filtered =
-    filter === "notes"
-      ? window._blogItems.filter((i) =>
-          ["note", "letter", "thought"].includes(i.category || i.type),
-        )
-      : filter
-        ? window._blogItems.filter(
-            (i) => i.category === filter || i.type === filter,
-          )
-        : window._blogItems;
+  const filtered = filter
+    ? window._blogItems.filter((i) => (i.category || i.type) === filter)
+    : window._blogItems;
 
   renderBlogFeed(filtered);
 }
+
+const isEntryType = (t) => t === "letter";
 
 function renderBlogFeed(items) {
   const feed = document.getElementById("blog-feed");
   if (!feed) return;
 
   if (!items.length) {
-    feed.innerHTML = `<div class="empty">
+    feed.innerHTML = `<div class="empty" style="padding:3rem 1rem">
       <div class="empty-glyph">✦</div>
       <h3>Nothing here yet</h3>
-      <p>No posts written yet.</p>
     </div>`;
     return;
   }
 
-  const [featured, ...rest] = items;
-  let html = renderFeatured(featured);
-  if (rest.length) {
-    html += `<div class="posts-grid">`;
-    rest.forEach((item, i) => {
-      html += renderPostCard(item, i);
-    });
-    html += `</div>`;
-  }
-  feed.innerHTML = html;
+  feed.innerHTML = items.map((item, i) => renderBlogCard(item, i)).join("");
 }
 
-function renderFeatured(item) {
+function renderBlogCard(item, i) {
   const isEntry = item._source === "entry";
-  const cover = item.cover_url
-    ? `<img src="${item.cover_url}" alt="${item.title || ""}"/>`
-    : item.emoji || "✦";
-  const title = item.title || item.type;
-  const excerpt = item.excerpt || clip(item.body, 160);
   const cat = item.category || item.type;
+  const title = item.title || item.type;
+  const excerpt = item.excerpt || clip(item.body, 120);
+  const isLetter = cat === "letter";
 
-  return `<div class="featured" onclick="${isEntry ? `openEntry(${item.id})` : `openPost(${item.id})`}">
-    <div class="featured-image">${cover}</div>
-    <div class="featured-body">
-      <div class="featured-label">latest</div>
-      <h2 class="featured-title">${title}</h2>
-      <p class="featured-excerpt">${excerpt}</p>
-      <div class="post-meta">
-        <span class="cat-tag cat-${cat}">${cat}</span>
-        <span class="post-meta-dot"></span>
-        <span>${item.date}</span>
-        ${item.read_time ? `<span class="post-meta-dot"></span><span>${item.read_time}</span>` : ""}
-      </div>
+  const tintClass = isLetter ? "bsc-letter" : "";
+
+  const bgHtml =
+    !isLetter && item.cover_url
+      ? `<div class="bsc-bg"><img src="${item.cover_url}" alt="${title}"/></div>`
+      : `<div class="bsc-bg bsc-bg-plain"></div>`;
+
+  return `<div class="bsc ${tintClass}" onclick="${isEntry ? `openEntry(${item.id})` : `openPost(${item.id})`}" style="animation-delay:${i * 0.06}s">
+    ${bgHtml}
+    <div class="bsc-overlay">
+      <span class="cat-tag cat-${cat}" style="margin-bottom:0.6rem;display:inline-block">${cat}</span>
+      <h3 class="bsc-title">${title}</h3>
+      <p class="bsc-excerpt">${excerpt}</p>
+      <span class="bsc-date">${item.date}</span>
     </div>
   </div>`;
 }
@@ -430,6 +446,50 @@ document.addEventListener("click", (e) => {
     document.getElementById("nav-hamburger").classList.remove("open");
   }
 });
+
+/* ── PORTFOLIO SCROLL ── */
+function scrollBlog(dir) {
+  const el = document.getElementById("blog-feed");
+  if (!el) return;
+  const cardWidth = el.querySelector(".bsc")?.offsetWidth + 20 || 340;
+  el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+}
+
+function scrollProjects(dir) {
+  const el = document.getElementById("projects-scroll");
+  if (!el) return;
+  const cardWidth = el.querySelector(".pscroll-card")?.offsetWidth + 20 || 320;
+  const totalWidth = el.scrollWidth / 2; // half because cards are cloned
+
+  el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+
+  // after scroll settles, check if we need to loop
+  setTimeout(() => {
+    if (el.scrollLeft <= 0) {
+      el.scrollLeft = totalWidth;
+    } else if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) {
+      el.scrollLeft = totalWidth - el.clientWidth;
+    }
+  }, 350);
+}
+
+function initProjectsLoop() {
+  const el = document.getElementById("projects-scroll");
+  if (!el) return;
+  // clone all cards and append to create seamless loop
+  const cards = Array.from(el.querySelectorAll(".pscroll-card"));
+  cards.forEach((card) => el.appendChild(card.cloneNode(true)));
+  // start in the middle
+  el.scrollLeft = el.scrollWidth / 2 - el.clientWidth / 2;
+
+  // also handle manual scroll looping
+  el.addEventListener("scroll", () => {
+    const total = el.scrollWidth / 2;
+    if (el.scrollLeft <= 0) el.scrollLeft = total;
+    else if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1)
+      el.scrollLeft = total - el.clientWidth;
+  });
+}
 
 /* ── UTILS ── */
 const clip = (s, n) => (s.length > n ? s.slice(0, n) + "…" : s);
