@@ -5,31 +5,22 @@
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "style.css", "use": "@vercel/static" },
     { "src": "script.js", "use": "@vercel/static" },
-    { "src": "blog_script.js", "use": "@vercel/static" },
     { "src": "assets/**", "use": "@vercel/static" },
-    { "src": "favicon.svg", "use": "@vercel/static" },
     { "src": "portfolio/*.html", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "server.js" },
     { "src": "/style.css", "dest": "/style.css" },
     { "src": "/script.js", "dest": "/script.js" },
-    { "src": "/blog_script.js", "dest": "/blog_script.js" },
-    { "src": "/favicon.svg", "dest": "/favicon.svg" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/", "dest": "/index.html" },
     { "src": "/index", "dest": "/index.html" },
-    { "src": "/index.html", "dest": "/index.html" },
     { "src": "/about", "dest": "/about.html" },
-    { "src": "/blog", "dest": "/blog.html" },
-    { "src": "/portfolio", "dest": "/portfolio.html" },
     { "src": "/portfolio/em-brace", "dest": "/portfolio/em-brace.html" },
     { "src": "/portfolio/ch3sh1re", "dest": "/portfolio/ch3sh1re.html" },
     {
       "src": "/portfolio/personal-website",
       "dest": "/portfolio/personal-website.html"
-    },
-    { "src": "/resume", "dest": "/resume.html" },
-    { "src": "/contact", "dest": "/contact.html" }
+    }
   ]
 }

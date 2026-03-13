@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home — Chezter Vargas</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Caveat:wght@400;500&family=DM+Sans:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=Kalam:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link
@@ -20,39 +16,19 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   </head>
   <body>
-    <!-- NAV -->
-    <nav>
-      <a class="nav-logo" href="/">chezter<em>vargas</em></a>
-      <div class="nav-links">
-        <a href="/" class="active">home</a>
-        <a href="/about">about</a>
-        <a href="/blog">blog</a>
-        <a href="/portfolio">portfolio</a>
-        <a href="/resume">resume</a>
-        <a href="/contact">contact</a>
+    <nav class="site-nav">
+      <a href="#" class="nav-logo">chezter<em>vargas</em></a>
+      <div class="nav-dock">
+        <a href="#" class="nav-dock-link active">home</a>
+        <a href="#portfolio" class="nav-dock-link">portfolio</a>
+        <a href="#blog" class="nav-dock-link">blog</a>
+        <a href="/about" class="nav-dock-link">about</a>
       </div>
-      <button
-        class="nav-hamburger"
-        id="nav-hamburger"
-        onclick="toggleMenu()"
-        aria-label="Toggle menu"
+      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
+        >get in touch ↗</a
       >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </nav>
 
-    <div class="nav-mobile" id="nav-mobile">
-      <a href="/" class="active">home</a>
-      <a href="/about">about</a>
-      <a href="/blog">blog</a>
-      <a href="/portfolio">portfolio</a>
-      <a href="/resume">resume</a>
-      <a href="/contact">contact</a>
-    </div>
-
-    <!-- MAIN WRAPPER -->
     <div id="root"></div>
 
     <footer class="site-footer">
@@ -83,11 +59,9 @@
           ><i class="fa-brands fa-instagram"></i
         ></a>
       </div>
-      <span id="footer-count"></span>
     </footer>
 
     <div class="toast" id="toast"></div>
-
     <script src="script.js"></script>
   </body>
 </html>

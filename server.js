@@ -19,6 +19,20 @@ cloudinary.config({
 app.use(express.static("."));
 app.use(express.json());
 
+// ── PAGE ROUTES ──
+const path = require("path");
+
+app.get("/about", (req, res) => res.sendFile(path.resolve("about.html")));
+app.get("/portfolio/em-brace", (req, res) =>
+  res.sendFile(path.resolve("portfolio/em-brace.html")),
+);
+app.get("/portfolio/ch3sh1re", (req, res) =>
+  res.sendFile(path.resolve("portfolio/ch3sh1re.html")),
+);
+app.get("/portfolio/personal-website", (req, res) =>
+  res.sendFile(path.resolve("portfolio/personal-website.html")),
+);
+
 // ── CREATE TABLES ON STARTUP ──
 async function initDb() {
   await sql`
