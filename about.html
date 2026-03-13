@@ -9,237 +9,93 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=Kalam:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-
     <style>
       .wrap {
-        max-width: 900px;
+        max-width: 980px;
         margin: 0 auto;
         padding: 0 clamp(1.5rem, 5vw, 3rem);
       }
 
-      /* ── HERO SPLIT ── */
+      /* HERO */
       .about-hero {
         display: grid;
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 240px 1fr;
         gap: 4rem;
         align-items: start;
-        padding: 7rem 0 4rem;
+        padding: 7rem 0 4.5rem;
         border-bottom: 1px solid var(--rule);
         margin-bottom: 4rem;
       }
-
       .about-photo {
         position: sticky;
         top: 80px;
       }
-
       .about-photo-img {
         width: 100%;
         aspect-ratio: 3/4;
-        background: var(--warm);
         border-radius: 12px;
         overflow: hidden;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        background: var(--warm);
       }
-
       .about-photo-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
-
       .about-photo-caption {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         color: var(--faint);
-        letter-spacing: 0.06em;
         text-align: center;
         font-style: italic;
+        letter-spacing: 0.04em;
       }
-
-      /* ── TEXT SIDE ── */
       .about-eyebrow {
-        font-size: 0.68rem;
+        font-size: 0.67rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--accent);
         font-weight: 500;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.7rem;
       }
-
       .about-heading {
         font-family: "Fraunces", serif;
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 300;
         letter-spacing: -0.02em;
         line-height: 1.1;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.4rem;
       }
       .about-heading em {
         font-style: italic;
         color: var(--accent);
       }
-
       .about-intro {
-        font-size: 1.05rem;
+        font-size: 0.97rem;
         line-height: 1.85;
         color: var(--ink2);
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: justify;
       }
-
-      /* ── QUICK FACTS ── */
-      .facts-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        border: 1px solid var(--rule);
-        border-radius: 10px;
-        overflow: hidden;
-        margin-bottom: 2.5rem;
-      }
-
-      .fact-item {
-        padding: 1rem 1.25rem;
-        border-right: 1px solid var(--rule);
-        border-bottom: 1px solid var(--rule);
-      }
-      .fact-item:nth-child(even) {
-        border-right: none;
-      }
-      .fact-item:nth-last-child(-n + 2) {
-        border-bottom: none;
-      }
-
-      .fact-label {
-        font-size: 0.6rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--faint);
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-      }
-
-      .fact-value {
-        font-size: 0.9rem;
-        color: var(--ink);
-        font-weight: 400;
-      }
-
-      .fact-value em {
-        font-style: italic;
-        color: var(--accent);
-      }
-
-      /* ── INTERESTS ── */
-      .interests-title {
-        font-family: "Fraunces", serif;
-        font-size: 1rem;
-        font-weight: 400;
-        margin-bottom: 0.85rem;
-        color: var(--ink);
-      }
-
-      .interests-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .interest-chip {
-        font-size: 0.78rem;
-        padding: 0.35rem 0.85rem;
-        border-radius: 20px;
-        background: var(--paper);
-        border: 1px solid var(--rule);
-        color: var(--ink2);
-      }
-
-      /* ── NOW SECTION ── */
-      .now-section {
-        background: var(--paper);
-        border-radius: 12px;
-        padding: 1.75rem 2rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .now-label {
-        font-size: 0.6rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
-        font-weight: 500;
-        margin-bottom: 0.75rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .now-label::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--accent);
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.3;
-        }
-      }
-
-      .now-items {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-
-      .now-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        font-size: 0.88rem;
-        color: var(--ink2);
-        line-height: 1.5;
-      }
-
-      .now-item i {
-        color: var(--accent);
-        font-size: 0.78rem;
-        margin-top: 0.15rem;
-        flex-shrink: 0;
-      }
-
-      /* ── SOCIAL ROW ── */
       .about-social {
         display: flex;
-        gap: 0.6rem;
+        gap: 0.55rem;
         flex-wrap: wrap;
       }
-
       .about-social-btn {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.78rem;
-        padding: 0.4rem 0.9rem;
+        gap: 0.45rem;
+        font-size: 0.77rem;
+        padding: 0.38rem 0.85rem;
         border-radius: 20px;
-        background: var(--warm);
+        background: var(--paper);
         border: 1px solid var(--rule);
         color: var(--ink2);
         text-decoration: none;
@@ -251,11 +107,534 @@
         border-color: var(--ink);
       }
       .about-social-btn i {
-        font-size: 0.75rem;
+        font-size: 0.73rem;
       }
 
-      /* ── RESPONSIVE ── */
-      @media (max-width: 700px) {
+      /* BENTO SECTION */
+      .bento-section {
+        padding-bottom: 6rem;
+      }
+      .bento-eyebrow {
+        font-size: 0.67rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 0.4rem;
+      }
+      .bento-heading {
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        margin-bottom: 2.5rem;
+      }
+      .bento-heading em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      /* GRID */
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.9rem;
+      }
+      .s3 {
+        grid-column: span 3;
+      }
+      .s4 {
+        grid-column: span 4;
+      }
+      .s5 {
+        grid-column: span 5;
+      }
+      .s6 {
+        grid-column: span 6;
+      }
+      .s7 {
+        grid-column: span 7;
+      }
+      .s8 {
+        grid-column: span 8;
+      }
+      .s12 {
+        grid-column: span 12;
+      }
+
+      /* BASE CARD */
+      .bc {
+        background: var(--paper);
+        border-radius: 14px;
+        padding: 1.35rem 1.4rem;
+        animation: bcrise 0.4s ease both;
+        overflow: hidden;
+        position: relative;
+      }
+      @keyframes bcrise {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .bc.tint-warm {
+        background: var(--warm);
+      }
+      .bc.tint-dark {
+        background: var(--ink);
+      }
+      .bc.tint-dark .bc-label {
+        color: rgba(245, 240, 232, 0.35);
+      }
+      .bc.tint-dark .bc-label i {
+        color: var(--accent);
+      }
+      .bc.tint-dark .tl-title,
+      .bc.tint-dark .edu-degree,
+      .bc.tint-dark .sk-head,
+      .bc.tint-dark .cert-name,
+      .bc.tint-dark .now-pulse {
+        color: var(--bg);
+      }
+      .bc.tint-dark .tl-desc,
+      .bc.tint-dark .tl-period,
+      .bc.tint-dark .edu-meta,
+      .bc.tint-dark .cert-issuer,
+      .bc.tint-dark .now-list li {
+        color: rgba(245, 240, 232, 0.55);
+      }
+      .bc.tint-dark .tl-org,
+      .bc.tint-dark .edu-school {
+        color: var(--accent);
+      }
+      .bc.tint-dark .tag,
+      .bc.tint-dark .edu-gpa {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(245, 240, 232, 0.6);
+      }
+      .bc.tint-dark .sk-track {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .bc.tint-dark .cert-icon {
+        background: rgba(193, 127, 74, 0.2);
+      }
+      .bc.tint-dark .now-list li i {
+        color: var(--accent);
+      }
+
+      .bc-label {
+        font-size: 0.57rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 500;
+        margin-bottom: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .bc-label i {
+        color: var(--accent);
+        font-size: 0.62rem;
+      }
+
+      /* ── CARD: LOCATION ── */
+      .card-loc {
+        background: var(--warm);
+        display: flex;
+        flex-direction: column;
+        min-height: 170px;
+      }
+      .loc-visual {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        margin-bottom: 0.6rem;
+        position: relative;
+      }
+      .loc-pin {
+        animation: pinbob 2.8s ease-in-out infinite;
+        display: inline-block;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+      }
+      @keyframes pinbob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      .loc-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: var(--ink);
+      }
+      .loc-sub {
+        font-size: 0.73rem;
+        color: var(--ink2);
+        margin-top: 0.15rem;
+      }
+
+      /* ── CARD: OPEN TO ── */
+      .card-open {
+        background: var(--ink);
+      }
+      .card-open .bc-label {
+        color: rgba(245, 240, 232, 0.35);
+      }
+      .card-open .bc-label i {
+        color: var(--accent);
+      }
+      .open-title {
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+        font-weight: 300;
+        line-height: 1.25;
+        color: var(--bg);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .open-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .open-sub {
+        font-size: 0.79rem;
+        color: rgba(245, 240, 232, 0.5);
+        line-height: 1.6;
+      }
+
+      /* ── CARD: HANDLE ── */
+      .card-handle {
+        background: var(--warm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 130px;
+        gap: 0.4rem;
+      }
+      .handle-emoji {
+        font-size: 2.2rem;
+      }
+      .handle-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.05rem;
+        font-weight: 300;
+        color: var(--ink);
+        font-style: italic;
+      }
+      .handle-sub {
+        font-size: 0.69rem;
+        color: var(--faint);
+      }
+
+      /* ── CARD: EDUCATION (small) ── */
+      .edu-degree {
+        font-size: 0.88rem;
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.3;
+        margin-bottom: 0.2rem;
+      }
+      .edu-school {
+        font-size: 0.75rem;
+        color: var(--accent);
+        margin-bottom: 0.35rem;
+      }
+      .edu-meta {
+        font-size: 0.75rem;
+        color: var(--ink2);
+      }
+      .edu-gpa {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+        background: var(--warm);
+        color: var(--ink2);
+      }
+
+      /* ── CARD: NOW ── */
+      .now-pulse {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.57rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 500;
+        margin-bottom: 0.9rem;
+      }
+      .now-pulse::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+        }
+      }
+      .now-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .now-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        font-size: 0.84rem;
+        color: var(--ink2);
+        line-height: 1.5;
+      }
+      .now-list li i {
+        color: var(--accent);
+        font-size: 0.7rem;
+        margin-top: 0.22rem;
+        flex-shrink: 0;
+      }
+
+      /* ── CARD: INTERESTS ── */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .chip {
+        font-size: 0.79rem;
+        padding: 0.32rem 0.82rem;
+        border-radius: 20px;
+        background: var(--warm);
+        border: 1px solid var(--rule);
+        color: var(--ink2);
+        transition: all 0.15s;
+        cursor: default;
+      }
+      .chip:hover {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+
+      /* ── CARD: EXPERIENCE ── */
+      .tl {
+        display: flex;
+        flex-direction: column;
+      }
+      .tl-item {
+        display: grid;
+        grid-template-columns: 13px 1fr;
+        gap: 0 1rem;
+        position: relative;
+      }
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 16px;
+        bottom: 0;
+        width: 1px;
+        background: var(--rule);
+      }
+      .tl-item:last-child::before {
+        display: none;
+      }
+      .tl-dot {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--paper);
+        border: 2px solid var(--accent);
+        margin-top: 3px;
+        position: relative;
+        z-index: 1;
+      }
+      .tl-body {
+        padding-bottom: 1.2rem;
+      }
+      .tl-body:last-child {
+        padding-bottom: 0;
+      }
+      .tl-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.2rem;
+        flex-wrap: wrap;
+      }
+      .tl-title {
+        font-size: 0.87rem;
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+      .tl-period {
+        font-size: 0.66rem;
+        color: var(--faint);
+        white-space: nowrap;
+        margin-top: 0.1rem;
+      }
+      .tl-org {
+        font-size: 0.75rem;
+        color: var(--accent);
+        margin-bottom: 0.35rem;
+      }
+      .tl-desc {
+        font-size: 0.81rem;
+        color: var(--ink2);
+        line-height: 1.65;
+      }
+      .tl-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+      .tag {
+        font-size: 0.6rem;
+        padding: 0.12rem 0.44rem;
+        border-radius: 4px;
+        background: var(--warm);
+        color: var(--ink2);
+        letter-spacing: 0.03em;
+      }
+
+      /* ── CARD: SKILLS ── */
+      .sk {
+        margin-bottom: 0.8rem;
+      }
+      .sk:last-child {
+        margin-bottom: 0;
+      }
+      .sk-head {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.79rem;
+        margin-bottom: 0.28rem;
+        color: var(--ink2);
+      }
+      .sk-track {
+        height: 3px;
+        background: var(--rule);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .sk-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      /* ── CARD: CERTS ── */
+      .cert-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 0.65rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .cert-row:first-child {
+        padding-top: 0;
+      }
+      .cert-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .cert-icon {
+        width: 28px;
+        height: 28px;
+        background: rgba(193, 127, 74, 0.1);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        font-size: 0.72rem;
+        flex-shrink: 0;
+      }
+      .cert-name {
+        font-size: 0.81rem;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+      .cert-issuer {
+        font-size: 0.67rem;
+        color: var(--faint);
+        margin-top: 0.1rem;
+        line-height: 1.4;
+      }
+
+      /* ── CARD: LANGUAGES ── */
+      .lang-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.84rem;
+      }
+      .lang-row:first-child {
+        padding-top: 0;
+      }
+      .lang-row:last-child {
+        border-bottom: none;
+      }
+      .lang-level {
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--faint);
+      }
+
+      /* ── HERO DOWNLOAD BTN ── */
+      .about-dl-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.77rem;
+        padding: 0.38rem 0.85rem;
+        border-radius: 20px;
+        background: var(--ink);
+        color: var(--bg);
+        text-decoration: none;
+        transition: all 0.15s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .about-dl-btn:hover {
+        background: var(--accent);
+        color: white;
+      }
+      .about-dl-btn i {
+        font-size: 0.73rem;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
         .about-hero {
           grid-template-columns: 1fr;
           gap: 2rem;
@@ -267,169 +646,59 @@
         .about-photo-img {
           aspect-ratio: 4/3;
         }
-        .facts-grid {
-          grid-template-columns: 1fr;
+        .s3,
+        .s4,
+        .s5,
+        .s6,
+        .s7,
+        .s8 {
+          grid-column: span 12;
         }
-        .fact-item {
-          border-right: none;
-        }
-        .fact-item:nth-last-child(-n + 2) {
-          border-bottom: 1px solid var(--rule);
-        }
-        .fact-item:last-child {
-          border-bottom: none;
+      }
+      @media (min-width: 480px) and (max-width: 768px) {
+        .s3,
+        .s4 {
+          grid-column: span 6;
         }
       }
     </style>
   </head>
   <body>
-    <nav>
-      <a class="nav-logo" href="/">chezter<em>vargas</em></a>
-      <div class="nav-links">
-        <a href="/">home</a>
-        <a href="/about" class="active">about</a>
-        <a href="/blog">blog</a>
-        <a href="/portfolio">portfolio</a>
-        <a href="/resume">resume</a>
-        <a href="/contact">contact</a>
+    <nav class="site-nav">
+      <a href="/" class="nav-logo">chezter<em>vargas</em></a>
+      <div class="nav-dock">
+        <a href="/" class="nav-dock-link">home</a>
+        <a href="/#portfolio" class="nav-dock-link">portfolio</a>
+        <a href="/#blog" class="nav-dock-link">blog</a>
+        <a href="/about" class="nav-dock-link active">about</a>
       </div>
-      <button
-        class="nav-hamburger"
-        id="nav-hamburger"
-        onclick="toggleMenu()"
-        aria-label="Toggle menu"
+      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
+        >get in touch ↗</a
       >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </nav>
-
-    <!-- NAV -->
-    <nav>
-      <a class="nav-logo" href="/">chezter<em>vargas</em></a>
-      <div class="nav-links">
-        <a href="/" class="active">home</a>
-        <a href="/about">about</a>
-        <a href="/blog">blog</a>
-        <a href="/portfolio">portfolio</a>
-        <a href="/resume">resume</a>
-        <a href="/contact">contact</a>
-      </div>
-      <button
-        class="nav-hamburger"
-        id="nav-hamburger"
-        onclick="toggleMenu()"
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-
-    <div class="nav-mobile" id="nav-mobile">
-      <a href="/">home</a>
-      <a href="/about" class="active">about</a>
-      <a href="/blog">blog</a>
-      <a href="/portfolio">portfolio</a>
-      <a href="/resume">resume</a>
-      <a href="/contact">contact</a>
-    </div>
 
     <div class="wrap">
+      <!-- HERO -->
       <div class="about-hero">
-        <!-- LEFT: PHOTO -->
         <div class="about-photo">
           <div class="about-photo-img">
             <img src="assets/homepage.JPG" alt="Chezter Vargas" />
           </div>
-          <p class="about-photo-caption">Zamboanga City, PH · 2026</p>
+          <p class="about-photo-caption">Wellington, NZ · 2026</p>
         </div>
-
-        <!-- RIGHT: TEXT -->
-        <div class="about-text">
+        <div>
           <p class="about-eyebrow">hello there</p>
           <h1 class="about-heading">
             I'm <em>Chezter</em>,<br />nice to meet you.
           </h1>
           <p class="about-intro">
-            I'm a Biomedical engineer with a genuine interest in how technology
+            I'm a Biomedical Engineer with a genuine interest in how technology
             and healthcare intersect. I gained hands-on experience at Zamboanga
             City Medical Center working with medical equipment, CAD design, and
-            department operations, and I've continued building on that
-            foundation through personal projects, including this site and an AI
-            assistant I'm developing in Python.
+            department operations — and I've continued building on that through
+            personal projects, including this site and an AI assistant I'm
+            developing in Python.
           </p>
-          <!-- QUICK FACTS -->
-          <div class="facts-grid">
-            <div class="fact-item">
-              <div class="fact-label">based in</div>
-              <div class="fact-value">Zamboanga City, PH</div>
-            </div>
-            <div class="fact-item">
-              <div class="fact-label">background</div>
-              <div class="fact-value">Biomedical Engineering</div>
-            </div>
-            <div class="fact-item">
-              <div class="fact-label">currently</div>
-              <div class="fact-value">
-                <em>Learning backend development</em>
-              </div>
-            </div>
-            <div class="fact-item">
-              <div class="fact-label">online as</div>
-              <div class="fact-value">@LeCaseus</div>
-            </div>
-            <div class="fact-item">
-              <div class="fact-label">education</div>
-              <div class="fact-value">BS Biomedical Eng · AdZU</div>
-            </div>
-            <div class="fact-item">
-              <div class="fact-label">always up for</div>
-              <div class="fact-value">
-                A good project or full-time opportunities
-              </div>
-            </div>
-          </div>
-
-          <!-- INTERESTS -->
-          <p class="interests-title">Things I care about</p>
-          <div class="interests-list">
-            <span class="interest-chip">🩺 medical technology</span>
-            <span class="interest-chip">🤖 AI & automation</span>
-            <span class="interest-chip">🎮 gaming</span>
-            <span class="interest-chip">🖥️ web development</span>
-            <span class="interest-chip">🔧 CAD & 3D design</span>
-            <span class="interest-chip">✍️ writing</span>
-            <span class="interest-chip">🐍 Python</span>
-            <span class="interest-chip">📡 embedded systems</span>
-          </div>
-
-          <!-- NOW -->
-          <div class="now-section">
-            <div class="now-label">what I'm doing now</div>
-            <div class="now-items">
-              <div class="now-item">
-                <i class="fa-solid fa-code"></i>Building this website from
-                scratch — learning full stack web dev as I go
-              </div>
-              <div class="now-item">
-                <i class="fa-solid fa-robot"></i>Working on CH3SH1RE, a personal
-                AI assistant project in Python
-              </div>
-              <div class="now-item">
-                <i class="fa-solid fa-book-open"></i>Picked up backend
-                development as a hobby
-              </div>
-              <div class="now-item">
-                <i class="fa-solid fa-location-dot"></i>Currently in Wellington,
-                NZ, open to any opportunities
-              </div>
-            </div>
-          </div>
-
-          <!-- SOCIAL -->
           <div class="about-social">
             <a
               href="https://www.youtube.com/@LeCaseus"
@@ -455,6 +724,209 @@
               class="about-social-btn"
               ><i class="fa-brands fa-instagram"></i> Instagram</a
             >
+            <a href="assets/CVargas_Resume.pdf" class="about-dl-btn" download
+              ><i class="fa-solid fa-download"></i> Download CV</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- BENTO -->
+      <div class="bento-section">
+        <p class="bento-eyebrow">the details</p>
+        <h2 class="bento-heading">A bit more <em>about me</em></h2>
+
+        <div class="bento">
+          <!-- ROW 1: Location · Open To · Handle · Education -->
+          <div class="bc card-loc s3" style="animation-delay: 0.04s">
+            <div class="bc-label">
+              <i class="fa-solid fa-location-dot"></i> based in
+            </div>
+            <div class="loc-visual"><span class="loc-pin">📍</span></div>
+            <div class="loc-name">Wellington, NZ</div>
+            <div class="loc-sub">From Zamboanga City, PH</div>
+          </div>
+
+          <div class="bc card-open s3" style="animation-delay: 0.08s">
+            <div class="bc-label">
+              <i class="fa-solid fa-briefcase"></i> availability
+            </div>
+            <div class="open-title">Open to <em>full-time</em> roles</div>
+            <div class="open-sub">
+              Biomedical engineering, healthtech, or anything that catches my
+              eye.
+            </div>
+          </div>
+
+          <div class="bc card-handle s3" style="animation-delay: 0.12s">
+            <div class="bc-label"><i class="fa-solid fa-at"></i> online as</div>
+            <div class="handle-emoji">🐱</div>
+            <div class="handle-name">@LeCaseus</div>
+            <div class="handle-sub">everywhere online</div>
+          </div>
+
+          <div class="bc s3" style="animation-delay: 0.16s">
+            <div class="bc-label">
+              <i class="fa-solid fa-graduation-cap"></i> education
+            </div>
+            <div class="edu-degree">BS Biomedical Engineering</div>
+            <div class="edu-school">Ateneo de Zamboanga University</div>
+            <div class="edu-meta">2021 – 2025</div>
+            <span class="edu-gpa">GPA 3.23</span>
+          </div>
+
+          <!-- ROW 2: Now · Interests -->
+          <div class="bc s5" style="animation-delay: 0.2s">
+            <div class="now-pulse">what I'm up to now</div>
+            <ul class="now-list">
+              <li>
+                <i class="fa-solid fa-code"></i>Building this site from scratch,
+                learning full stack web dev as I go
+              </li>
+              <li>
+                <i class="fa-solid fa-robot"></i>Working on CH3SH1RE, a personal
+                AI assistant in Python
+              </li>
+              <li>
+                <i class="fa-solid fa-book-open"></i>Exploring backend
+                development as a hobby
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>Based in Wellington, NZ
+                — open to opportunities
+              </li>
+            </ul>
+          </div>
+
+          <div class="bc s7" style="animation-delay: 0.24s">
+            <div class="bc-label">
+              <i class="fa-solid fa-heart"></i> things I care about
+            </div>
+            <div class="chips">
+              <span class="chip">🩺 medical technology</span>
+              <span class="chip">🤖 AI & automation</span>
+              <span class="chip">🎮 gaming</span>
+              <span class="chip">🖥️ web development</span>
+              <span class="chip">🔧 CAD & 3D design</span>
+              <span class="chip">✍️ writing</span>
+              <span class="chip">🐍 Python</span>
+              <span class="chip">📡 embedded systems</span>
+              <span class="chip">🏥 healthtech</span>
+              <span class="chip">🎵 music</span>
+            </div>
+          </div>
+
+          <!-- ROW 3: Experience · Skills -->
+          <div class="bc s7" style="animation-delay: 0.28s">
+            <div class="bc-label">
+              <i class="fa-solid fa-stethoscope"></i> work experience
+            </div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-body">
+                  <div class="tl-head">
+                    <span class="tl-title">Biomedical Engineer Intern</span>
+                    <span class="tl-period">Jun 2024 – Jun 2025</span>
+                  </div>
+                  <div class="tl-org">Zamboanga City Medical Center, PH</div>
+                  <p class="tl-desc">
+                    Maintained and calibrated medical equipment, designed
+                    3D-printed R&D components, conducted product demonstrations,
+                    and supported department operations.
+                  </p>
+                  <div class="tl-tags">
+                    <span class="tag">Medical Equipment</span>
+                    <span class="tag">CAD</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">Documentation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bc s5" style="animation-delay: 0.32s">
+            <div class="bc-label">
+              <i class="fa-solid fa-bars-progress"></i> skills
+            </div>
+            <div class="sk">
+              <div class="sk-head">
+                <span>Maintenance & Repair</span><span>90%</span>
+              </div>
+              <div class="sk-track">
+                <div class="sk-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="sk">
+              <div class="sk-head"><span>CAD Design</span><span>75%</span></div>
+              <div class="sk-track">
+                <div class="sk-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="sk">
+              <div class="sk-head"><span>C / C++</span><span>70%</span></div>
+              <div class="sk-track">
+                <div class="sk-fill" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="sk">
+              <div class="sk-head">
+                <span>Circuit Design</span><span>60%</span>
+              </div>
+              <div class="sk-track">
+                <div class="sk-fill" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="sk">
+              <div class="sk-head"><span>Sensors</span><span>55%</span></div>
+              <div class="sk-track">
+                <div class="sk-fill" style="width: 55%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 4: Certs · Languages · Download -->
+          <div class="bc s6" style="animation-delay: 0.36s">
+            <div class="bc-label">
+              <i class="fa-solid fa-certificate"></i> certifications
+            </div>
+            <div class="cert-row">
+              <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+              <div>
+                <div class="cert-name">On-The-Job Training</div>
+                <div class="cert-issuer">
+                  Zamboanga City Medical Center · 2024
+                </div>
+              </div>
+            </div>
+            <div class="cert-row">
+              <div class="cert-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div>
+                <div class="cert-name">
+                  PCB Development and Design Seminar & Workshop
+                </div>
+                <div class="cert-issuer">
+                  Junior IECEP – ADZU Chapter · 2023
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bc s6" style="animation-delay: 0.4s">
+            <div class="bc-label">
+              <i class="fa-solid fa-language"></i> languages
+            </div>
+            <div class="lang-row">
+              <span>🇵🇭 Filipino</span><span class="lang-level">Native</span>
+            </div>
+            <div class="lang-row">
+              <span>🇺🇸 English</span><span class="lang-level">Fluent</span>
+            </div>
+            <div class="lang-row">
+              <span>🗣️ Chavacano</span
+              ><span class="lang-level">Intermediate</span>
+            </div>
           </div>
         </div>
       </div>
@@ -493,26 +965,24 @@
     <script>
       document.getElementById("copyright").textContent =
         `Chezter Vargas © ${new Date().getFullYear()}`;
-
       function toggleMenu() {
         const btn = document.getElementById("nav-hamburger");
         const menu = document.getElementById("nav-mobile");
         const open = menu.classList.toggle("open");
         btn.classList.toggle("open", open);
       }
-
-      document.querySelectorAll(".nav-mobile a").forEach((link) => {
-        link.addEventListener("click", () => {
+      document.querySelectorAll(".nav-mobile a").forEach((l) => {
+        l.addEventListener("click", () => {
           document.getElementById("nav-mobile").classList.remove("open");
           document.getElementById("nav-hamburger").classList.remove("open");
         });
       });
-
       document.addEventListener("click", (e) => {
         if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
-          document.getElementById("nav-mobile").classList.remove("open");
-          document.getElementById("nav-hamburger").classList.remove("open");
+          document.getElementById("nav-mobile").classList.remove;
         }
+        ("open");
+        document.getElementById("nav-hamburger").classList.remove("open");
       });
     </script>
   </body>
