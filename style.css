@@ -16,17 +16,6 @@
      12. Footer
      13. Responsive (mobile overrides)
 
-   What was removed:
-     - .toast — popup notification, only used by admin actions
-     - .compose-page, .cfield, .cfield-row, .cactions — admin write forms
-     - .btn, .btn-primary, .btn-outline, .btn-del — admin buttons
-     - .empty, .empty-glyph — "nothing here yet" state for empty feed
-     - .single-wrap, .single-cover, .single-title, .single-body — dynamic
-       full post view (posts are now their own .html files instead)
-     - .post-page, .post-back, .post-tag-row, .post-tag, .post-date,
-       .post-title, .post-body-letter, .post-rule, .post-foot — dynamic
-       entry/letter view, same reason
-     - .post-meta, .post-meta-dot — only used in the dynamic post view
    ============================================================ */
 
 /* ─── 1. RESET & VARIABLES ────────────────────────────────────────────── */

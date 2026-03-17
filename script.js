@@ -6,12 +6,7 @@
      2. Nav active state (highlights the right nav link as you scroll)
      3. Blog horizontal scroll (the ← → arrow buttons)
      4. Smooth scrolling for anchor links (e.g. #blog_section)
-   
-   What was removed:
-     Everything that talked to the backend API — fetching posts,
-     opening/displaying posts, the admin write/delete forms, image
-     uploads, and the toast notification popup. The page content
-     now lives directly in index.html instead of being built here.
+
    ============================================================ */
 
 /* ── SCROLL REVEAL ── */

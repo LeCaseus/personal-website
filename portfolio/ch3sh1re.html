@@ -4,15 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CH3SH1RE — Chezter Vargas</title>
+
+    <!-- ======= FONTS ======= -->
+    <!-- DM Mono added here for the code-style tags on this page only -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ======= ICONS ======= -->
     <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
     />
+
+    <!-- ======= SHARED STYLES ======= -->
+    <!-- ../ goes up one folder level since this file is inside portfolio/ -->
     <link rel="stylesheet" href="../style.css" />
+
+    <!-- ======= FAVICON ======= -->
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
     <style>
@@ -23,13 +33,13 @@
       }
 
       /* ── PAGE HEADER ── */
-      .page-header {
+      .page_header {
         padding: 6rem 0 3.5rem;
         border-bottom: 1px solid var(--rule);
         margin-bottom: 3.5rem;
       }
 
-      .back-link {
+      .back_link {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
@@ -41,11 +51,11 @@
         margin-bottom: 2rem;
         transition: color 0.15s;
       }
-      .back-link:hover {
+      .back_link:hover {
         color: var(--ink);
       }
 
-      .page-eyebrow {
+      .page_eyebrow {
         font-size: 0.68rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -54,7 +64,7 @@
         margin-bottom: 0.6rem;
       }
 
-      .page-heading {
+      .page_heading {
         font-family: "DM Mono", monospace;
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 400;
@@ -63,12 +73,12 @@
         margin-bottom: 1rem;
         color: var(--ink);
       }
-      .page-heading em {
+      .page_heading em {
         font-style: normal;
         color: var(--accent);
       }
 
-      .page-sub {
+      .page_sub {
         font-size: 0.92rem;
         color: var(--ink2);
         line-height: 1.7;
@@ -77,7 +87,7 @@
       }
 
       /* ── STATUS BADGE ── */
-      .status-badge {
+      .status_badge {
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
@@ -92,7 +102,7 @@
         border: 1px solid rgba(90, 122, 92, 0.25);
         margin-bottom: 1.25rem;
       }
-      .status-dot {
+      .status_dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
@@ -112,14 +122,14 @@
       }
 
       /* ── META ROW ── */
-      .meta-row {
+      .meta_row {
         display: flex;
         flex-wrap: wrap;
         gap: 1.5rem;
         align-items: center;
         margin-bottom: 1.25rem;
       }
-      .meta-item {
+      .meta_item {
         display: flex;
         align-items: center;
         gap: 0.45rem;
@@ -127,7 +137,7 @@
         color: var(--ink2);
         letter-spacing: 0.03em;
       }
-      .meta-item i {
+      .meta_item i {
         color: var(--faint);
         font-size: 0.7rem;
         width: 14px;
@@ -135,7 +145,7 @@
       }
 
       /* ── TAGS ── */
-      .tag-row {
+      .tag_row {
         display: flex;
         flex-wrap: wrap;
         gap: 0.35rem;
@@ -149,19 +159,19 @@
         background: var(--warm);
         color: var(--ink2);
       }
-      .tag-mono {
+      .tag_mono {
         font-family: "DM Mono", monospace;
         background: rgba(90, 122, 92, 0.1);
         color: var(--green);
       }
 
       /* ── ACTION BUTTONS ── */
-      .action-row {
+      .action_row {
         display: flex;
         flex-wrap: wrap;
         gap: 0.6rem;
       }
-      .btn-action {
+      .btn_action {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -176,27 +186,27 @@
         transition: all 0.15s;
         border: 1px solid var(--rule);
       }
-      .btn-action-primary {
+      .btn_action_primary {
         background: var(--ink);
         color: var(--bg);
         border-color: var(--ink);
       }
-      .btn-action-primary:hover {
+      .btn_action_primary:hover {
         background: var(--accent);
         border-color: var(--accent);
       }
-      .btn-action-ghost {
+      .btn_action_ghost {
         background: transparent;
         color: var(--ink2);
       }
-      .btn-action-ghost:hover {
+      .btn_action_ghost:hover {
         background: var(--warm);
         color: var(--ink);
         border-color: var(--faint);
       }
 
-      /* ── SECTION LABEL ── */
-      .section-label {
+      /* ── SECTION LABEL (the horizontal rule with text) ── */
+      .section_label {
         font-size: 0.68rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -207,7 +217,7 @@
         align-items: center;
         gap: 0.75rem;
       }
-      .section-label::after {
+      .section_label::after {
         content: "";
         flex: 1;
         height: 1px;
@@ -215,17 +225,15 @@
       }
 
       /* ── FEATURE GRID ── */
-      .features-section {
+      .features_section {
         margin-bottom: 4rem;
       }
-
-      .features-grid {
+      .features_grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1rem;
       }
-
-      .feature-card {
+      .feature_card {
         background: var(--paper);
         border: 1px solid var(--rule);
         border-radius: 10px;
@@ -234,18 +242,16 @@
           box-shadow 0.18s,
           transform 0.18s;
       }
-      .feature-card:hover {
+      .feature_card:hover {
         box-shadow: 0 6px 24px rgba(42, 33, 24, 0.07);
         transform: translateY(-2px);
       }
-
-      .feature-icon {
+      .feature_icon {
         font-size: 1.3rem;
         margin-bottom: 0.75rem;
         display: block;
       }
-
-      .feature-title {
+      .feature_title {
         font-family: "Fraunces", serif;
         font-size: 0.95rem;
         font-weight: 300;
@@ -253,14 +259,12 @@
         color: var(--ink);
         margin-bottom: 0.35rem;
       }
-
-      .feature-desc {
+      .feature_desc {
         font-size: 0.8rem;
         color: var(--ink2);
         line-height: 1.6;
       }
-
-      .feature-status {
+      .feature_status {
         display: inline-flex;
         align-items: center;
         gap: 0.3rem;
@@ -272,31 +276,29 @@
         padding: 0.15rem 0.5rem;
         border-radius: 4px;
       }
-      .status-done {
+      .status_done {
         background: rgba(90, 122, 92, 0.1);
         color: var(--green);
       }
-      .status-wip {
+      .status_wip {
         background: rgba(241, 196, 120, 0.2);
         color: #b8862a;
       }
-      .status-planned {
+      .status_planned {
         background: var(--warm);
         color: var(--faint);
       }
 
       /* ── TECH STACK ── */
-      .stack-section {
+      .stack_section {
         margin-bottom: 4rem;
       }
-
-      .stack-grid {
+      .stack_grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 0.75rem;
       }
-
-      .stack-item {
+      .stack_item {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -305,41 +307,36 @@
         border-radius: 8px;
         padding: 0.9rem 1rem;
       }
-
-      .stack-icon {
+      .stack_icon {
         font-size: 1rem;
         width: 28px;
         text-align: center;
         flex-shrink: 0;
       }
-
-      .stack-name {
+      .stack_name {
         font-family: "DM Mono", monospace;
         font-size: 0.75rem;
         color: var(--ink);
         font-weight: 400;
       }
-
-      .stack-role {
+      .stack_role {
         font-size: 0.65rem;
         color: var(--faint);
         margin-top: 0.1rem;
         letter-spacing: 0.02em;
       }
 
-      /* ── SPECS ── */
-      .specs-section {
+      /* ── SPECS TABLE ── */
+      .specs_section {
         margin-bottom: 4rem;
       }
-
-      .specs-box {
+      .specs_box {
         background: var(--paper);
         border: 1px solid var(--rule);
         border-radius: 10px;
         overflow: hidden;
       }
-
-      .spec-row {
+      .spec_row {
         display: flex;
         align-items: flex-start;
         gap: 1rem;
@@ -347,11 +344,10 @@
         border-bottom: 1px solid var(--rule);
         font-size: 0.82rem;
       }
-      .spec-row:last-child {
+      .spec_row:last-child {
         border-bottom: none;
       }
-
-      .spec-key {
+      .spec_key {
         font-family: "DM Mono", monospace;
         font-size: 0.72rem;
         color: var(--faint);
@@ -360,12 +356,11 @@
         padding-top: 0.05rem;
         letter-spacing: 0.02em;
       }
-
-      .spec-val {
+      .spec_val {
         color: var(--ink2);
         line-height: 1.5;
       }
-      .spec-val code {
+      .spec_val code {
         font-family: "DM Mono", monospace;
         font-size: 0.75rem;
         background: var(--warm);
@@ -376,280 +371,262 @@
 
       /* ── RESPONSIVE ── */
       @media (max-width: 600px) {
-        .features-grid {
+        .features_grid {
           grid-template-columns: 1fr;
         }
-        .stack-grid {
+        .stack_grid {
           grid-template-columns: 1fr 1fr;
         }
-        .spec-key {
+        .spec_key {
           min-width: 100px;
         }
       }
     </style>
   </head>
+
   <body>
-    <nav class="site-nav">
-      <a href="/" class="nav-logo">chezter<em>vargas</em></a>
-      <div class="nav-dock">
-        <a href="/" class="nav-dock-link">home</a>
-        <a href="/#portfolio" class="nav-dock-link active">portfolio</a>
-        <a href="/#blog" class="nav-dock-link">blog</a>
-        <a href="/about" class="nav-dock-link">about</a>
+    <!-- ======= NAVIGATION BAR ======= -->
+    <!-- "portfolio" link is active since we're on a portfolio page -->
+    <nav class="top_nav">
+      <a href="../index.html" class="nav_logo">chezter<em>vargas</em></a>
+      <div class="nav_links">
+        <a href="../index.html" class="nav_link">home</a>
+        <a href="../index.html#portfolio_section" class="nav_link active"
+          >portfolio</a
+        >
+        <a href="../index.html#blog_section" class="nav_link">blog</a>
+        <a href="../about.html" class="nav_link">about</a>
       </div>
-      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
+      <a href="mailto:cheztervargas@outlook.com" class="nav_cta"
         >get in touch ↗</a
       >
     </nav>
 
     <div class="wrap">
-      <div class="page-header">
-        <a href="/#portfolio" class="back-link">
+      <div class="page_header">
+        <a href="../index.html#portfolio_section" class="back_link">
           <i class="fa-solid fa-arrow-left"></i> portfolio
         </a>
 
-        <div class="status-badge">
-          <span class="status-dot"></span> active project
+        <div class="status_badge">
+          <span class="status_dot"></span> active project
         </div>
 
-        <p class="page-eyebrow">AI · Python</p>
-        <h1 class="page-heading">CH3<em>SH1</em>RE</h1>
-        <p class="page-sub">
+        <p class="page_eyebrow">AI · Python</p>
+        <h1 class="page_heading">CH3<em>SH1</em>RE</h1>
+        <p class="page_sub">
           A personal local AI assistant built for fun and learning. Runs
           entirely on-device using llama.cpp and a quantized Qwen2.5 model — no
           cloud, no API keys, no subscriptions. An ongoing project that grows as
           I learn.
         </p>
 
-        <div class="meta-row">
-          <span class="meta-item">
-            <i class="fa-regular fa-calendar"></i> 2024 – present
-          </span>
-          <span class="meta-item">
-            <i class="fa-solid fa-user"></i> Solo project
-          </span>
-          <span class="meta-item">
-            <i class="fa-brands fa-python"></i> Python · 100%
-          </span>
+        <div class="meta_row">
+          <span class="meta_item"
+            ><i class="fa-regular fa-calendar"></i> 2024 – present</span
+          >
+          <span class="meta_item"
+            ><i class="fa-solid fa-user"></i> Solo project</span
+          >
+          <span class="meta_item"
+            ><i class="fa-brands fa-python"></i> Python · 100%</span
+          >
         </div>
 
-        <div class="tag-row">
-          <span class="tag tag-mono">Python</span>
-          <span class="tag tag-mono">SQLite</span>
-          <span class="tag tag-mono">llama.cpp</span>
-          <span class="tag tag-mono">Qwen2.5</span>
+        <div class="tag_row">
+          <span class="tag tag_mono">Python</span>
+          <span class="tag tag_mono">SQLite</span>
+          <span class="tag tag_mono">llama.cpp</span>
+          <span class="tag tag_mono">Qwen2.5</span>
           <span class="tag">Local LLM</span>
           <span class="tag">AI</span>
         </div>
 
-        <div class="action-row">
+        <div class="action_row">
           <a
             href="https://github.com/LeCaseus/CH3SH1RE"
             target="_blank"
-            class="btn-action btn-action-primary"
+            class="btn_action btn_action_primary"
           >
             <i class="fa-brands fa-github"></i> View on GitHub
           </a>
         </div>
       </div>
 
-      <!-- FEATURES -->
-      <div class="features-section">
-        <div class="section-label">features & roadmap</div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <span class="feature-icon">🧠</span>
-            <div class="feature-title">Local LLM Inference</div>
-            <p class="feature-desc">
+      <!-- FEATURES & ROADMAP -->
+      <div class="features_section">
+        <div class="section_label">features & roadmap</div>
+        <div class="features_grid">
+          <div class="feature_card">
+            <span class="feature_icon">🧠</span>
+            <div class="feature_title">Local LLM Inference</div>
+            <p class="feature_desc">
               Runs Qwen2.5 7B instruct (q5_k_m quantized) entirely on-device via
               a llama.cpp server. No internet required after setup.
             </p>
-            <span class="feature-status status-done">
-              <i class="fa-solid fa-check"></i> done
-            </span>
+            <span class="feature_status status_done"
+              ><i class="fa-solid fa-check"></i> done</span
+            >
           </div>
 
-          <div class="feature-card">
-            <span class="feature-icon">💾</span>
-            <div class="feature-title">Persistent Memory</div>
-            <p class="feature-desc">
+          <div class="feature_card">
+            <span class="feature_icon">💾</span>
+            <div class="feature_title">Persistent Memory</div>
+            <p class="feature_desc">
               Conversations and context stored in a local SQLite database,
               letting the assistant remember past interactions.
             </p>
-            <span class="feature-status status-done">
-              <i class="fa-solid fa-check"></i> done
-            </span>
+            <span class="feature_status status_done"
+              ><i class="fa-solid fa-check"></i> done</span
+            >
           </div>
 
-          <div class="feature-card">
-            <span class="feature-icon">👁️</span>
-            <div class="feature-title">Vision Capabilities</div>
-            <p class="feature-desc">
+          <div class="feature_card">
+            <span class="feature_icon">👁️</span>
+            <div class="feature_title">Vision Capabilities</div>
+            <p class="feature_desc">
               Image understanding through a dedicated vision service, allowing
               the assistant to process and describe visual input.
             </p>
-            <span class="feature-status status-wip">
-              <i class="fa-solid fa-circle-half-stroke"></i> in progress
-            </span>
+            <span class="feature_status status_wip"
+              ><i class="fa-solid fa-circle-half-stroke"></i> in progress</span
+            >
           </div>
 
-          <div class="feature-card">
-            <span class="feature-icon">🌐</span>
-            <div class="feature-title">Web Search</div>
-            <p class="feature-desc">
+          <div class="feature_card">
+            <span class="feature_icon">🌐</span>
+            <div class="feature_title">Web Search</div>
+            <p class="feature_desc">
               Planned integration to give the assistant access to live web
               results to answer questions beyond its training data.
             </p>
-            <span class="feature-status status-planned">
-              <i class="fa-regular fa-clock"></i> planned
-            </span>
+            <span class="feature_status status_planned"
+              ><i class="fa-regular fa-clock"></i> planned</span
+            >
           </div>
 
-          <div class="feature-card">
-            <span class="feature-icon">📚</span>
-            <div class="feature-title">
+          <div class="feature_card">
+            <span class="feature_icon">📚</span>
+            <div class="feature_title">
               RAG (Retrieval-Augmented Generation)
             </div>
-            <p class="feature-desc">
+            <p class="feature_desc">
               Planned support for loading personal documents and files so the
               assistant can answer questions grounded in your own data.
             </p>
-            <span class="feature-status status-planned">
-              <i class="fa-regular fa-clock"></i> planned
-            </span>
+            <span class="feature_status status_planned"
+              ><i class="fa-regular fa-clock"></i> planned</span
+            >
           </div>
 
-          <div class="feature-card">
-            <span class="feature-icon">🛠️</span>
-            <div class="feature-title">Tool Use</div>
-            <p class="feature-desc">
+          <div class="feature_card">
+            <span class="feature_icon">🛠️</span>
+            <div class="feature_title">Tool Use</div>
+            <p class="feature_desc">
               Exploring function calling and tool-use patterns to let the
               assistant take actions, not just answer questions.
             </p>
-            <span class="feature-status status-planned">
-              <i class="fa-regular fa-clock"></i> planned
-            </span>
+            <span class="feature_status status_planned"
+              ><i class="fa-regular fa-clock"></i> planned</span
+            >
           </div>
         </div>
       </div>
 
       <!-- TECH STACK -->
-      <div class="stack-section">
-        <div class="section-label">tech stack</div>
-        <div class="stack-grid">
-          <div class="stack-item">
-            <span class="stack-icon">🐍</span>
+      <div class="stack_section">
+        <div class="section_label">tech stack</div>
+        <div class="stack_grid">
+          <div class="stack_item">
+            <span class="stack_icon">🐍</span>
             <div>
-              <div class="stack-name">Python</div>
-              <div class="stack-role">Core language</div>
+              <div class="stack_name">Python</div>
+              <div class="stack_role">Core language</div>
             </div>
           </div>
-          <div class="stack-item">
-            <span class="stack-icon">🦙</span>
+          <div class="stack_item">
+            <span class="stack_icon">🦙</span>
             <div>
-              <div class="stack-name">llama.cpp</div>
-              <div class="stack-role">LLM inference server</div>
+              <div class="stack_name">llama.cpp</div>
+              <div class="stack_role">LLM inference server</div>
             </div>
           </div>
-          <div class="stack-item">
-            <span class="stack-icon">🤖</span>
+          <div class="stack_item">
+            <span class="stack_icon">🤖</span>
             <div>
-              <div class="stack-name">Qwen2.5 7B</div>
-              <div class="stack-role">Language model</div>
+              <div class="stack_name">Qwen2.5 7B</div>
+              <div class="stack_role">Language model</div>
             </div>
           </div>
-          <div class="stack-item">
-            <span class="stack-icon">🗄️</span>
+          <div class="stack_item">
+            <span class="stack_icon">🗄️</span>
             <div>
-              <div class="stack-name">SQLite</div>
-              <div class="stack-role">Memory & storage</div>
+              <div class="stack_name">SQLite</div>
+              <div class="stack_role">Memory & storage</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SPECS -->
-      <div class="specs-section">
-        <div class="section-label">hardware specs (dev machine)</div>
-        <div class="specs-box">
-          <div class="spec-row">
-            <span class="spec-key">CPU</span>
-            <span class="spec-val">AMD Ryzen 5 5500U @ 2.1 GHz</span>
+      <!-- HARDWARE SPECS -->
+      <div class="specs_section">
+        <div class="section_label">hardware specs (dev machine)</div>
+        <div class="specs_box">
+          <div class="spec_row">
+            <span class="spec_key">CPU</span>
+            <span class="spec_val">AMD Ryzen 5 5500U @ 2.1 GHz</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-key">RAM</span>
-            <span class="spec-val">16 GB</span>
+          <div class="spec_row">
+            <span class="spec_key">RAM</span>
+            <span class="spec_val">16 GB</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-key">GPU</span>
-            <span class="spec-val">NVIDIA RTX 3050 Laptop — 4 GB VRAM</span>
+          <div class="spec_row">
+            <span class="spec_key">GPU</span>
+            <span class="spec_val">NVIDIA RTX 3050 Laptop — 4 GB VRAM</span>
           </div>
-          <div class="spec-row">
-            <span class="spec-key">Model</span>
-            <span class="spec-val"
+          <div class="spec_row">
+            <span class="spec_key">Model</span>
+            <span class="spec_val"
               ><code>qwen2.5-7b-instruct-q5_k_m.gguf</code></span
             >
           </div>
-          <div class="spec-row">
-            <span class="spec-key">Inference</span>
-            <span class="spec-val">llama.cpp local server — fully offline</span>
+          <div class="spec_row">
+            <span class="spec_key">Inference</span>
+            <span class="spec_val">llama.cpp local server — fully offline</span>
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="site-footer">
-      <span id="copyright"></span>
-      <div class="social-links-footer">
+    <!-- ======= FOOTER ======= -->
+    <footer class="site_footer">
+      <span class="copyright_text">© 2025 Chezter Vargas</span>
+      <div class="social_links_footer">
         <a
           href="https://www.youtube.com/@LeCaseus"
           target="_blank"
-          class="social-footer-btn"
+          class="social_footer_btn"
           ><i class="fa-brands fa-youtube"></i
         ></a>
         <a
           href="https://github.com/LeCaseus"
           target="_blank"
-          class="social-footer-btn"
+          class="social_footer_btn"
           ><i class="fa-brands fa-github"></i
         ></a>
         <a
           href="https://www.linkedin.com/in/lecaseus"
           target="_blank"
-          class="social-footer-btn"
+          class="social_footer_btn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
         <a
           href="https://www.instagram.com/cheeshire_/"
           target="_blank"
-          class="social-footer-btn"
+          class="social_footer_btn"
           ><i class="fa-brands fa-instagram"></i
         ></a>
       </div>
     </footer>
-
-    <script>
-      document.getElementById("copyright").textContent =
-        `Chezter Vargas © ${new Date().getFullYear()}`;
-
-      function toggleMenu() {
-        const btn = document.getElementById("nav-hamburger");
-        const menu = document.getElementById("nav-mobile");
-        const open = menu.classList.toggle("open");
-        btn.classList.toggle("open", open);
-      }
-      document.querySelectorAll(".nav-mobile a").forEach((link) => {
-        link.addEventListener("click", () => {
-          document.getElementById("nav-mobile").classList.remove("open");
-          document.getElementById("nav-hamburger").classList.remove("open");
-        });
-      });
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
-          document.getElementById("nav-mobile").classList.remove("open");
-          document.getElementById("nav-hamburger").classList.remove("open");
-        }
-      });
-    </script>
   </body>
 </html>
