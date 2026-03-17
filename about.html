@@ -4,16 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About — Chezter Vargas</title>
+
+    <!-- ======= FONTS ======= -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ======= ICONS ======= -->
     <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
     />
+
+    <!-- ======= SHARED STYLES ======= -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- ======= FAVICON ======= -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- ======= PAGE-SPECIFIC STYLES ======= -->
     <style>
       .wrap {
         max-width: 980px;
@@ -21,8 +31,8 @@
         padding: 0 clamp(1.5rem, 5vw, 3rem);
       }
 
-      /* HERO */
-      .about-hero {
+      /* ── HERO ── */
+      .about_hero {
         display: grid;
         grid-template-columns: 240px 1fr;
         gap: 4rem;
@@ -31,11 +41,11 @@
         border-bottom: 1px solid var(--rule);
         margin-bottom: 4rem;
       }
-      .about-photo {
+      .about_photo {
         position: sticky;
         top: 80px;
       }
-      .about-photo-img {
+      .about_photo_img {
         width: 100%;
         aspect-ratio: 3/4;
         border-radius: 12px;
@@ -43,20 +53,20 @@
         margin-bottom: 0.75rem;
         background: var(--warm);
       }
-      .about-photo-img img {
+      .about_photo_img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
-      .about-photo-caption {
+      .about_photo_caption {
         font-size: 0.7rem;
         color: var(--faint);
         text-align: center;
         font-style: italic;
         letter-spacing: 0.04em;
       }
-      .about-eyebrow {
+      .about_eyebrow {
         font-size: 0.67rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -64,7 +74,7 @@
         font-weight: 500;
         margin-bottom: 0.7rem;
       }
-      .about-heading {
+      .about_heading {
         font-family: "Fraunces", serif;
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 300;
@@ -72,23 +82,23 @@
         line-height: 1.1;
         margin-bottom: 1.4rem;
       }
-      .about-heading em {
+      .about_heading em {
         font-style: italic;
         color: var(--accent);
       }
-      .about-intro {
+      .about_intro {
         font-size: 0.97rem;
         line-height: 1.85;
         color: var(--ink2);
         margin-bottom: 2rem;
         text-align: justify;
       }
-      .about-social {
+      .about_social {
         display: flex;
         gap: 0.55rem;
         flex-wrap: wrap;
       }
-      .about-social-btn {
+      .about_social_btn {
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
@@ -101,20 +111,40 @@
         text-decoration: none;
         transition: all 0.15s;
       }
-      .about-social-btn:hover {
+      .about_social_btn:hover {
         background: var(--ink);
         color: var(--bg);
         border-color: var(--ink);
       }
-      .about-social-btn i {
+      .about_social_btn i {
+        font-size: 0.73rem;
+      }
+      .about_dl_btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.77rem;
+        padding: 0.38rem 0.85rem;
+        border-radius: 20px;
+        background: var(--ink);
+        color: var(--bg);
+        text-decoration: none;
+        transition: all 0.15s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .about_dl_btn:hover {
+        background: var(--accent);
+        color: white;
+      }
+      .about_dl_btn i {
         font-size: 0.73rem;
       }
 
-      /* BENTO SECTION */
-      .bento-section {
+      /* ── BENTO SECTION ── */
+      .bento_section {
         padding-bottom: 6rem;
       }
-      .bento-eyebrow {
+      .bento_eyebrow {
         font-size: 0.67rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -122,19 +152,20 @@
         font-weight: 500;
         margin-bottom: 0.4rem;
       }
-      .bento-heading {
+      .bento_heading {
         font-family: "Fraunces", serif;
         font-size: clamp(1.5rem, 2.5vw, 2rem);
         font-weight: 300;
         letter-spacing: -0.02em;
         margin-bottom: 2.5rem;
       }
-      .bento-heading em {
+      .bento_heading em {
         font-style: italic;
         color: var(--accent);
       }
 
-      /* GRID */
+      /* ── BENTO GRID ── */
+      /* 12-column grid — cards use .s3/.s4/.s5 etc. to span columns */
       .bento {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -162,16 +193,16 @@
         grid-column: span 12;
       }
 
-      /* BASE CARD */
+      /* ── BASE CARD ── */
       .bc {
         background: var(--paper);
         border-radius: 14px;
         padding: 1.35rem 1.4rem;
-        animation: bcrise 0.4s ease both;
+        animation: bc_rise 0.4s ease both;
         overflow: hidden;
         position: relative;
       }
-      @keyframes bcrise {
+      @keyframes bc_rise {
         from {
           opacity: 0;
           transform: translateY(10px);
@@ -182,52 +213,7 @@
         }
       }
 
-      .bc.tint-warm {
-        background: var(--warm);
-      }
-      .bc.tint-dark {
-        background: var(--ink);
-      }
-      .bc.tint-dark .bc-label {
-        color: rgba(245, 240, 232, 0.35);
-      }
-      .bc.tint-dark .bc-label i {
-        color: var(--accent);
-      }
-      .bc.tint-dark .tl-title,
-      .bc.tint-dark .edu-degree,
-      .bc.tint-dark .sk-head,
-      .bc.tint-dark .cert-name,
-      .bc.tint-dark .now-pulse {
-        color: var(--bg);
-      }
-      .bc.tint-dark .tl-desc,
-      .bc.tint-dark .tl-period,
-      .bc.tint-dark .edu-meta,
-      .bc.tint-dark .cert-issuer,
-      .bc.tint-dark .now-list li {
-        color: rgba(245, 240, 232, 0.55);
-      }
-      .bc.tint-dark .tl-org,
-      .bc.tint-dark .edu-school {
-        color: var(--accent);
-      }
-      .bc.tint-dark .tag,
-      .bc.tint-dark .edu-gpa {
-        background: rgba(255, 255, 255, 0.08);
-        color: rgba(245, 240, 232, 0.6);
-      }
-      .bc.tint-dark .sk-track {
-        background: rgba(255, 255, 255, 0.12);
-      }
-      .bc.tint-dark .cert-icon {
-        background: rgba(193, 127, 74, 0.2);
-      }
-      .bc.tint-dark .now-list li i {
-        color: var(--accent);
-      }
-
-      .bc-label {
+      .bc_label {
         font-size: 0.57rem;
         letter-spacing: 0.13em;
         text-transform: uppercase;
@@ -238,33 +224,32 @@
         align-items: center;
         gap: 0.4rem;
       }
-      .bc-label i {
+      .bc_label i {
         color: var(--accent);
         font-size: 0.62rem;
       }
 
       /* ── CARD: LOCATION ── */
-      .card-loc {
+      .card_loc {
         background: var(--warm);
         display: flex;
         flex-direction: column;
         min-height: 170px;
       }
-      .loc-visual {
+      .loc_visual {
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 3rem;
         margin-bottom: 0.6rem;
-        position: relative;
       }
-      .loc-pin {
-        animation: pinbob 2.8s ease-in-out infinite;
+      .loc_pin {
+        animation: pin_bob 2.8s ease-in-out infinite;
         display: inline-block;
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
       }
-      @keyframes pinbob {
+      @keyframes pin_bob {
         0%,
         100% {
           transform: translateY(0);
@@ -273,29 +258,29 @@
           transform: translateY(-6px);
         }
       }
-      .loc-name {
+      .loc_name {
         font-family: "Fraunces", serif;
         font-size: 1.1rem;
         font-weight: 300;
         color: var(--ink);
       }
-      .loc-sub {
+      .loc_sub {
         font-size: 0.73rem;
         color: var(--ink2);
         margin-top: 0.15rem;
       }
 
       /* ── CARD: OPEN TO ── */
-      .card-open {
+      .card_open {
         background: var(--ink);
       }
-      .card-open .bc-label {
+      .card_open .bc_label {
         color: rgba(245, 240, 232, 0.35);
       }
-      .card-open .bc-label i {
+      .card_open .bc_label i {
         color: var(--accent);
       }
-      .open-title {
+      .open_title {
         font-family: "Fraunces", serif;
         font-size: 1.25rem;
         font-weight: 300;
@@ -304,18 +289,18 @@
         margin-bottom: 0.5rem;
         letter-spacing: -0.02em;
       }
-      .open-title em {
+      .open_title em {
         font-style: italic;
         color: var(--accent);
       }
-      .open-sub {
+      .open_sub {
         font-size: 0.79rem;
         color: rgba(245, 240, 232, 0.5);
         line-height: 1.6;
       }
 
       /* ── CARD: HANDLE ── */
-      .card-handle {
+      .card_handle {
         background: var(--warm);
         display: flex;
         flex-direction: column;
@@ -325,39 +310,39 @@
         min-height: 130px;
         gap: 0.4rem;
       }
-      .handle-emoji {
+      .handle_emoji {
         font-size: 2.2rem;
       }
-      .handle-name {
+      .handle_name {
         font-family: "Fraunces", serif;
         font-size: 1.05rem;
         font-weight: 300;
         color: var(--ink);
         font-style: italic;
       }
-      .handle-sub {
+      .handle_sub {
         font-size: 0.69rem;
         color: var(--faint);
       }
 
-      /* ── CARD: EDUCATION (small) ── */
-      .edu-degree {
+      /* ── CARD: EDUCATION ── */
+      .edu_degree {
         font-size: 0.88rem;
         font-weight: 400;
         color: var(--ink);
         line-height: 1.3;
         margin-bottom: 0.2rem;
       }
-      .edu-school {
+      .edu_school {
         font-size: 0.75rem;
         color: var(--accent);
         margin-bottom: 0.35rem;
       }
-      .edu-meta {
+      .edu_meta {
         font-size: 0.75rem;
         color: var(--ink2);
       }
-      .edu-gpa {
+      .edu_gpa {
         display: inline-block;
         margin-top: 0.5rem;
         font-size: 0.7rem;
@@ -368,7 +353,7 @@
       }
 
       /* ── CARD: NOW ── */
-      .now-pulse {
+      .now_pulse {
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -379,7 +364,7 @@
         font-weight: 500;
         margin-bottom: 0.9rem;
       }
-      .now-pulse::before {
+      .now_pulse::before {
         content: "";
         width: 7px;
         height: 7px;
@@ -397,13 +382,13 @@
           opacity: 0.2;
         }
       }
-      .now-list {
+      .now_list {
         list-style: none;
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
       }
-      .now-list li {
+      .now_list li {
         display: flex;
         align-items: flex-start;
         gap: 0.65rem;
@@ -411,7 +396,7 @@
         color: var(--ink2);
         line-height: 1.5;
       }
-      .now-list li i {
+      .now_list li i {
         color: var(--accent);
         font-size: 0.7rem;
         margin-top: 0.22rem;
@@ -445,13 +430,13 @@
         display: flex;
         flex-direction: column;
       }
-      .tl-item {
+      .tl_item {
         display: grid;
         grid-template-columns: 13px 1fr;
         gap: 0 1rem;
         position: relative;
       }
-      .tl-item::before {
+      .tl_item::before {
         content: "";
         position: absolute;
         left: 5px;
@@ -460,10 +445,10 @@
         width: 1px;
         background: var(--rule);
       }
-      .tl-item:last-child::before {
+      .tl_item:last-child::before {
         display: none;
       }
-      .tl-dot {
+      .tl_dot {
         width: 13px;
         height: 13px;
         border-radius: 50%;
@@ -473,13 +458,13 @@
         position: relative;
         z-index: 1;
       }
-      .tl-body {
+      .tl_body {
         padding-bottom: 1.2rem;
       }
-      .tl-body:last-child {
+      .tl_body:last-child {
         padding-bottom: 0;
       }
-      .tl-head {
+      .tl_head {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
@@ -487,29 +472,29 @@
         margin-bottom: 0.2rem;
         flex-wrap: wrap;
       }
-      .tl-title {
+      .tl_title {
         font-size: 0.87rem;
         font-weight: 400;
         color: var(--ink);
         line-height: 1.3;
       }
-      .tl-period {
+      .tl_period {
         font-size: 0.66rem;
         color: var(--faint);
         white-space: nowrap;
         margin-top: 0.1rem;
       }
-      .tl-org {
+      .tl_org {
         font-size: 0.75rem;
         color: var(--accent);
         margin-bottom: 0.35rem;
       }
-      .tl-desc {
+      .tl_desc {
         font-size: 0.81rem;
         color: var(--ink2);
         line-height: 1.65;
       }
-      .tl-tags {
+      .tl_tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.3rem;
@@ -531,41 +516,41 @@
       .sk:last-child {
         margin-bottom: 0;
       }
-      .sk-head {
+      .sk_head {
         display: flex;
         justify-content: space-between;
         font-size: 0.79rem;
         margin-bottom: 0.28rem;
         color: var(--ink2);
       }
-      .sk-track {
+      .sk_track {
         height: 3px;
         background: var(--rule);
         border-radius: 2px;
         overflow: hidden;
       }
-      .sk-fill {
+      .sk_fill {
         height: 100%;
         background: var(--accent);
         border-radius: 2px;
       }
 
       /* ── CARD: CERTS ── */
-      .cert-row {
+      .cert_row {
         display: flex;
         align-items: flex-start;
         gap: 0.7rem;
         padding: 0.65rem 0;
         border-bottom: 1px solid var(--rule);
       }
-      .cert-row:first-child {
+      .cert_row:first-child {
         padding-top: 0;
       }
-      .cert-row:last-child {
+      .cert_row:last-child {
         border-bottom: none;
         padding-bottom: 0;
       }
-      .cert-icon {
+      .cert_icon {
         width: 28px;
         height: 28px;
         background: rgba(193, 127, 74, 0.1);
@@ -577,12 +562,12 @@
         font-size: 0.72rem;
         flex-shrink: 0;
       }
-      .cert-name {
+      .cert_name {
         font-size: 0.81rem;
         color: var(--ink);
         line-height: 1.3;
       }
-      .cert-issuer {
+      .cert_issuer {
         font-size: 0.67rem;
         color: var(--faint);
         margin-top: 0.1rem;
@@ -590,7 +575,7 @@
       }
 
       /* ── CARD: LANGUAGES ── */
-      .lang-row {
+      .lang_row {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -598,52 +583,30 @@
         border-bottom: 1px solid var(--rule);
         font-size: 0.84rem;
       }
-      .lang-row:first-child {
+      .lang_row:first-child {
         padding-top: 0;
       }
-      .lang-row:last-child {
+      .lang_row:last-child {
         border-bottom: none;
       }
-      .lang-level {
+      .lang_level {
         font-size: 0.62rem;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--faint);
       }
 
-      /* ── HERO DOWNLOAD BTN ── */
-      .about-dl-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-size: 0.77rem;
-        padding: 0.38rem 0.85rem;
-        border-radius: 20px;
-        background: var(--ink);
-        color: var(--bg);
-        text-decoration: none;
-        transition: all 0.15s;
-        font-family: "DM Sans", sans-serif;
-      }
-      .about-dl-btn:hover {
-        background: var(--accent);
-        color: white;
-      }
-      .about-dl-btn i {
-        font-size: 0.73rem;
-      }
-
-      /* RESPONSIVE */
+      /* ── RESPONSIVE ── */
       @media (max-width: 768px) {
-        .about-hero {
+        .about_hero {
           grid-template-columns: 1fr;
           gap: 2rem;
           padding-top: 5.5rem;
         }
-        .about-photo {
+        .about_photo {
           position: static;
         }
-        .about-photo-img {
+        .about_photo_img {
           aspect-ratio: 4/3;
         }
         .s3,
@@ -663,35 +626,38 @@
       }
     </style>
   </head>
+
   <body>
-    <nav class="site-nav">
-      <a href="/" class="nav-logo">chezter<em>vargas</em></a>
-      <div class="nav-dock">
-        <a href="/" class="nav-dock-link">home</a>
-        <a href="/#portfolio" class="nav-dock-link">portfolio</a>
-        <a href="/#blog" class="nav-dock-link">blog</a>
-        <a href="/about" class="nav-dock-link active">about</a>
+    <!-- ======= NAVIGATION BAR ======= -->
+    <!-- Same nav as index.html — "about" link gets the active class here -->
+    <nav class="top_nav">
+      <a href="index.html" class="nav_logo">chezter<em>vargas</em></a>
+      <div class="nav_links">
+        <a href="index.html" class="nav_link">home</a>
+        <a href="index.html#portfolio_section" class="nav_link">portfolio</a>
+        <a href="index.html#blog_section" class="nav_link">blog</a>
+        <a href="about.html" class="nav_link active">about</a>
       </div>
-      <a href="mailto:cheztervargas@outlook.com" class="nav-cta"
+      <a href="mailto:cheztervargas@outlook.com" class="nav_cta"
         >get in touch ↗</a
       >
     </nav>
 
     <div class="wrap">
-      <!-- HERO -->
-      <div class="about-hero">
-        <div class="about-photo">
-          <div class="about-photo-img">
+      <!-- ======= HERO ======= -->
+      <div class="about_hero">
+        <div class="about_photo">
+          <div class="about_photo_img">
             <img src="assets/homepage.JPG" alt="Chezter Vargas" />
           </div>
-          <p class="about-photo-caption">Wellington, NZ · 2026</p>
+          <p class="about_photo_caption">Wellington, NZ · 2026</p>
         </div>
         <div>
-          <p class="about-eyebrow">hello there</p>
-          <h1 class="about-heading">
+          <p class="about_eyebrow">hello there</p>
+          <h1 class="about_heading">
             I'm <em>Chezter</em>,<br />nice to meet you.
           </h1>
-          <p class="about-intro">
+          <p class="about_intro">
             I'm a Biomedical Engineer with a genuine interest in how technology
             and healthcare intersect. I gained hands-on experience at Zamboanga
             City Medical Center working with medical equipment, CAD design, and
@@ -699,86 +665,90 @@
             personal projects, including this site and an AI assistant I'm
             developing in Python.
           </p>
-          <div class="about-social">
+          <div class="about_social">
             <a
               href="https://www.youtube.com/@LeCaseus"
               target="_blank"
-              class="about-social-btn"
-              ><i class="fa-brands fa-youtube"></i> YouTube</a
+              class="about_social_btn"
             >
+              <i class="fa-brands fa-youtube"></i> YouTube
+            </a>
             <a
               href="https://github.com/LeCaseus"
               target="_blank"
-              class="about-social-btn"
-              ><i class="fa-brands fa-github"></i> GitHub</a
+              class="about_social_btn"
             >
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
             <a
               href="https://www.linkedin.com/in/lecaseus"
               target="_blank"
-              class="about-social-btn"
-              ><i class="fa-brands fa-linkedin"></i> LinkedIn</a
+              class="about_social_btn"
             >
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
             <a
               href="https://www.instagram.com/cheeshire_/"
               target="_blank"
-              class="about-social-btn"
-              ><i class="fa-brands fa-instagram"></i> Instagram</a
+              class="about_social_btn"
             >
-            <a href="assets/CVargas_Resume.pdf" class="about-dl-btn" download
-              ><i class="fa-solid fa-download"></i> Download CV</a
-            >
+              <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="assets/CVargas_Resume.pdf" class="about_dl_btn" download>
+              <i class="fa-solid fa-download"></i> Download CV
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- BENTO -->
-      <div class="bento-section">
-        <p class="bento-eyebrow">the details</p>
-        <h2 class="bento-heading">A bit more <em>about me</em></h2>
+      <!-- ======= BENTO GRID ======= -->
+      <div class="bento_section">
+        <p class="bento_eyebrow">the details</p>
+        <h2 class="bento_heading">A bit more <em>about me</em></h2>
 
         <div class="bento">
           <!-- ROW 1: Location · Open To · Handle · Education -->
-          <div class="bc card-loc s3" style="animation-delay: 0.04s">
-            <div class="bc-label">
+          <div class="bc card_loc s3" style="animation-delay: 0.04s">
+            <div class="bc_label">
               <i class="fa-solid fa-location-dot"></i> based in
             </div>
-            <div class="loc-visual"><span class="loc-pin">📍</span></div>
-            <div class="loc-name">Wellington, NZ</div>
-            <div class="loc-sub">From Zamboanga City, PH</div>
+            <div class="loc_visual"><span class="loc_pin">📍</span></div>
+            <div class="loc_name">Wellington, NZ</div>
+            <div class="loc_sub">From Zamboanga City, PH</div>
           </div>
 
-          <div class="bc card-open s3" style="animation-delay: 0.08s">
-            <div class="bc-label">
+          <div class="bc card_open s3" style="animation-delay: 0.08s">
+            <div class="bc_label">
               <i class="fa-solid fa-briefcase"></i> availability
             </div>
-            <div class="open-title">Open to <em>full-time</em> roles</div>
-            <div class="open-sub">
+            <div class="open_title">Open to <em>full-time</em> roles</div>
+            <div class="open_sub">
               Biomedical engineering, healthtech, or anything that catches my
               eye.
             </div>
           </div>
 
-          <div class="bc card-handle s3" style="animation-delay: 0.12s">
-            <div class="bc-label"><i class="fa-solid fa-at"></i> online as</div>
-            <div class="handle-emoji">🐱</div>
-            <div class="handle-name">@LeCaseus</div>
-            <div class="handle-sub">everywhere online</div>
+          <div class="bc card_handle s3" style="animation-delay: 0.12s">
+            <div class="bc_label"><i class="fa-solid fa-at"></i> online as</div>
+            <div class="handle_emoji">🐱</div>
+            <div class="handle_name">@LeCaseus</div>
+            <div class="handle_sub">everywhere online</div>
           </div>
 
           <div class="bc s3" style="animation-delay: 0.16s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-graduation-cap"></i> education
             </div>
-            <div class="edu-degree">BS Biomedical Engineering</div>
-            <div class="edu-school">Ateneo de Zamboanga University</div>
-            <div class="edu-meta">2021 – 2025</div>
-            <span class="edu-gpa">GPA 3.23</span>
+            <div class="edu_degree">BS Biomedical Engineering</div>
+            <div class="edu_school">Ateneo de Zamboanga University</div>
+            <div class="edu_meta">2021 – 2025</div>
+            <span class="edu_gpa">GPA 3.23</span>
           </div>
 
           <!-- ROW 2: Now · Interests -->
           <div class="bc s5" style="animation-delay: 0.2s">
-            <div class="now-pulse">what I'm up to now</div>
-            <ul class="now-list">
+            <div class="now_pulse">what I'm up to now</div>
+            <ul class="now_list">
               <li>
                 <i class="fa-solid fa-code"></i>Building this site from scratch,
                 learning full stack web dev as I go
@@ -799,7 +769,7 @@
           </div>
 
           <div class="bc s7" style="animation-delay: 0.24s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-heart"></i> things I care about
             </div>
             <div class="chips">
@@ -818,24 +788,24 @@
 
           <!-- ROW 3: Experience · Skills -->
           <div class="bc s7" style="animation-delay: 0.28s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-stethoscope"></i> work experience
             </div>
             <div class="tl">
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-body">
-                  <div class="tl-head">
-                    <span class="tl-title">Biomedical Engineer Intern</span>
-                    <span class="tl-period">Jun 2024 – Jun 2025</span>
+              <div class="tl_item">
+                <div class="tl_dot"></div>
+                <div class="tl_body">
+                  <div class="tl_head">
+                    <span class="tl_title">Biomedical Engineer Intern</span>
+                    <span class="tl_period">Jun 2024 – Jun 2025</span>
                   </div>
-                  <div class="tl-org">Zamboanga City Medical Center, PH</div>
-                  <p class="tl-desc">
+                  <div class="tl_org">Zamboanga City Medical Center, PH</div>
+                  <p class="tl_desc">
                     Maintained and calibrated medical equipment, designed
                     3D-printed R&D components, conducted product demonstrations,
                     and supported department operations.
                   </p>
-                  <div class="tl-tags">
+                  <div class="tl_tags">
                     <span class="tag">Medical Equipment</span>
                     <span class="tag">CAD</span>
                     <span class="tag">3D Printing</span>
@@ -847,66 +817,66 @@
           </div>
 
           <div class="bc s5" style="animation-delay: 0.32s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-bars-progress"></i> skills
             </div>
             <div class="sk">
-              <div class="sk-head">
+              <div class="sk_head">
                 <span>Maintenance & Repair</span><span>90%</span>
               </div>
-              <div class="sk-track">
-                <div class="sk-fill" style="width: 90%"></div>
+              <div class="sk_track">
+                <div class="sk_fill" style="width: 90%"></div>
               </div>
             </div>
             <div class="sk">
-              <div class="sk-head"><span>CAD Design</span><span>75%</span></div>
-              <div class="sk-track">
-                <div class="sk-fill" style="width: 75%"></div>
+              <div class="sk_head"><span>CAD Design</span><span>75%</span></div>
+              <div class="sk_track">
+                <div class="sk_fill" style="width: 75%"></div>
               </div>
             </div>
             <div class="sk">
-              <div class="sk-head"><span>C / C++</span><span>70%</span></div>
-              <div class="sk-track">
-                <div class="sk-fill" style="width: 70%"></div>
+              <div class="sk_head"><span>C / C++</span><span>70%</span></div>
+              <div class="sk_track">
+                <div class="sk_fill" style="width: 70%"></div>
               </div>
             </div>
             <div class="sk">
-              <div class="sk-head">
+              <div class="sk_head">
                 <span>Circuit Design</span><span>60%</span>
               </div>
-              <div class="sk-track">
-                <div class="sk-fill" style="width: 60%"></div>
+              <div class="sk_track">
+                <div class="sk_fill" style="width: 60%"></div>
               </div>
             </div>
             <div class="sk">
-              <div class="sk-head"><span>Sensors</span><span>55%</span></div>
-              <div class="sk-track">
-                <div class="sk-fill" style="width: 55%"></div>
+              <div class="sk_head"><span>Sensors</span><span>55%</span></div>
+              <div class="sk_track">
+                <div class="sk_fill" style="width: 55%"></div>
               </div>
             </div>
           </div>
 
-          <!-- ROW 4: Certs · Languages · Download -->
+          <!-- ROW 4: Certs · Languages -->
           <div class="bc s6" style="animation-delay: 0.36s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-certificate"></i> certifications
             </div>
-            <div class="cert-row">
-              <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="cert_row">
+              <div class="cert_icon"><i class="fa-solid fa-award"></i></div>
               <div>
-                <div class="cert-name">On-The-Job Training</div>
-                <div class="cert-issuer">
+                <div class="cert_name">On-The-Job Training</div>
+                <div class="cert_issuer">
                   Zamboanga City Medical Center · 2024
                 </div>
               </div>
             </div>
-            <div class="cert-row">
-              <div class="cert-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="cert_row">
+              <div class="cert_icon"><i class="fa-solid fa-microchip"></i></div>
               <div>
-                <div class="cert-name">
+                <div class="cert_name">
                   PCB Development and Design Seminar & Workshop
                 </div>
-                <div class="cert-issuer">
+                <div class="cert_issuer">
                   Junior IECEP – ADZU Chapter · 2023
                 </div>
               </div>
@@ -914,76 +884,57 @@
           </div>
 
           <div class="bc s6" style="animation-delay: 0.4s">
-            <div class="bc-label">
+            <div class="bc_label">
               <i class="fa-solid fa-language"></i> languages
             </div>
-            <div class="lang-row">
-              <span>🇵🇭 Filipino</span><span class="lang-level">Native</span>
+            <div class="lang_row">
+              <span>🇵🇭 Filipino</span><span class="lang_level">Native</span>
             </div>
-            <div class="lang-row">
-              <span>🇺🇸 English</span><span class="lang-level">Fluent</span>
+            <div class="lang_row">
+              <span>🇺🇸 English</span><span class="lang_level">Fluent</span>
             </div>
-            <div class="lang-row">
+            <div class="lang_row">
               <span>🗣️ Chavacano</span
-              ><span class="lang-level">Intermediate</span>
+              ><span class="lang_level">Intermediate</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="site-footer">
-      <span id="copyright"></span>
-      <div class="social-links-footer">
+    <!-- ======= FOOTER ======= -->
+    <footer class="site_footer">
+      <span class="copyright_text">© 2025 Chezter Vargas</span>
+      <div class="social_links_footer">
         <a
           href="https://www.youtube.com/@LeCaseus"
           target="_blank"
-          class="social-footer-btn"
-          ><i class="fa-brands fa-youtube"></i
-        ></a>
+          class="social_footer_btn"
+        >
+          <i class="fa-brands fa-youtube"></i>
+        </a>
         <a
           href="https://github.com/LeCaseus"
           target="_blank"
-          class="social-footer-btn"
-          ><i class="fa-brands fa-github"></i
-        ></a>
+          class="social_footer_btn"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
         <a
           href="https://www.linkedin.com/in/lecaseus"
           target="_blank"
-          class="social-footer-btn"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
+          class="social_footer_btn"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
         <a
           href="https://www.instagram.com/cheeshire_/"
           target="_blank"
-          class="social-footer-btn"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
+          class="social_footer_btn"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
       </div>
     </footer>
-
-    <script>
-      document.getElementById("copyright").textContent =
-        `Chezter Vargas © ${new Date().getFullYear()}`;
-      function toggleMenu() {
-        const btn = document.getElementById("nav-hamburger");
-        const menu = document.getElementById("nav-mobile");
-        const open = menu.classList.toggle("open");
-        btn.classList.toggle("open", open);
-      }
-      document.querySelectorAll(".nav-mobile a").forEach((l) => {
-        l.addEventListener("click", () => {
-          document.getElementById("nav-mobile").classList.remove("open");
-          document.getElementById("nav-hamburger").classList.remove("open");
-        });
-      });
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest("nav") && !e.target.closest(".nav-mobile")) {
-          document.getElementById("nav-mobile").classList.remove;
-        }
-        ("open");
-        document.getElementById("nav-hamburger").classList.remove("open");
-      });
-    </script>
   </body>
 </html>
