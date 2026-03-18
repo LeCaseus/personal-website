@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChezterVargas</title>
+    <title>Chezter Vargas</title>
 
     <!-- ======= FONTS ======= -->
+    <!-- Bebas Neue: display/hero headings -->
+    <!-- Editorial New (via Fraunces as fallback): section headers -->
+    <!-- Space Mono: body, mono accents -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap"
       rel="stylesheet"
     />
 
@@ -27,14 +30,16 @@
   <body>
     <!-- ======= NAVIGATION BAR ======= -->
     <nav class="top_nav">
-      <a href="index.html" class="nav_logo">chezter<em>vargas</em></a>
+      <a href="#hero_section" class="nav_logo">CV<em>.</em></a>
       <div class="nav_links">
-        <a href="index.html" class="nav_link active">home</a>
-        <a href="#portfolio_section" class="nav_link">portfolio</a>
+        <a href="#hero_section" class="nav_link active">home</a>
+        <a href="#about_section" class="nav_link">about</a>
+        <a href="#edu_section" class="nav_link">edu</a>
+        <a href="#exp_section" class="nav_link">exp</a>
+        <a href="#portfolio_section" class="nav_link">work</a>
         <a href="#blog_section" class="nav_link">blog</a>
-        <a href="about.html" class="nav_link">about</a>
+        <a href="#contact_section" class="nav_link">contact</a>
       </div>
-
       <a href="mailto:cheztervargas@outlook.com" class="nav_cta"
         >get in touch ↗</a
       >
@@ -42,170 +47,368 @@
 
     <!-- ======= MAIN PAGE CONTENT ======= -->
     <main class="page_content">
-      <!-- HERO SECTION -->
+      <!-- ─────────────────────────────── HERO ─── -->
       <section id="hero_section" class="hero_section">
-        <div class="hero_photo">
-          <img
-            src="assets/homepage.JPG"
-            alt="Hero Photo"
-            style="width: 100%; height: 100%; object-fit: cover; display: block"
-          />
+        <!-- Big editorial ticker text running across the top -->
+        <div class="hero_ticker_wrap">
+          <div class="hero_ticker">
+            <span>CHEZTER VARGAS</span>
+            <span class="ticker_dot">✦</span>
+            <span>BIOMEDICAL ENGINEER</span>
+            <span class="ticker_dot">✦</span>
+            <span>WEB DEV HOBBYIST</span>
+            <span class="ticker_dot">✦</span>
+            <span>CHEZTER VARGAS</span>
+            <span class="ticker_dot">✦</span>
+            <span>BIOMEDICAL ENGINEER</span>
+            <span class="ticker_dot">✦</span>
+            <span>WEB DEV HOBBYIST</span>
+            <span class="ticker_dot">✦</span>
+          </div>
         </div>
-        <div class="hero_text">
-          <p class="hero_eyebrow reveal">welcome to my personal space</p>
-          <h1 class="hero_heading reveal reveal_delay_1">
-            Hi, I'm <em>Chezter Vargas</em>
-          </h1>
-          <p class="hero_body reveal reveal_delay_2">
-            I'm stepping back from all the noise, not because I'm antisocial but
-            because social media has stopped being social. It's just an
-            algorithm selling your attention now. I'd rather show up here, on my
-            own terms.
-          </p>
-          <div class="social_links reveal reveal_delay_3">
+
+        <!-- Main hero content area -->
+        <div class="hero_body_wrap">
+          <!-- Left: the big name block -->
+          <div class="hero_left">
+            <p class="hero_eyebrow reveal">— based in Wellington, NZ</p>
+            <h1 class="hero_name reveal reveal_delay_1">
+              <span class="hero_name_line">CHEZ</span>
+              <span class="hero_name_line accent_line">TER</span>
+              <span class="hero_name_line">VAR</span>
+              <span class="hero_name_line accent_line">GAS</span>
+            </h1>
+          </div>
+
+          <!-- Right: the intro copy + actions -->
+          <div class="hero_right reveal reveal_delay_2">
+            <p class="hero_intro">
+              I'm stepping back from all the noise, not because I'm antisocial
+              but because social media has stopped being social. It's just an
+              algorithm selling your attention now. I'd rather show up here, on
+              my own terms.
+            </p>
+            <div class="hero_meta">
+              <span class="hero_meta_item"
+                ><em>01 /</em> Biomedical Engineer</span
+              >
+              <span class="hero_meta_item"><em>02 /</em> Web Dev Hobbyist</span>
+              <span class="hero_meta_item"><em>03 /</em> AI Tinkerer</span>
+            </div>
+            <div class="hero_actions">
+              <a href="#blog_section" class="btn_primary">read the blog</a>
+              <a href="#portfolio_section" class="btn_ghost">see my work</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom rule with scroll hint -->
+        <div class="hero_footer">
+          <div class="hero_social_row">
             <a
               href="https://www.youtube.com/@LeCaseus"
               target="_blank"
               class="social_btn"
-            >
-              <i class="fa-brands fa-youtube"></i>
-            </a>
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
             <a
               href="https://github.com/LeCaseus"
               target="_blank"
               class="social_btn"
-            >
-              <i class="fa-brands fa-github"></i>
-            </a>
+              ><i class="fa-brands fa-github"></i
+            ></a>
             <a
               href="https://www.linkedin.com/in/lecaseus"
               target="_blank"
               class="social_btn"
-            >
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
             <a
               href="https://www.instagram.com/cheeshire_/"
               target="_blank"
               class="social_btn"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
           </div>
-          <div class="hero_actions reveal reveal_delay_4">
-            <a
-              href="#blog_section"
-              class="btn_hero_primary"
-              style="text-decoration: none"
-              >read my blog</a
-            >
-            <a
-              href="/about.html"
-              class="btn_hero_ghost"
-              style="text-decoration: none"
-              >who am I?</a
-            >
-          </div>
-          <div class="scroll_hint reveal reveal_delay_4">
+          <div class="scroll_hint">
             <span class="scroll_arrow">↓</span>
-            <span>scroll to see stuff</span>
+            <span>scroll down</span>
           </div>
         </div>
       </section>
 
-      <!-- PORTFOLIO SECTION -->
-      <section id="portfolio_section" class="portfolio_section">
-        <div class="section_header">
-          <div>
-            <h2 class="section_heading">my <em>projects</em></h2>
-            <p class="section_sub"><em>a few highlights from the lab</em></p>
+      <!-- ─────────────────────────────── ABOUT ─── -->
+      <section id="about_section" class="section_block">
+        <div class="section_label reveal">
+          <span class="section_num">01</span>
+          <span class="section_rule"></span>
+          <span class="section_title">ABOUT ME</span>
+        </div>
+
+        <div class="about_grid">
+          <!-- Photo placeholder -->
+          <div class="about_photo_col reveal reveal_delay_1">
+            <div class="about_photo_frame">
+              <img src="assets/hero_bg.jpeg" alt="Chezter Vargas" />
+            </div>
+            <!-- Download CV button lives under the photo -->
+            <a href="assets/CVargas_Resume.pdf" class="btn_cv" download>
+              <i class="fa-solid fa-download"></i> Download CV
+            </a>
+          </div>
+
+          <!-- Text col -->
+          <div class="about_text_col reveal reveal_delay_2">
+            <h2 class="section_heading">
+              Hi, I'm <em>Chezter.</em><br />
+              I build things<br />
+              and write about them.
+            </h2>
+            <p class="about_body">
+              Biomedical engineering grad from Zamboanga City now living in
+              Wellington, NZ. I spend most of my time tinkering with code,
+              working on a personal AI assistant called CH3SH1RE, and writing
+              about whatever's on my mind — away from the algorithm.
+            </p>
+            <p class="about_body">
+              I care about building useful things: medical tech, automation,
+              hardware, software. Doesn't really matter as long as it solves
+              something real.
+            </p>
+            <div class="about_chips">
+              <span class="chip">🩺 healthtech</span>
+              <span class="chip">🤖 AI & automation</span>
+              <span class="chip">🎮 gaming</span>
+              <span class="chip">🖥️ web dev</span>
+              <span class="chip">🔧 CAD & 3D</span>
+              <span class="chip">✍️ writing</span>
+              <span class="chip">🐍 Python</span>
+              <span class="chip">📡 embedded systems</span>
+            </div>
           </div>
         </div>
-        <div class="proj_bento">
+      </section>
+
+      <!-- ────────────────────────────── EDUCATION ─── -->
+      <section id="edu_section" class="section_block section_dark">
+        <div class="section_label reveal">
+          <span class="section_num">02</span>
+          <span class="section_rule"></span>
+          <span class="section_title">EDUCATION</span>
+        </div>
+
+        <h2 class="section_heading reveal reveal_delay_1">
+          Where I <em>learned.</em>
+        </h2>
+
+        <div class="timeline reveal reveal_delay_2">
+          <div class="tl_item">
+            <div class="tl_year">2021–2025</div>
+            <div class="tl_body">
+              <div class="tl_head">
+                <span class="tl_role">BS Biomedical Engineering</span>
+                <span class="tl_badge">GPA 3.23</span>
+              </div>
+              <div class="tl_org">Ateneo de Zamboanga University</div>
+              <p class="tl_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+                vehicula facilisis orci, at posuere neque fermentum vel.
+                Pellentesque habitant morbi tristique senectus et netus et
+                malesuada fames.
+              </p>
+              <div class="tl_tags">
+                <span class="tag">Biomedical Engineering</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">C++</span>
+                <span class="tag">3D Printing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl_item">
+            <div class="tl_year">2023</div>
+            <div class="tl_body">
+              <div class="tl_head">
+                <span class="tl_role">PCB Development & Design Seminar</span>
+              </div>
+              <div class="tl_org">Junior IECEP – ADZU Chapter</div>
+              <p class="tl_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div class="tl_tags">
+                <span class="tag">PCB Design</span>
+                <span class="tag">Circuit Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────── EXPERIENCE ─── -->
+      <section id="exp_section" class="section_block">
+        <div class="section_label reveal">
+          <span class="section_num">03</span>
+          <span class="section_rule"></span>
+          <span class="section_title">EXPERIENCE</span>
+        </div>
+
+        <h2 class="section_heading reveal reveal_delay_1">
+          Where I've <em>worked.</em>
+        </h2>
+
+        <div class="timeline reveal reveal_delay_2">
+          <div class="tl_item">
+            <div class="tl_year">2024–2025</div>
+            <div class="tl_body">
+              <div class="tl_head">
+                <span class="tl_role">Biomedical Engineer Intern</span>
+                <span class="tl_badge">Full-time</span>
+              </div>
+              <div class="tl_org">Zamboanga City Medical Center, PH</div>
+              <p class="tl_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maintained and calibrated medical equipment, designed 3D-printed
+                R&D components, conducted product demonstrations, and supported
+                department operations. Quisque vehicula facilisis orci, at
+                posuere neque fermentum vel.
+              </p>
+              <div class="tl_tags">
+                <span class="tag">Medical Equipment</span>
+                <span class="tag">CAD</span>
+                <span class="tag">3D Printing</span>
+                <span class="tag">Documentation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl_item">
+            <div class="tl_year">lorem</div>
+            <div class="tl_body">
+              <div class="tl_head">
+                <span class="tl_role">Lorem Ipsum Role Title</span>
+              </div>
+              <div class="tl_org">Lorem Ipsum Organisation, City</div>
+              <p class="tl_desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+              </p>
+              <div class="tl_tags">
+                <span class="tag">Skill One</span>
+                <span class="tag">Skill Two</span>
+                <span class="tag">Skill Three</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────── PORTFOLIO ─── -->
+      <section id="portfolio_section" class="section_block section_dark">
+        <div class="section_label reveal">
+          <span class="section_num">04</span>
+          <span class="section_rule"></span>
+          <span class="section_title">PORTFOLIO</span>
+        </div>
+
+        <h2 class="section_heading reveal reveal_delay_1">
+          Things I <em>built.</em>
+        </h2>
+
+        <div class="proj_grid reveal reveal_delay_2">
           <a
             href="/portfolio/em-brace.html"
-            class="pb_card pb_wide"
+            class="proj_card proj_card_wide"
             style="text-decoration: none"
           >
-            <div class="pb_bg">
+            <div class="proj_card_img">
               <img
                 src="assets/portfolio_media/em-brace-snapshot.jpeg"
                 alt="eM-Brace"
               />
             </div>
-            <div class="pb_overlay">
-              <span class="project_cat project_cat_biomed">biomedical</span>
-              <h3 class="pb_title">eM-Brace</h3>
-              <p class="pb_desc">
+            <div class="proj_card_body">
+              <span class="proj_cat proj_cat_biomed">biomedical</span>
+              <h3 class="proj_title">eM-Brace</h3>
+              <p class="proj_desc">
                 Autonomous wrist splint with massage system for Carpal Tunnel
                 Syndrome. Final year thesis.
               </p>
-              <div class="project_tags">
-                <span class="project_tag">Arduino</span
-                ><span class="project_tag">Sensors</span
-                ><span class="project_tag">3D Printing</span
-                ><span class="project_tag">C++</span>
+              <div class="proj_tags">
+                <span class="tag">Arduino</span>
+                <span class="tag">Sensors</span>
+                <span class="tag">3D Printing</span>
+                <span class="tag">C++</span>
               </div>
             </div>
+            <span class="proj_arrow">↗</span>
           </a>
+
           <a
             href="/portfolio/ch3sh1re.html"
-            class="pb_card pb_small pb_emoji_card"
+            class="proj_card"
             style="text-decoration: none"
           >
-            <div class="pb_bg pb_bg_emoji">🐱</div>
-            <div class="pb_overlay">
-              <span class="project_cat project_cat_ai">AI / Python</span>
-              <h3 class="pb_title">CH3SH1RE</h3>
-              <p class="pb_desc">
+            <div class="proj_card_emoji">🐱</div>
+            <div class="proj_card_body">
+              <span class="proj_cat proj_cat_ai">AI / Python</span>
+              <h3 class="proj_title">CH3SH1RE</h3>
+              <p class="proj_desc">
                 A local AI assistant I'm building for fun — early experiments
-                and notes on the repo.
+                and notes.
               </p>
-              <div class="project_tags">
-                <span class="project_tag">Python</span
-                ><span class="project_tag">SQLite</span
-                ><span class="project_tag">LLM</span>
+              <div class="proj_tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">LLM</span>
               </div>
             </div>
+            <span class="proj_arrow">↗</span>
           </a>
+
           <a
             href="/portfolio/personal-website.html"
-            class="pb_card pb_small"
+            class="proj_card"
             style="text-decoration: none"
           >
-            <div class="pb_bg">
+            <div class="proj_card_img">
               <img
                 src="assets/portfolio_media/website-snapshot.png"
                 alt="Personal Website"
               />
             </div>
-            <div class="pb_overlay">
-              <span class="project_cat project_cat_web">web</span>
-              <h3 class="pb_title">Personal Website</h3>
-              <p class="pb_desc">
+            <div class="proj_card_body">
+              <span class="proj_cat proj_cat_web">web</span>
+              <h3 class="proj_title">Personal Website</h3>
+              <p class="proj_desc">
                 You're looking at it. Vanilla stack, hosted on Vercel.
               </p>
-              <div class="project_tags">
-                <span class="project_tag">HTML</span
-                ><span class="project_tag">CSS</span
-                ><span class="project_tag">JS</span>
+              <div class="proj_tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JS</span>
               </div>
             </div>
+            <span class="proj_arrow">↗</span>
           </a>
         </div>
       </section>
 
-      <!-- BLOG SECTION -->
-      <section id="blog_section" class="blog_section">
-        <div class="section_header">
-          <div>
-            <h2 class="section_heading">the <em>blog</em></h2>
-            <p class="section_sub"><em>read em and weep or whatever</em></p>
-          </div>
+      <!-- ─────────────────────────────── BLOG ─── -->
+      <section id="blog_section" class="section_block">
+        <div class="section_label reveal">
+          <span class="section_num">05</span>
+          <span class="section_rule"></span>
+          <span class="section_title">BLOG</span>
         </div>
 
+        <h2 class="section_heading reveal reveal_delay_1">
+          Things I <em>wrote.</em>
+        </h2>
+
         <!-- Tag filter bubbles — filter_blog() in script.js handles the active state toggle -->
-        <div class="tag_cloud">
+        <div class="tag_cloud reveal reveal_delay_2">
           <div class="tag_bubble active" onclick="filter_blog(null, this)">
             ✦ all
           </div>
@@ -227,17 +430,17 @@
         </div>
 
         <!-- Blog cards live here — add a new <a class="blog_card"> for each post -->
-        <div class="blog_scroll_wrap">
+        <div class="blog_scroll_wrap reveal reveal_delay_3">
           <div id="blog_feed" class="blog_feed">
-            <!-- TEMPLATE: copy this block for each new post you write
-            <a href="posts/your-post-filename.html" class="blog_card">
+            <!-- TEMPLATE: copy this block for each new post
+            <a href="blogs/your-slug.html" class="blog_card" data-category="personal">
               <div class="blog_card_bg">
-                <img src="assets/your-cover-image.jpg" alt="Post title" />
+                <img src="assets/blog_media/cover.jpg" alt="Post title" />
               </div>
               <div class="blog_card_overlay">
                 <span class="cat_tag cat_personal">personal</span>
                 <h3 class="blog_card_title">Your Post Title</h3>
-                <p class="blog_card_excerpt">One sentence that makes someone want to read it.</p>
+                <p class="blog_card_excerpt">One sentence hook.</p>
                 <span class="blog_card_date">Jan 1, 2025</span>
               </div>
             </a>
@@ -259,11 +462,9 @@
                   print("Hello to the Real World!")
                 </h3>
                 <p class="blog_card_excerpt">
-                  Everything nowadays is just a bunch of SEO optimization and
-                  spouting out AI nonsense. Countless posts that are just
-                  generated by AI. The captions, the posts, even the comments
-                  sometimes. Honestly, I can't tell anymore if they were written
-                  by a really good writer or just AI...
+                  Everything nowadays is just SEO optimization and AI nonsense.
+                  I can't tell anymore if they were written by a really good
+                  writer or just AI...
                 </p>
                 <span class="blog_card_date">Jul 5, 2025</span>
               </div>
@@ -321,40 +522,92 @@
           </button>
         </div>
       </section>
+
+      <!-- ─────────────────────────────── CONTACT ─── -->
+      <section id="contact_section" class="section_block section_contact">
+        <div class="section_label reveal">
+          <span class="section_num">06</span>
+          <span class="section_rule"></span>
+          <span class="section_title">GET IN TOUCH</span>
+        </div>
+
+        <!-- Big CTA heading -->
+        <div class="contact_heading_wrap reveal reveal_delay_1">
+          <h2 class="contact_heading">LET'S<br /><em>TALK.</em></h2>
+        </div>
+
+        <div class="contact_body reveal reveal_delay_2">
+          <p class="contact_sub">
+            Open to full-time roles in biomedical engineering, healthtech, or
+            anything that catches my eye. Reach out and let's chat.
+          </p>
+          <a href="mailto:cheztervargas@outlook.com" class="contact_email">
+            cheztervargas@outlook.com ↗
+          </a>
+
+          <div class="contact_social">
+            <a
+              href="https://www.youtube.com/@LeCaseus"
+              target="_blank"
+              class="contact_social_item"
+            >
+              <i class="fa-brands fa-youtube"></i><span>YouTube</span>
+            </a>
+            <a
+              href="https://github.com/LeCaseus"
+              target="_blank"
+              class="contact_social_item"
+            >
+              <i class="fa-brands fa-github"></i><span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lecaseus"
+              target="_blank"
+              class="contact_social_item"
+            >
+              <i class="fa-brands fa-linkedin"></i><span>LinkedIn</span>
+            </a>
+            <a
+              href="https://www.instagram.com/cheeshire_/"
+              target="_blank"
+              class="contact_social_item"
+            >
+              <i class="fa-brands fa-instagram"></i><span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- ======= FOOTER ======= -->
     <footer class="site_footer">
-      <span class="copyright_text">© 2025 Chezter Vargas</span>
-      <div class="social_links">
+      <span class="copyright_text">© 2026 Chezter Vargas</span>
+      <span class="footer_handle">@LeCaseus</span>
+      <div class="social_links_footer">
         <a
           href="https://www.youtube.com/@LeCaseus"
           target="_blank"
-          class="social_btn"
-        >
-          <i class="fa-brands fa-youtube"></i>
-        </a>
+          class="social_footer_btn"
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
         <a
           href="https://github.com/LeCaseus"
           target="_blank"
-          class="social_btn"
-        >
-          <i class="fa-brands fa-github"></i>
-        </a>
+          class="social_footer_btn"
+          ><i class="fa-brands fa-github"></i
+        ></a>
         <a
           href="https://www.linkedin.com/in/lecaseus"
           target="_blank"
-          class="social_btn"
-        >
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
+          class="social_footer_btn"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
         <a
           href="https://www.instagram.com/cheeshire_/"
           target="_blank"
-          class="social_btn"
-        >
-          <i class="fa-brands fa-instagram"></i>
-        </a>
+          class="social_footer_btn"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
       </div>
     </footer>
 
