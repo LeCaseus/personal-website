@@ -72,9 +72,8 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  /* Space Mono as body gives the whole site a coder/hobbyist feel */
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
 }
 
 img {
@@ -305,19 +304,7 @@ img {
   color: var(--bg);
   border: 1px solid var(--ink);
   padding: 0.7rem 1.6rem;
-  font-family: "Space Mono", monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-  display: inline-block;
-}
-.btn_primary:hover {
+  font-family: "DM Sans", sans-serif;
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
@@ -327,17 +314,7 @@ img {
   color: var(--ink2);
   border: 1px solid var(--rule2);
   padding: 0.7rem 1.6rem;
-  font-family: "Space Mono", monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
-  display: inline-block;
+  font-family: "DM Sans", sans-serif;
 }
 .btn_ghost:hover {
   border-color: var(--ink);
@@ -392,43 +369,19 @@ img {
   background: var(--paper);
 }
 
-/* Section label row: "01 ─────── ABOUT ME" */
-.section_label {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-}
-.section_num {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-}
-.section_rule {
-  flex: 0 0 48px;
-  height: 1px;
-  background: var(--rule2);
-}
-.section_title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  color: var(--faint);
-}
-
-/* Section heading — editorial serif with accent italic */
+/* Section heading — massive, bold, uppercase, all-caps editorial */
 .section_heading {
-  font-family: "Fraunces", serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   margin-bottom: 3rem;
   color: var(--ink);
 }
 .section_heading em {
-  font-style: italic;
+  font-style: normal;
   color: var(--accent);
 }
 
@@ -472,8 +425,6 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  position: sticky;
-  top: 90px;
 }
 .about_photo_frame {
   width: 100%;
@@ -497,9 +448,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-family: "Space Mono", monospace;
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -568,7 +517,8 @@ img {
 }
 
 .tl_year {
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
   font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -614,6 +564,165 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+/* ─── 7b. EDUCATION SECTION (reference layout) ───────────────────────── */
+/* Top half: photo with red circle on left, massive heading on right */
+
+.edu_hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 0;
+  min-height: 480px;
+}
+
+.edu_photo_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+/* The big red circle behind the photo */
+.edu_red_circle {
+  position: absolute;
+  width: clamp(260px, 38vw, 420px);
+  height: clamp(260px, 38vw, 420px);
+  background: var(--accent);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.edu_photo {
+  position: relative;
+  z-index: 1;
+  width: clamp(220px, 32vw, 380px);
+  height: clamp(300px, 46vw, 540px);
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* The huge "MY EDUCATION" heading */
+.edu_heading {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 1.5rem;
+}
+.edu_heading em {
+  font-style: normal;
+  color: var(
+    --ink
+  ); /* same colour — no accent tint on heading, matches reference */
+}
+
+/* Right column: heading + entries stacked */
+.edu_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Entry list — no top border since it flows directly from the heading */
+.edu_entries {
+  border-top: none;
+}
+
+.edu_entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem clamp(1.5rem, 4vw, 3.5rem);
+  border-bottom: 1px solid var(--rule);
+}
+.edu_entry:last-child {
+  border-bottom: none;
+}
+
+.edu_entry_left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 640px;
+}
+
+.edu_entry_title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.edu_entry_org {
+  font-size: 0.8rem;
+  color: var(--ink2);
+  margin-bottom: 0.4rem;
+}
+
+.edu_entry_desc {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--ink2);
+}
+
+.edu_entry_year {
+  font-size: 0.78rem;
+  color: var(--ink2);
+  white-space: nowrap;
+  padding-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+/* Education section overrides — photo hero needs to bleed to edges */
+#edu_section {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Experience section — same layout, photo on the right */
+.exp_section {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.exp_hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 480px;
+}
+.exp_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.exp_heading {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 1.5rem;
+}
+.exp_heading em {
+  font-style: normal;
+  color: var(--ink);
+}
+#edu_section .edu_entries {
+  /* entries restore horizontal padding */
 }
 
 /* ─── 8. PORTFOLIO GRID ───────────────────────────────────────────────── */
@@ -715,7 +824,8 @@ img {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
 }
 .proj_cat_biomed {
   background: rgba(232, 64, 64, 0.12);
@@ -820,11 +930,12 @@ img {
   color: white;
 }
 .blog_card_title {
-  font-family: "Fraunces", serif;
-  font-size: 1.2rem;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.15;
   color: white;
   margin-bottom: 0.5rem;
 }
@@ -843,7 +954,7 @@ img {
   font-size: 0.62rem;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.45);
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
 }
 
 /* Blog scroll buttons — flat square, no radius */
@@ -860,7 +971,7 @@ img {
   cursor: pointer;
   z-index: 2;
   transition: background 0.15s;
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
 }
 .blog_scroll_btn:hover {
   background: var(--accent);
@@ -885,7 +996,8 @@ img {
 }
 
 .tag_bubble {
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -914,7 +1026,8 @@ img {
 /* Category badge on blog cards */
 .cat_tag {
   display: inline-block;
-  font-family: "Space Mono", monospace;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
   font-size: 0.58rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -956,12 +1069,6 @@ img {
   gap: clamp(2rem, 6vw, 6rem);
   align-items: start;
 }
-/* .section_label spans full width */
-.section_contact .section_label {
-  grid-column: 1 / -1;
-  margin-bottom: 0;
-}
-
 /* Big contact heading fills the left column */
 .contact_heading_wrap {
   /* grid column 1 implicitly */
@@ -1017,6 +1124,7 @@ img {
   padding: 0.65rem 1.1rem;
   border-right: 1px solid var(--rule2);
   font-size: 0.65rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink2);
@@ -1113,9 +1221,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Space Mono", monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
   color: var(--faint);
 }
 .footer_handle {
@@ -1165,6 +1273,24 @@ img {
   .about_photo_col {
     position: static;
     max-width: 260px;
+  }
+
+  /* Edu + exp hero stack on mobile */
+  .edu_hero,
+  .exp_hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .edu_photo_wrap {
+    min-height: 320px;
+  }
+  .edu_heading {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+    padding: 1.5rem;
+  }
+  .edu_entry {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   /* Timeline: year above content */

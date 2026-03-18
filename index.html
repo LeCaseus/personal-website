@@ -7,10 +7,10 @@
 
     <!-- ======= FONTS ======= -->
     <!-- Bebas Neue: display/hero headings -->
-    <!-- Editorial New (via Fraunces as fallback): section headers -->
-    <!-- Space Mono: body, mono accents -->
+    <!-- Barlow Condensed 700: section subheadings, bold editorial -->
+    <!-- DM Sans 300/400: body text, clean and minimal -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -139,12 +139,6 @@
 
       <!-- ─────────────────────────────── ABOUT ─── -->
       <section id="about_section" class="section_block">
-        <div class="section_label reveal">
-          <span class="section_num">01</span>
-          <span class="section_rule"></span>
-          <span class="section_title">ABOUT ME</span>
-        </div>
-
         <div class="about_grid">
           <!-- Photo placeholder -->
           <div class="about_photo_col reveal reveal_delay_1">
@@ -191,54 +185,47 @@
 
       <!-- ────────────────────────────── EDUCATION ─── -->
       <section id="edu_section" class="section_block section_dark">
-        <div class="section_label reveal">
-          <span class="section_num">02</span>
-          <span class="section_rule"></span>
-          <span class="section_title">EDUCATION</span>
-        </div>
-
-        <h2 class="section_heading reveal reveal_delay_1">
-          Where I <em>learned.</em>
-        </h2>
-
-        <div class="timeline reveal reveal_delay_2">
-          <div class="tl_item">
-            <div class="tl_year">2021–2025</div>
-            <div class="tl_body">
-              <div class="tl_head">
-                <span class="tl_role">BS Biomedical Engineering</span>
-                <span class="tl_badge">GPA 3.23</span>
-              </div>
-              <div class="tl_org">Ateneo de Zamboanga University</div>
-              <p class="tl_desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                vehicula facilisis orci, at posuere neque fermentum vel.
-                Pellentesque habitant morbi tristique senectus et netus et
-                malesuada fames.
-              </p>
-              <div class="tl_tags">
-                <span class="tag">Biomedical Engineering</span>
-                <span class="tag">Arduino</span>
-                <span class="tag">C++</span>
-                <span class="tag">3D Printing</span>
-              </div>
-            </div>
+        <!-- Left: photo with red circle. Right: heading + entries stacked -->
+        <div class="edu_hero reveal">
+          <div class="edu_photo_wrap">
+            <div class="edu_red_circle"></div>
+            <img
+              src="assets/hero_bg.jpeg"
+              alt="Education photo"
+              class="edu_photo"
+            />
           </div>
-
-          <div class="tl_item">
-            <div class="tl_year">2023</div>
-            <div class="tl_body">
-              <div class="tl_head">
-                <span class="tl_role">PCB Development & Design Seminar</span>
+          <div class="edu_right">
+            <h2 class="edu_heading">MY<br /><em>EDUCATION</em></h2>
+            <div class="edu_entries">
+              <div class="edu_entry">
+                <div class="edu_entry_left">
+                  <span class="edu_entry_title">BS Biomedical Engineering</span>
+                  <span class="edu_entry_org"
+                    >Ateneo de Zamboanga University</span
+                  >
+                  <p class="edu_entry_desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+                <span class="edu_entry_year">(2021 – 2025)</span>
               </div>
-              <div class="tl_org">Junior IECEP – ADZU Chapter</div>
-              <p class="tl_desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <div class="tl_tags">
-                <span class="tag">PCB Design</span>
-                <span class="tag">Circuit Design</span>
+
+              <div class="edu_entry">
+                <div class="edu_entry_left">
+                  <span class="edu_entry_title"
+                    >PCB Development & Design Seminar</span
+                  >
+                  <span class="edu_entry_org">Junior IECEP – ADZU Chapter</span>
+                  <p class="edu_entry_desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+                <span class="edu_entry_year">(2023)</span>
               </div>
             </div>
           </div>
@@ -246,75 +233,74 @@
       </section>
 
       <!-- ─────────────────────────────── EXPERIENCE ─── -->
-      <section id="exp_section" class="section_block">
-        <div class="section_label reveal">
-          <span class="section_num">03</span>
-          <span class="section_rule"></span>
-          <span class="section_title">EXPERIENCE</span>
-        </div>
-
-        <h2 class="section_heading reveal reveal_delay_1">
-          Where I've <em>worked.</em>
-        </h2>
-
-        <div class="timeline reveal reveal_delay_2">
-          <div class="tl_item">
-            <div class="tl_year">2024–2025</div>
-            <div class="tl_body">
-              <div class="tl_head">
-                <span class="tl_role">Biomedical Engineer Intern</span>
-                <span class="tl_badge">Full-time</span>
+      <section id="exp_section" class="section_block exp_section">
+        <div class="exp_hero reveal">
+          <!-- Left: heading + entries -->
+          <div class="exp_left">
+            <h2 class="exp_heading">WHERE<br />I'VE<br /><em>WORKED.</em></h2>
+            <div class="edu_entries">
+              <div class="edu_entry">
+                <div class="edu_entry_left">
+                  <span class="edu_entry_title"
+                    >Biomedical Engineer Intern</span
+                  >
+                  <span class="edu_entry_org"
+                    >Zamboanga City Medical Center, PH &nbsp;·&nbsp;
+                    Full-time</span
+                  >
+                  <p class="edu_entry_desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maintained and calibrated medical equipment, designed
+                    3D-printed R&D components, conducted product demonstrations,
+                    and supported department operations.
+                  </p>
+                  <div class="tl_tags" style="margin-top: 0.5rem">
+                    <span class="tag">Medical Equipment</span>
+                    <span class="tag">CAD</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">Documentation</span>
+                  </div>
+                </div>
+                <span class="edu_entry_year">(2024 – 2025)</span>
               </div>
-              <div class="tl_org">Zamboanga City Medical Center, PH</div>
-              <p class="tl_desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maintained and calibrated medical equipment, designed 3D-printed
-                R&D components, conducted product demonstrations, and supported
-                department operations. Quisque vehicula facilisis orci, at
-                posuere neque fermentum vel.
-              </p>
-              <div class="tl_tags">
-                <span class="tag">Medical Equipment</span>
-                <span class="tag">CAD</span>
-                <span class="tag">3D Printing</span>
-                <span class="tag">Documentation</span>
+
+              <div class="edu_entry">
+                <div class="edu_entry_left">
+                  <span class="edu_entry_title">Lorem Ipsum Role Title</span>
+                  <span class="edu_entry_org"
+                    >Lorem Ipsum Organisation, City</span
+                  >
+                  <p class="edu_entry_desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam.
+                  </p>
+                  <div class="tl_tags" style="margin-top: 0.5rem">
+                    <span class="tag">Skill One</span>
+                    <span class="tag">Skill Two</span>
+                    <span class="tag">Skill Three</span>
+                  </div>
+                </div>
+                <span class="edu_entry_year">(lorem)</span>
               </div>
             </div>
           </div>
 
-          <div class="tl_item">
-            <div class="tl_year">lorem</div>
-            <div class="tl_body">
-              <div class="tl_head">
-                <span class="tl_role">Lorem Ipsum Role Title</span>
-              </div>
-              <div class="tl_org">Lorem Ipsum Organisation, City</div>
-              <p class="tl_desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-              </p>
-              <div class="tl_tags">
-                <span class="tag">Skill One</span>
-                <span class="tag">Skill Two</span>
-                <span class="tag">Skill Three</span>
-              </div>
-            </div>
+          <!-- Right: photo with red circle -->
+          <div class="edu_photo_wrap">
+            <div class="edu_red_circle"></div>
+            <img
+              src="assets/hero_bg.jpeg"
+              alt="Experience photo"
+              class="edu_photo"
+            />
           </div>
         </div>
       </section>
 
       <!-- ─────────────────────────────── PORTFOLIO ─── -->
       <section id="portfolio_section" class="section_block section_dark">
-        <div class="section_label reveal">
-          <span class="section_num">04</span>
-          <span class="section_rule"></span>
-          <span class="section_title">PORTFOLIO</span>
-        </div>
-
-        <h2 class="section_heading reveal reveal_delay_1">
-          Things I <em>built.</em>
-        </h2>
+        <h2 class="section_heading reveal">THINGS I<br /><em>BUILT.</em></h2>
 
         <div class="proj_grid reveal reveal_delay_2">
           <a
@@ -397,15 +383,7 @@
 
       <!-- ─────────────────────────────── BLOG ─── -->
       <section id="blog_section" class="section_block">
-        <div class="section_label reveal">
-          <span class="section_num">05</span>
-          <span class="section_rule"></span>
-          <span class="section_title">BLOG</span>
-        </div>
-
-        <h2 class="section_heading reveal reveal_delay_1">
-          Things I <em>wrote.</em>
-        </h2>
+        <h2 class="section_heading reveal">THINGS I<br /><em>WROTE.</em></h2>
 
         <!-- Tag filter bubbles — filter_blog() in script.js handles the active state toggle -->
         <div class="tag_cloud reveal reveal_delay_2">
@@ -525,12 +503,6 @@
 
       <!-- ─────────────────────────────── CONTACT ─── -->
       <section id="contact_section" class="section_block section_contact">
-        <div class="section_label reveal">
-          <span class="section_num">06</span>
-          <span class="section_rule"></span>
-          <span class="section_title">GET IN TOUCH</span>
-        </div>
-
         <!-- Big CTA heading -->
         <div class="contact_heading_wrap reveal reveal_delay_1">
           <h2 class="contact_heading">LET'S<br /><em>TALK.</em></h2>
