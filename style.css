@@ -349,7 +349,7 @@ img {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #888880;
+  color: #606060;
 }
 .hero_coord {
   font-size: 0.65rem;
@@ -387,7 +387,7 @@ img {
   position: relative;
 }
 
-/* Vertical section label — pinned to the right edge */
+/* Vertical section label — pinned to the left edge */
 .section_vert_label {
   position: absolute;
   left: 0;
@@ -408,7 +408,7 @@ img {
   text-transform: uppercase;
   overflow: hidden;
 }
-/* Red-fill variant for alternate sections */
+/* Red-fill variant for alternate sections and pinned to the right*/
 .section_vert_label.red {
   left: auto;
   right: 0;
@@ -688,6 +688,7 @@ img {
   font-size: 0.82rem;
   line-height: 1.75;
   color: var(--ink2);
+  text-align: justify;
 }
 
 .edu_entry_year {
