@@ -350,12 +350,16 @@ img {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #606060;
+  /* allow wrapping on small screens instead of overflowing */
+  flex: 1;
+  min-width: 0;
 }
 .hero_coord {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #606060;
+  white-space: nowrap;
 }
 .scroll_hint {
   display: flex;
@@ -407,6 +411,8 @@ img {
   white-space: nowrap;
   text-transform: uppercase;
   overflow: hidden;
+  /* hidden on mobile — decorative only, causes overlap at narrow widths */
+  pointer-events: none;
 }
 /* Red-fill variant for alternate sections and pinned to the right*/
 .section_vert_label.red {
@@ -697,6 +703,7 @@ img {
   white-space: nowrap;
   padding-top: 0.1rem;
   flex-shrink: 0;
+  min-width: 7rem; /* prevents year from collapsing when title text is long */
 }
 
 /* Education section overrides — photo hero needs to bleed to edges */
@@ -1427,27 +1434,15 @@ img {
   }
 }
 
-/* Tablet: hide nav pill */
+/* Tablet: hide nav pill, keep logo + CTA */
 @media (max-width: 860px) {
   .nav_links {
     display: none;
   }
 }
 
-/* Tablet: hero becomes stacked */
+/* Tablet: stacking layouts + edu/exp hero */
 @media (max-width: 768px) {
-  .hero_body_wrap {
-    grid-template-columns: 1fr;
-  }
-  .hero_left {
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 2rem;
-  }
-  .hero_name_line {
-    font-size: clamp(4rem, 20vw, 7rem);
-  }
-
   /* Contact grid stacks */
   .section_contact {
     grid-template-columns: 1fr;
@@ -1455,19 +1450,109 @@ img {
   .contact_heading {
     font-size: clamp(3.5rem, 16vw, 6rem);
   }
+
+  /* Edu + exp hero stack — photo sits above heading */
+  .edu_hero,
+  .exp_hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  /* On exp, the flex order matters: heading should come first visually */
+  .exp_hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .exp_left {
+    order: 1;
+  }
+  .exp_hero .edu_photo_wrap {
+    order: 2;
+  }
+
+  .edu_photo_wrap {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .edu_heading,
+  .exp_heading {
+    font-size: clamp(3.5rem, 14vw, 6rem);
+    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Entry rows: stack year below title on tablet */
+  .edu_entry {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .edu_entry_year {
+    order: -1; /* year moves above the title block so it reads date → title → desc */
+    padding-top: 0;
+    color: var(--accent);
+  }
 }
 
-/* Mobile: about grid stacks */
+/* Mobile: ~640px and below */
 @media (max-width: 640px) {
+  /* Nav CTA: shrink so it doesn't crowd the logo on narrow screens */
+  .nav_cta {
+    font-size: 0.55rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  /* Hero name: scale down so it fits without overflow */
+  .hero_name_line {
+    font-size: clamp(3.5rem, 19vw, 6rem);
+  }
+  .hero_name_line:first-child {
+    font-size: clamp(3.2rem, 17.5vw, 5.5rem);
+  }
+  .hero_name_line:last-child {
+    font-size: clamp(3.8rem, 20.5vw, 6.5rem);
+  }
+
+  /* Hero footer: wrap gracefully, hide coordinates (eyebrow already says Wellington) */
+  .hero_footer {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.6rem clamp(1rem, 4vw, 2rem);
+  }
+  .hero_coord {
+    display: none;
+  }
+  .scroll_hint {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  /* Section blocks: restore safe padding now that vert labels are hidden */
+  .section_block {
+    padding-left: clamp(1rem, 5vw, 2.5rem);
+    padding-right: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  /* Vertical labels: hide on mobile — purely decorative, causes overlap at narrow widths */
+  .section_vert_label {
+    display: none;
+  }
+
+  /* Section heading: tighten so it doesn't overflow */
+  .section_heading {
+    font-size: clamp(3rem, 14vw, 6rem);
+    margin-bottom: 2rem;
+  }
+
+  /* About: single column, centred photo */
   .about_grid {
     grid-template-columns: 1fr;
   }
   .about_photo_col {
-    position: static;
-    max-width: 260px;
+    max-width: 240px;
+    margin: 0 auto;
   }
 
-  /* Brutalist cards: single column on mobile */
+  /* Brutalist cards: single column */
   .brut_grid {
     grid-template-columns: 1fr;
   }
@@ -1479,65 +1564,55 @@ img {
     border-bottom: none;
   }
 
-  /* Blog rows: tighter on mobile */
+  /* Blog rows: 3-col grid — drop date column */
   .blog_row {
     grid-template-columns: auto 1fr 24px;
     gap: 0.75rem;
+    padding: 1rem 0;
   }
   .blog_row_date {
     display: none;
   }
 
-  /* Edu + exp hero stack on mobile */
-  .edu_hero,
-  .exp_hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .edu_photo_wrap {
-    min-height: 320px;
-  }
-  .edu_heading {
-    font-size: clamp(3.5rem, 18vw, 6rem);
-    padding: 1.5rem;
-  }
-  .edu_entry {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  /* Timeline: year above content */
-  .tl_item {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding-left: 2rem;
-  }
-
-  /* Portfolio: single column */
-  .proj_grid {
-    grid-template-columns: 1fr;
-  }
-  .proj_card {
-    min-height: 280px;
-  }
-
-  /* Blog cards: slightly smaller */
+  /* Blog cards in horizontal scroll: slightly narrower so next card peeks */
   .blog_card {
     flex: 0 0 280px;
     height: 380px;
   }
 
-  /* Hide blog scroll btns (swipe works natively) */
+  /* Hide scroll buttons — swipe works natively on touch screens */
   .blog_scroll_btn {
     display: none;
   }
+
+  /* Contact social row: wrap into a 2×2 grid on narrow screens */
+  .contact_social {
+    flex-wrap: wrap;
+  }
+  .contact_social_item {
+    flex: 1 1 auto;
+    justify-content: center;
+    border-bottom: 1px solid var(--rule2);
+  }
+  .contact_social_item:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
 }
 
-/* Very small phones */
+/* Very small phones (≤400px) */
 @media (max-width: 400px) {
+  /* Name: absolute floor so it never touches the screen edge */
   .hero_name_line {
-    font-size: 18vw;
+    font-size: 17vw;
   }
+  .hero_name_line:first-child {
+    font-size: 16vw;
+  }
+  .hero_name_line:last-child {
+    font-size: 18.5vw;
+  }
+
+  /* Tag filter: break the pill border into individual bubbles so they wrap */
   .tag_cloud {
     flex-wrap: wrap;
     border: none;
@@ -1545,5 +1620,12 @@ img {
   }
   .tag_bubble {
     border: 1px solid var(--rule2);
+  }
+
+  /* Footer: stack items so they don't squeeze each other */
+  .site_footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 }
