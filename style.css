@@ -31,15 +31,15 @@
 }
 
 :root {
-  /* Palette — dark grey base, warm ink, red borders */
-  --bg: #242424;
-  --paper: #2c2c2c;
-  --warm: #333333;
-  --rule: #5a0a04;
-  --rule2: #8a1408;
+  /* Palette — muted dark, warm grey ink, dusty red accent */
+  --bg: #111110;
+  --paper: #191918;
+  --warm: #222220;
+  --rule: #5a0a04; /* dark red — all unfilled borders */
+  --rule2: #8a1408; /* brighter red — emphasis borders */
 
   --ink: #d8d4cc;
-  --ink2: #787068;
+  --ink2: #b8b0a8;
   --faint: #484440;
 
   --accent: #b5200a;
@@ -50,7 +50,7 @@
   --gaming: #3a5ab0;
   --career: #3a7a3a;
   --fitness: #3a7a3a;
-  --letter_bg: #2a2a32;
+  --letter_bg: #131318;
 
   --personal_l: rgba(181, 32, 10, 0.1);
   --gaming_l: rgba(58, 90, 176, 0.1);
@@ -182,46 +182,46 @@ img {
 /* ─── 4. HERO ─────────────────────────────────────────────────────────── */
 
 .hero_section {
-  min-height: 100dvh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
-  background-image: url("assets/IMG_6509.jpeg");
-  background-size: cover;
-  background-position: center;
+  position: relative;
 }
 
-/* Layer 1: the greyscale photo */
-.hero_section::before {
-  content: "";
+/* Background layers */
+.hero_bg_photo {
   position: absolute;
   inset: 0;
-  background-image: inherit;
-  background-size: inherit;
-  background-position: inherit;
+  background-image: url("assets/hero_bg.jpg");
+  background-size: cover;
+  background-position: center;
   filter: grayscale(100%);
   z-index: 0;
 }
-
-/* Layer 2: the dark overlay on top of the photo */
-.hero_section::after {
-  content: "";
+.hero_bg_overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
-  z-index: 0;
+  z-index: 1;
 }
 
-/* Ticker strip across the very top */
+/* All direct hero children above the overlays */
+.hero_ticker_wrap,
+.hero_stage,
+.hero_footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ticker strip */
 .hero_ticker_wrap {
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
   white-space: nowrap;
-  padding-top: 72px; /* clear nav */
-  background: var(--paper);
-  position: relative;
-  z-index: 1;
+  padding-top: 72px;
+  background: transparent;
 }
 .hero_ticker {
   display: inline-flex;
@@ -248,139 +248,141 @@ img {
   }
 }
 
-/* Main body of hero: left name, right copy */
-.hero_body_wrap {
+/* Main stage: flex column — intro top, name fills bottom */
+.hero_stage {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--rule);
   position: relative;
-  padding-left: 52px; /* clears the wider vertical strip */
-  position: relative;
-  z-index: 1;
-}
-
-/* Left: huge editorial name stacked vertically */
-.hero_left {
-  border-right: 1px solid var(--rule);
-  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding-left: 52px; /* clears vertical strip */
+  overflow: hidden;
 }
-.hero_eyebrow {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-.hero_name {
+
+/* Intro block sitting above the name */
+.hero_intro_block {
+  padding: 0.1rem clamp(1rem, 3vw, 2.5rem) 1.5rem;
   display: flex;
   flex-direction: column;
-  line-height: 0.88;
+  gap: 0.75rem;
+  max-width: 520px;
+  z-index: 5;
 }
-.hero_name_line {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(5rem, 12vw, 11rem);
-  letter-spacing: -0.01em;
-  color: var(--ink);
+.hero_intro {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--ink2);
 }
-/* Outline (stroke-only) alternating lines — key brutalist move */
-.outline_line {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--ink);
-  text-stroke: 2px var(--ink);
-}
-
-/* Small coordinate label below the name, like the reference poster */
-.hero_coord {
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--faint);
-  margin-top: 1.2rem;
-}
-
-/* Vertical text strip pinned to the very left edge of the hero body */
-.hero_vert_strip {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid var(--rule);
-  z-index: 2;
-  background: var(--accent);
-}
-.hero_vert_text {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #fff;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  white-space: nowrap;
-  text-transform: uppercase;
-}
-
-/* Red italic label at top of hero right column */
 .hero_right_label {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  line-height: 1.1;
   color: var(--accent);
-  margin-bottom: 0.5rem;
+  line-height: 1;
 }
 .hero_right_label em {
   font-style: normal;
 }
 
-/* Right: copy side */
-.hero_right {
-  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 3.5rem);
+/* Two-line name — each line spans the full available width */
+.hero_name {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 2rem;
+  line-height: 0.85;
+  width: 100%;
+  padding-top: 10rem;
 }
-.hero_intro {
-  font-size: 0.88rem;
-  line-height: 1.9;
+.hero_name_line {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  white-space: nowrap;
+  display: block;
+  line-height: 0.85;
+  /* default size — overridden per-line below */
+  font-size: 22vw;
+}
+/* CHEZTER: 7 chars — slightly smaller */
+.hero_name_line:first-child {
+  font-size: 20.8vw;
+}
+/* VARGAS: 6 chars — slightly larger to match width */
+.hero_name_line:last-child {
+  font-size: 24.2vw;
+}
+/* Outline alternating lines */
+.outline_line {
+  color: transparent;
+  -webkit-text-stroke: 3px var(--ink);
+  text-stroke: 3px var(--ink);
+}
+
+/* Cutout person — absolutely positioned centre-right, overlaps the name */
+.hero_cutout {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  z-index: 4; /* sits in front of name */
+  pointer-events: none;
+}
+.hero_cutout img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: right bottom;
+  display: block;
+  filter: grayscale(30%) contrast(1.05);
+}
+
+/* Slim bottom bar */
+.hero_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+  background: rgba(0, 0, 0, 0.4);
+}
+.hero_eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink2);
-  max-width: 420px;
 }
-.hero_meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.hero_meta_item {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+.hero_coord {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--faint);
 }
-.hero_meta_item em {
-  color: var(--accent);
-  font-style: normal;
-  margin-right: 0.5rem;
-}
-.hero_actions {
+.scroll_hint {
   display: flex;
-  gap: 0;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.scroll_arrow {
+  animation: bounce_y 1.6s ease-in-out infinite;
+}
+@keyframes bounce_y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
-/* Shared button styles — flat, bordered, no radius */
+/* Shared button styles — kept for other sections */
 .btn_primary {
   background: var(--accent);
   color: #fff;
@@ -422,42 +424,6 @@ img {
 .btn_ghost:hover {
   border-color: var(--ink);
   color: var(--ink);
-}
-
-/* Hero footer row: socials + scroll hint */
-.hero_footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem clamp(1.5rem, 4vw, 3.5rem);
-  background: var(--paper);
-  position: relative;
-  z-index: 1;
-}
-.hero_social_row {
-  display: flex;
-  gap: 0;
-}
-.scroll_hint {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--faint);
-}
-.scroll_arrow {
-  animation: bounce_y 1.6s ease-in-out infinite;
-}
-@keyframes bounce_y {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
 }
 
 /* ─── 5. SECTION SHARED STYLES ────────────────────────────────────────── */
