@@ -47,12 +47,13 @@
   --personal: #d41a08;
   --gaming: #2a4ab0;
   --career: #286028;
-  --fitness: #286028;
+  --fitness: #c06000;
   --letter_bg: #ccc8c0;
 
   --personal_l: rgba(212, 26, 8, 0.1);
   --gaming_l: rgba(42, 74, 176, 0.1);
   --career_l: rgba(40, 96, 40, 0.1);
+  --fitness_l: rgba(192, 96, 0, 0.1);
   --letter_l: rgba(40, 40, 160, 0.08);
 
   --biomed: #d41a08;
@@ -147,13 +148,12 @@ img {
   border-right: none;
 }
 .nav_link:hover {
-  color: #d8d4cc; /* was var(--ink) */
-  background: rgba(255, 255, 255, 0.08); /* was var(--warm) */
+  color: #d8d4cc;
+  background: rgba(255, 255, 255, 0.08);
 }
 .nav_link.active {
   background: var(--accent);
   color: #fff;
-  /* toggled by update_nav_active() in script.js */
 }
 
 .nav_cta {
@@ -161,10 +161,10 @@ img {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #111110; /* was var(--bg) */
+  color: #111110;
   text-decoration: none;
   padding: 0.5rem 1.1rem;
-  background: #d8d4cc; /* was var(--ink) */
+  background: #d8d4cc;
   border-color: #d8d4cc;
   border: 1px solid var(--ink);
   transition:
@@ -414,14 +414,13 @@ img {
   /* hidden on mobile — decorative only, causes overlap at narrow widths */
   pointer-events: none;
 }
-/* Red-fill variant for alternate sections and pinned to the right*/
+/* Red-fill variant pinned to the right */
 .section_vert_label.red {
   left: auto;
   right: 0;
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
-  overflow: hidden;
 }
 /* Full-bleed red marquee banner — drop between any two sections */
 .red_banner {
@@ -627,8 +626,9 @@ img {
   border-radius: 64px 0 64px 0;
 }
 
-/* The huge "MY EDUCATION" heading */
-.edu_heading {
+/* The huge section heading shared by edu + exp */
+.edu_heading,
+.exp_heading {
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(4.5rem, 11vw, 10rem);
   font-weight: 800;
@@ -638,11 +638,10 @@ img {
   color: var(--ink);
   padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 1.5rem;
 }
-.edu_heading em {
+.edu_heading em,
+.exp_heading em {
   font-style: normal;
-  color: var(
-    --accent
-  ); /* same colour — no accent tint on heading, matches reference */
+  color: var(--accent);
 }
 
 /* Right column: heading + entries stacked */
@@ -706,14 +705,8 @@ img {
   min-width: 7rem; /* prevents year from collapsing when title text is long */
 }
 
-/* Education section overrides — photo hero needs to bleed to edges */
-#edu_section {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* Experience section — same layout, photo on the right */
+/* edu + exp hero need to bleed to edges */
+#edu_section,
 .exp_section {
   padding-top: 0;
   padding-left: 0;
@@ -730,21 +723,6 @@ img {
   flex-direction: column;
   justify-content: center;
 }
-.exp_heading {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(4.5rem, 11vw, 10rem);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--ink);
-  padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 1.5rem;
-}
-.exp_heading em {
-  font-style: normal;
-  color: var(--accent);
-}
-
 /* ─── 8. PORTFOLIO GRID ───────────────────────────────────────────────── */
 
 .proj_grid {
@@ -860,7 +838,7 @@ img {
   border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
-/* ─── 8. PORTFOLIO — BRUTALIST CARDS ─────────────────────────────────── */
+/* ─── 8b. PORTFOLIO — BRUTALIST CARDS ─────────────────────────────────── */
 
 /* 3-column grid, all cards same height, gap shows as red border lines */
 .brut_grid {
