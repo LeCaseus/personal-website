@@ -317,6 +317,18 @@ body {
 }
 
 /* Post layout */
+.post-signal-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(78, 203, 160, 0.25);
+  letter-spacing: 0.15em;
+  position: absolute;
+  right: 32px;
+  top: 80px;
+  writing-mode: vertical-rl;
+  animation: pulse 2s ease-in-out infinite;
+}
+
 .post-body {
   max-width: 620px;
   margin: 0 auto;
