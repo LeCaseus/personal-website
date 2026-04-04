@@ -66,3 +66,33 @@ function boot_sequence() {
 }
 
 document.addEventListener('DOMContentLoaded', boot_sequence);
+
+function waveform_ambience() {
+  const primary = document.querySelector('.hero-signal-bg polyline:first-child');
+  const secondary = document.querySelector('.hero-signal-bg polyline:last-child');
+
+  const base = [300,220,380,300,300,260,160,340,420,300,300,280,200,400,300,300,270,230,330,300,300,290,240,350,300,300,270,180,380,300,300,310,300];
+  const alt  = [300,200,400,300,300,240,140,360,440,300,300,260,180,420,300,300,250,210,350,300,300,270,220,370,300,300,250,160,400,300,300,330,300];
+
+  const x_coords = [0,60,80,100,120,180,200,210,220,240,260,320,340,360,370,390,450,470,490,500,520,580,600,610,620,640,700,720,730,750,770,830,860,900];
+
+  let progress = 0;
+  let direction = 1;
+
+  function build_points(y_vals) {
+    return x_coords.map((x, i) => `${x},${y_vals[i] ?? 300}`).join(' ');
+  }
+
+  function tick() {
+    progress += 0.003 * direction;
+    if (progress >= 1 || progress <= 0) direction *= -1;
+
+    const interpolated = base.map((b, i) => b + (alt[i] - b) * progress);
+    primary.setAttribute('points', build_points(interpolated));
+    requestAnimationFrame(tick);
+  }
+
+  tick();
+}
+
+document.addEventListener('DOMContentLoaded', waveform_ambience);
