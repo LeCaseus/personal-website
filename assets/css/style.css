@@ -242,12 +242,31 @@ body {
   border-top: var(--border);
 }
 
+.readings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .readings-label {
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--accent-mid);
   letter-spacing: 0.18em;
-  margin-bottom: 16px;
+}
+
+.readings-more {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-mid);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.readings-more:hover {
+  color: var(--accent);
 }
 
 .reading-row {
@@ -791,6 +810,13 @@ body {
 }
 
 /* pages grid */
+.page-col {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .pages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
