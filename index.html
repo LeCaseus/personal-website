@@ -31,7 +31,7 @@ title: Chezter Vargas
   <section class="latest-readings">
     <div class="readings-header">
       <p class="readings-label">LATEST READINGS</p>
-      <a href="{{ '/blog' | relative_url }}" class="readings-more">show all readings →</a>
+      <a href="{{ '/blog' | relative_url }}" class="readings-jump">show all readings →</a>
     </div>
     {% for post in site.posts limit:5 %}
     <a href="{{ post.url | relative_url }}" class="reading-row">
@@ -41,5 +41,49 @@ title: Chezter Vargas
       <span class="reading-arrow">↗</span>
     </a>
     {% endfor %}
+  </section>
+  <section class="about">
+    <div class="readings-header">
+      <p class="readings-label">ABOUT</p>
+    </div>
+    <p class="about-bio">
+      Hi, I'm Chezter, and I like to build things, both hardware and software, to understand how they work.
+    </p>
+    <p class="about-bio">
+      I recently graduated as a biomedical engineer at the end of 2025, and since then I've been on a sabbatical to explore the world and figure out what I want to do next. I recently built this website, which is <a href="https://github.com/LeCaseus/LeCaseus.github.io">open source</a> by the way, and I'm tinkering with a few side projects that I'll probably never finish. I also write about whatever's on my mind at my <a href="/blog" class="about-link">blog</a> when I feel like it.
+    </p>
+    <p class="about-bio">
+      If you want to know more about my skills, <a href="/assets/cv.pdf" class="about-link">download</a> my CV or connect with me on <a href="https://www.linkedin.com/in/lecaseus/" class="about-link">LinkedIn</a>.
+    </p>
+  </section>
+  <section class="projects">
+    <div class="readings-header">
+      <p class="readings-label">PROJECTS</p>
+    </div>
+    <div class="project-grid">
+      <a href="{{ '/projects/em-brace' | relative_url }}" class="project-card">
+        <div class="project-card-img">
+          <img src="{{ '/assets/portfolio_media/em-brace-snapshot.jpeg' | relative_url }}" alt="eM-Brace">
+        </div>
+        <p class="project-card-title">eM-Brace</p>
+      </a>
+      <a href="{{ '/projects/ch3sh1re' | relative_url }}" class="project-card">
+        <div class="project-card-img">
+          <img src="{{ '/assets/portfolio_media/cheshire_snapshot.png' | relative_url }}" alt="CH3SH1RE">
+        </div>
+        <p class="project-card-title">CH3SH1RE</p>
+      </a>
+      <a href="{{ '/projects/this-site' | relative_url }}" class="project-card">
+        <div class="project-card-img">
+          <img src="{{ '/assets/portfolio_media/website-snapshot.png' | relative_url }}" alt="This site">
+        </div>
+        <p class="project-card-title">This site</p>
+      </a>
+    </div>
+  </section>
+  <section class="contact">
+    <p class="contact-line">
+      want to talk? reach out at <a href="mailto:cheztervargas@outlook.com" class="about-link">cheztervargas@outlook.com</a>
+    </p>
   </section>
 </div>

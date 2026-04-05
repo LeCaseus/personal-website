@@ -35,7 +35,6 @@ function boot_sequence() {
   const status_text = document.querySelector('.status-text');
   const full_text = status_text.textContent.trim();
   status_text.textContent = '';
-
   const status_row = document.querySelector('.hero-status');
   status_row.style.opacity = '1';
 
@@ -56,13 +55,46 @@ function boot_sequence() {
     });
   }
 
-  reveal('.hero-name',      900);
-  reveal('.hero-tagline',  1100);
-  reveal('.hero-waveform', 1300);
-  reveal('.hero-bio',      1600);
-  reveal('.label-tag',     1800, true);
-  reveal('.readings-label',2100);
-  reveal('.reading-row',   2300, true);
+  const typing_duration = full_text.length * 35;
+
+  /* read bio length before wiping it */
+  const bio_el = document.querySelector('.hero-bio');
+  const bio_length = bio_el ? bio_el.textContent.trim().length : 0;
+  const bio_duration = bio_length * 28;
+
+  /* step 1 — signal bg */
+  reveal('.hero-signal-bg', typing_duration + 200);
+
+  /* step 2 — bio types in */
+  setTimeout(() => {
+    if (!bio_el) return;
+    const bio_text = bio_el.textContent.trim();
+    bio_el.textContent = '';
+    bio_el.style.opacity = '1';
+
+    let j = 0;
+    const bio_interval = setInterval(() => {
+      bio_el.textContent += bio_text[j];
+      j++;
+      if (j >= bio_text.length) clearInterval(bio_interval);
+    }, 28);
+  }, typing_duration + 500);
+
+  /* step 3 — rest of hero after bio finishes + 5s reading time */
+  const rest = typing_duration + 500 + bio_duration + 300;
+
+  reveal('.hero-name',    rest);
+  reveal('.hero-tagline', rest + 200);
+  reveal('.hero-waveform', rest + 400);
+  reveal('.label-tag',    rest + 600, true);
+
+  /* step 4 — sections slide in after hero completes */
+  const sections = rest + 800 + 500;
+
+  reveal('.latest-readings', sections);
+  reveal('.about',           sections + 300);
+  reveal('.projects',        sections + 600);
+  reveal('.contact',         sections + 900);
 }
 
 document.addEventListener('DOMContentLoaded', boot_sequence);
