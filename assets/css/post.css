@@ -1,0 +1,93 @@
+.post-signal-label
+{
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(78, 203, 160, 0.25);
+  letter-spacing: 0.15em;
+  position: absolute;
+  right: 32px;
+  top: 80px;
+  writing-mode: vertical-rl;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.post-body
+{
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 44px 32px 80px;
+}
+
+.post-back a
+{
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-mid);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+}
+
+.post-meta-row
+{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 20px;
+}
+
+.post-tag
+{
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent-mid);
+  background: var(--accent-faint);
+  border: var(--border);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.1em;
+}
+
+.post-date,
+.post-read
+{
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.post-title
+{
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.post-wave { margin: 18px 0 28px; opacity: 0.25; }
+
+/* Post prose — styles markdown output */
+.post-content p
+{
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.post-content em { color: var(--text); }
+
+.post-content blockquote
+{
+  border-left: 1.5px solid var(--accent-dim);
+  padding: 12px 20px;
+  margin: 28px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-mid);
+  line-height: 1.7;
+  font-style: italic;
+}
